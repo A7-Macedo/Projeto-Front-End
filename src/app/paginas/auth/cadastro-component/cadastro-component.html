@@ -11,28 +11,28 @@
         <div class="cadastro-form-card">
             <h1 class="cadastro-titulo">Crie sua conta</h1>
 
-            <form class="cadastro-form">
+            <form class="cadastro-form" [formGroup]="cadastroForm" (ngSubmit)="onSubmit()">
 
-                <div class="campos-duplos">
+                
                     <div class="campo-grupo">
-                        <label>Nome</label>
-                        <input type="text" placeholder="Nome">
+                        <label class="campo-label" for="nome">Nome</label>
+                          <input class="campo-input" formControlName="name" type="text" id="nome" placeholder="Nome" required />
                     </div>
 
                     <div class="campo-grupo">
-                        <label>Sobrenome</label>
-                        <input type="text" placeholder="Sobrenome">
+                        <label class="campo-label" for="Sobrenome">Sobrenome</label>
+                        <input class="campo-input" formControlName="sobrenome" type="text" id="sobrenome"placeholder="Sobrenome" required />
                     </div>
+                
+
+                <div class="campo-grupo">
+                    <label class="campo-label">E-mail</label>
+                    <input class="campo-input" formControlName="email" type="email" id="email" placeholder="seu@email.com" required />
                 </div>
 
                 <div class="campo-grupo">
-                    <label>E-mail</label>
-                    <input type="email" placeholder="seu@email.com">
-                </div>
-
-                <div class="campo-grupo">
-                    <label>Senha</label>
-                    <input type="password" placeholder="Mínimo 8 caracteres">
+                      <label class="campo-label" for="senha">Senha</label>
+                   <input class="campo-input" formControlName="password" type="password" id="senha" placeholder="Mínimo 8 caracteres" required />
                 </div>
 
                 <div class="campo-grupo">
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="cadastro-termos">
-                    <input type="checkbox" id="termos">
+                    <input type="checkbox" id="termos" required />
                     <label for="termos">
                         Eu concordo com os Termos de Uso e Política de Privacidade.
                     </label>

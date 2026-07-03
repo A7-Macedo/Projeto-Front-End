@@ -1,12 +1,12 @@
-<div class="produto-pagina">
+<div class="produto-pagina" *ngIf="produto() as p">
 
   <!-- Breadcrumb -->
   <nav class="produto-breadcrumb">
     <span>Início</span>
     <span class="breadcrumb-sep">›</span>
-    <span>Camisetas</span>
+    <span>{{ p.categoria }}</span>
     <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-atual">Camiseta Básica Preta</span>
+    <span class="breadcrumb-atual">{{ p.nome }}</span>
   </nav>
 
   <!-- Conteúdo principal -->
@@ -15,61 +15,63 @@
     <!-- Coluna esquerda: galeria -->
     <div class="produto-galeria">
       <div class="galeria-principal">
-        <img src="/camisa02.jpg"  class="produto-img-principal" />
-        <span class="produto-badge">Novo</span>
+        <img [src]="p.imagem" class="produto-img-principal" />
+        <span class="produto-badge" *ngIf="p.badge">{{ p.badge }}</span>
       </div>
-     
+
     </div>
 
     <!-- Coluna direita: detalhes -->
     <div class="produto-detalhes">
 
       <div class="produto-topo">
-        <p class="produto-categoria">Camisetas / Básicos</p>
-        <h1 class="produto-nome">Camiseta Básica Preta</h1>
+        <p class="produto-categoria">{{ p.categoria }}</p>
+        <h1 class="produto-nome">{{ p.nome }}</h1>
         <div class="produto-avaliacao">
           <span class="estrelas">★★★★★</span>
-          <span class="avaliacao-num">4.8</span>
-          <span class="avaliacao-total">(128 avaliações)</span>
+          <span class="avaliacao-num">{{ p.avaliacao }}</span>
+          <span class="avaliacao-total">({{ p.totalAvaliacoes }} avaliações)</span>
         </div>
       </div>
 
       <div class="produto-preco-bloco">
-        <span class="produto-preco">R$ 49,90</span>
-        <span class="produto-preco-original">R$ 69,90</span>
-        <span class="produto-desconto">-28%</span>
+        <span class="produto-preco">R$ {{ p.preco.toFixed(2).replace('.', ',') }}</span>
+        <span class="produto-preco-original" *ngIf="p.precoOriginal > p.preco">
+          R$ {{ p.precoOriginal.toFixed(2).replace('.', ',') }}
+        </span>
+        <span class="produto-desconto" *ngIf="p.desconto">{{ p.desconto }}</span>
       </div>
 
-      <div class="produto-cashback">
-        🎉 Ganhe <strong>5% de cashback</strong> nessa compra
-      </div>
+
 
       <div class="produto-descricao">
-        <p>Minimalismo sofisticado para quem valoriza presença sem excessos. A Camiseta Signature Noir combina modelagem premium, caimento impecável e acabamento de alto padrão em uma peça 
-          versátil para qualquer ocasião. 
-          O detalhe exclusivo bordado no peito adiciona personalidade de forma discreta, enquanto o tecido macio proporciona conforto absoluto durante todo o dia.</p>
+        <p>{{ p.descricao }}</p>
       </div>
 
       <div class="produto-tamanhos">
         <p class="tamanho-label">Tamanho</p>
-        <div class="tamanho-opcoes">
-          <button class="tamanho-btn">P</button>
-          <button class="tamanho-btn ativo">M</button>
-          <button class="tamanho-btn">G</button>
-          <button class="tamanho-btn">GG</button>
-          <button class="tamanho-btn esgotado" disabled>XG</button>
-        </div>
+       <div class="tamanho-opcoes">
+  <button
+    class="tamanho-btn"
+    *ngFor="let t of ['P','M','G','GG']"
+    [class.ativo]="tamanhoSelecionado() === t"
+    (click)="selecionarTamanho(t)">
+    {{ t }}
+  </button>
+  <button class="tamanho-btn esgotado" disabled>XG</button>
+</div>
         <a href="#" class="guia-tamanho">Ver guia de tamanhos</a>
       </div>
 
+
       <div class="produto-acoes">
-        <button class="btn-comprar">
-          Comprar agora
-        </button>
-        <button class="btn-carrinho">
-          🛒 Adicionar ao carrinho
-        </button>
-      </div>
+  <button class="btn-comprar" (click)="adicionarAoCarrinho()">
+    Comprar agora
+  </button>
+  <button class="btn-carrinho" (click)="adicionarAoCarrinho()" routerLink="/carrinho">
+    🛒 Adicionar ao carrinho
+  </button>
+</div>
 
       <div class="produto-info-extra">
         <div class="info-item">
@@ -89,4 +91,3 @@
     </div>
   </div>
 </div>
-

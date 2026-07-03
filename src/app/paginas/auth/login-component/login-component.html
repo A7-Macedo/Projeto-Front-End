@@ -1,0 +1,75 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chelsea+Market&family=Ole&display=swap"
+    rel="stylesheet">
+
+<div class="login-pagina">
+
+    <div class="login-painel-esquerdo fundo-pontos">
+        <a href="../../index.html" class="logo"></a>
+
+        <div>
+
+            <div class="linha-acento"></div>
+            <h2 class="login-frase">
+                Roupas.<br>
+                Para.<br>
+                <span>Sentir.</span>
+            </h2>
+        </div>
+
+        <p class="login-rodape-painel">
+            Plataforma de compra de roupas · 2026
+        </p>
+    </div>
+
+
+    <div class="login-painel-direito">
+
+        <div class="login-form-card card-brilho">
+
+            <h1 class="login-titulo">Bem-vindo de volta</h1>
+            <p class="login-subtitulo">Entre com sua conta para continuar</p>
+
+           <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                <!-- ============== Campos ============== -->
+
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="email">E-mail</label>
+                    <input class="campo-input" type="email" id="email" name="email" placeholder="seu@email.com"
+                     formControlName="email"   required />
+                </div>
+
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="senha">Senha</label>
+
+                    <input class="campo-input" type="password" id="senha" name="senha" placeholder="••••••••" formControlName="password" required />
+
+                    <a href="#" class="login-esqueceu">Esqueceu a senha?</a>
+                </div>
+
+
+                <button class="btn-primario login-btn-submit" type="submit">
+                    Entrar na conta <i class="fas fa-sign-in-alt"></i>
+                </button>
+            </form>
+
+
+            <p class="login-cadastro-link">
+                Ainda não tem conta? <a routerLink="/cadastro">Criar conta grátis</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<!--========================================== FOOTER ==============================================================================-->
+
+<footer>
+
+</footer>
+
+<!--========================================== FINAL DO CÓDIGO ==============================================================================-->

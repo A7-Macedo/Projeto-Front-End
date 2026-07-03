@@ -1,88 +1,141 @@
 <div id="app">
-  <header>
-    <div class="logo">🛍 Lumière</div>
-    <div class="search-bar">
-      <input type="text" placeholder="Buscar produtos...">
-      <button>Buscar</button>
+
+
+  <div class="carrinho-pagina">
+
+    <!-- Trilha de navegação (breadcrumb), mostra onde o usuário está -->
+    <nav class="carrinho-breadcrumb">
+      <span>Início</span>
+      <span class="breadcrumb-sep">›</span>
+      <span>Camisetas</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-atual">Meu Carrinho</span>
+    </nav>
+
+    <!-- Título da página + contador de itens + link pra voltar a comprar -->
+    <div class="carrinho-topo">
+      <h1 class="carrinho-titulo">
+        Meu carrinho
+        <span>({{ itens.length }} {{ itens.length === 1 ? 'item' : 'itens' }})</span>
+      </h1>
+      <a href="#" class="continuar-link">← Continuar comprando</a>
     </div>
-    <button class="cart-btn" onclick="switchTab('cart')">
-      🛒
-      <span class="cart-badge" id="cart-badge">0</span>
-    </button>
-  </header>
 
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('products')">🏠 Início</button>
-    <button class="tab-btn" onclick="switchTab('cart')">🛒 Carrinho</button>
-  </div>
+    <!-- Container principal: lista de itens à esquerda, resumo do pedido à direita -->
+    <div class="carrinho-container" [class.carrinho-vazio-container]="itens.length === 0">
 
-  <div id="page-products" class="page active">
-    <p class="section-title" style="margin-top:8px">Coleção Lumière</p>
-    <div class="products-grid" id="products-grid"></div>
-  </div>
+      <!-- ===== Coluna esquerda: lista de itens do carrinho ===== -->
+      <div class="carrinho-lista">
 
-  <div id="page-cart" class="page">
-    <div class="cart-header">
-      <h2>🛒 Meu Carrinho</h2>
-    </div>
-    <div id="cart-content"></div>
-  </div>
+        <!-- Cabeçalho da lista: só aparece se o carrinho não estiver vazio -->
+        <div class="lista-cabecalho" *ngIf="itens.length > 0">
+          <label class="selecionar-tudo">
+            <!-- checkbox mestre: marca/desmarca todos os itens de uma vez -->
+            <input
+              type="checkbox"
+              class="check-tudo"
+              [checked]="todosMarcados"
+              (change)="toggleTudo($any($event.target).checked)">
+            Selecionar todos
+          </label>
+          <button class="esvaziar-btn" type="button" (click)="esvaziarCarrinho()">Esvaziar carrinho</button>
+        </div>
 
-  <div class="cart-footer" id="cart-footer" style="display:none">
-    <input type="checkbox" id="select-all-footer" onchange="toggleSelectAll(this.checked)">
-    <div class="cart-total">
-      <div class="cart-total-label">Total (<span id="selected-count">0</span> itens)</div>
-      <div class="cart-total-value" id="total-price">R$ 0,00</div>
-    </div>
-    <button class="checkout-btn" onclick="checkout()">Comprar</button>
-  </div>
-</div>
+        <!-- Um card por item do carrinho, repetido via *ngFor -->
+        <div
+          class="carrinho-item"
+          *ngFor="let item of itens; trackBy: trackById"
+          [class.desmarcado]="!item.marcado">
 
-<!-- Modal -->
-<div class="modal-overlay" id="modal">
-  <div class="modal">
-    <div class="modal-img" id="modal-img"></div>
-    <div class="modal-name" id="modal-name"></div>
-    <div class="modal-price" id="modal-price"></div>
-    <div class="modal-variants">
-      <label>Tamanho</label>
-      <div class="variant-options" id="size-opts">
-        <div class="variant-opt" onclick="selectVariant(this,'size')">P</div>
-        <div class="variant-opt selected" onclick="selectVariant(this,'size')">M</div>
-        <div class="variant-opt" onclick="selectVariant(this,'size')">G</div>
-        <div class="variant-opt" onclick="selectVariant(this,'size')">GG</div>
+          <!-- checkbox individual: define se o item entra no cálculo do total -->
+          <input
+            type="checkbox"
+            class="check-item"
+            [checked]="item.marcado"
+            (change)="toggleItem(item)">
+
+          <!-- miniatura do produto (ícone placeholder, trocar por <img> quando tiver fotos reais) -->
+         <!-- miniatura do produto -->
+          <div class="item-thumb">
+          <img [src]="item.imagem" [alt]="item.nome">
+          </div>
+
+          <!-- nome, variante (tamanho/cor) e preços do item -->
+          <div class="item-info">
+            <p class="item-nome">{{ item.nome }}</p>
+            <span class="item-variante">{{ item.variante }}</span>
+            <div class="item-precos">
+              <span class="item-preco">{{ item.unit | currency:'BRL' }}</span>
+              <span class="item-preco-original">{{ item.original | currency:'BRL' }}</span>
+            </div>
+          </div>
+
+          <!-- ações do item: remover, ajustar quantidade e ver subtotal -->
+          <div class="item-lado-direito">
+            <button class="item-remover" type="button" title="Remover item" (click)="remover(item)">✕</button>
+            <div class="qtd-stepper">
+              <button class="qtd-btn" type="button" (click)="decrementar(item)">−</button>
+              <span class="qtd-valor">{{ item.qtd }}</span>
+              <button class="qtd-btn" type="button" (click)="incrementar(item)">+</button>
+            </div>
+            <!-- subtotal = preço unitário x quantidade, calculado direto no template -->
+            <span class="item-subtotal">{{ item.unit * item.qtd | currency:'BRL' }}</span>
+          </div>
+        </div>
+
+        <!-- Estado vazio: só aparece quando não sobra nenhum item no carrinho -->
+        <div class="carrinho-vazio visivel" *ngIf="itens.length === 0">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M16 4l3 3-2 2-1-1v10a1 1 0 01-1 1H9a1 1 0 01-1-1V8L7 9 5 7l3-3 2 2h4l2-2z"/></svg>
+          <h3>Seu carrinho está vazio</h3>
+          <p>Que tal dar uma olhada nos nossos básicos?</p>
+          <a href="#">Ver produtos</a>
+        </div>
+
       </div>
-    </div>
-    <div class="modal-variants">
-      <label>Cor</label>
-      <div class="variant-options" id="color-opts"></div>
-    </div>
-    <div class="modal-qty">
-      <label>Quantidade</label>
-      <div class="qty-control">
-        <button class="qty-btn" onclick="changeModalQty(-1)">−</button>
-        <input class="qty-num" id="modal-qty" type="number" value="1" min="1" max="99">
-        <button class="qty-btn" onclick="changeModalQty(1)">+</button>
-      </div>
-    </div>
-    <div class="modal-actions">
-      <button class="btn-close-modal" onclick="closeModal()">Cancelar</button>
-      <button class="btn-add-modal" onclick="addToCartFromModal()">Adicionar ao Carrinho</button>
-    </div>
-  </div>
-</div>
 
-<div class="toast" id="toast"></div>
+      <!-- ===== Coluna direita: resumo do pedido (sticky) ===== -->
+      <aside class="carrinho-resumo" *ngIf="itens.length > 0">
+        <h2 class="resumo-titulo">Resumo do pedido</h2>
 
-<div class="product-card">
-  <div class="product-img">
-    <img src="camisa02.png" alt="Camiseta Básica com Emblema">
-    <span class="cashback-badge">5% cashback</span>
-  </div>
-  <div class="product-info">
-    <div class="product-name">Camiseta Básica com Emblema</div>
-    <div class="product-price">R$ 49,90</div>
-    <div class="product-sold">⭐ 4.8 | 870 vendidos</div>
-    <button class="add-to-cart-btn" onclick="openModal(1)">+ Adicionar</button>
+        <!-- soma dos preços originais (sem desconto) -->
+        <div class="resumo-linha">
+          <span>Subtotal</span>
+          <span>{{ subtotalOriginal | currency:'BRL' }}</span>
+        </div>
+
+        <!-- diferença entre subtotal original e o preço com desconto -->
+        <div class="resumo-linha desconto">
+          <span>Descontos</span>
+          <span>− {{ desconto | currency:'BRL' }}</span>
+        </div>
+
+        <!-- frete grátis se ultrapassar o limite definido no componente -->
+        <div class="resumo-linha">
+          <span>Frete</span>
+          <span>{{ freteGratis ? 'Grátis' : (0 | currency:'BRL') }}</span>
+        </div>
+
+        <!-- campo de cupom (ainda sem lógica de aplicação implementada) -->
+        <div class="resumo-cupom">
+          <input type="text" placeholder="Cupom de desconto">
+          <button type="button">Aplicar</button>
+        </div>
+
+      
+        <hr class="resumo-divisor">
+
+        <!-- valor final a ser cobrado -->
+        <div class="resumo-total">
+          <span>Total</span>
+          <span class="resumo-total-valor">{{ total | currency:'BRL' }}</span>
+        </div>
+
+        <!-- botão de checkout (ainda só mostra um alert de teste) -->
+        <button class="btn-finalizar" type="button" (click)="finalizarCompra()">Finalizar compra</button>
+
+        <div class="resumo-seguranca">🔒 Pagamento 100% seguro</div>
+      </aside>
+
+    </div>
   </div>
 </div>

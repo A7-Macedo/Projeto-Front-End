@@ -1,27 +1,3 @@
-:root {
-
-    --cor-1: #DEE4B8;
-    --cor-2: #F0FFCE;
-    --cor-3: #DECFA6;
-
-    --cor-4: #CB9F7D;
-    --cor-5: #A53F2B;
-    --cor-6: #79311B;
-
-    --cor-7: #4C230A;
-    --cor-8: #3A1207;
-    --cor-9: #280004;
-    --cor-10: #daa520;
-
-    /* Outras cores */
-    --cor-fundo:rgba(238, 220, 187);
-
-    /* Fontes */
-
-    --fonte-corpo:  "Oswald", sans-serif;
-    --fonte-titulo:  "Dosis", sans-serif;
-
-}
 
 * {
     margin: 0;

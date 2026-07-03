@@ -17,24 +17,25 @@
                 <input class="busca-input" type="email" placeholder="Buscar Produtos..." />
             </div>
 
-            <div class="filtro-lista">
-                <button class="filtro-btn ativo">Todos</button>
-                <button class="filtro-btn">Camisas</button>
-                <button class="filtro-btn">Calças</button>
-                <button class="filtro-btn">Casacos</button>
-                <button class="filtro-btn">Jaqueta</button>
-                <button class="filtro-btn">Sapatos</button>
-                <button class="filtro-btn">Tênis</button>
+            <!-- depois -->
+<div class="filtro-lista">
+    <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'todos'" (click)="selecionarFiltro('todos')">Todos</button>
+    <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'camisas'" (click)="selecionarFiltro('camisas')">Camisas</button>
+    <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'calcas'" (click)="selecionarFiltro('calcas')">Calças</button>
+    <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'casacos'" (click)="selecionarFiltro('casacos')">Casacos</button>
+    <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'jaquetas'" (click)="selecionarFiltro('jaquetas')">Jaqueta</button>
+    <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'sapatos'" (click)="selecionarFiltro('sapatos')">Sapatos</button>
+    <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'tenis'" (click)="selecionarFiltro('tenis')">Tênis</button>
+</div>
             </div>
-        </div>
+        
 
         <section class="artigos-grid-container">
             
 
             <div class="artigos-grid">
-              <app-roupas-component />
-
-            </div>
+  <app-roupas-component [filtro]="filtroAtivo()" />
+</div>
         </section>
 
 

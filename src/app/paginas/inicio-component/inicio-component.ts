@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RoupasComponent } from '../../roupas-component/roupas-component';
 
 @Component({
@@ -7,4 +7,10 @@ import { RoupasComponent } from '../../roupas-component/roupas-component';
   templateUrl: './inicio-component.html',
   styleUrl: './inicio-component.css',
 })
-export class InicioComponent {}
+export class InicioComponent {
+  filtroAtivo = signal('todos');
+
+  selecionarFiltro(categoria: string): void {
+    this.filtroAtivo.set(categoria);
+  }
+}

@@ -1,28 +1,4 @@
-:root {
 
-    --cor-1: #DEE4B8;
-    --cor-2: #F0FFCE;
-    --cor-3: #DECFA6;
-
-    --cor-4: #CB9F7D;
-    --cor-5: #A53F2B;
-    --cor-6: #79311B;
-
-    --cor-7: #4C230A;
-    --cor-8: #3A1207;
-    --cor-9: #280004;
-    --cor-10: #daa520;
-
-    /* Outras cores */
-    --cor-fundo:rgba(238, 220, 187);
-
-    /* Fontes */
-
-    --fonte-corpo:  "Oswald", sans-serif;
-    --fonte-titulo:  "Dosis", sans-serif;
-
-}
-    
 
 /* ====================== CAMISAs ========================================== */
 
@@ -31,13 +7,135 @@
 .container-camisas {
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 122px;
     width: 100%;
     flex-wrap: nowrap; /* impede quebrar linha */
-    padding: 40px;
+    padding: 20px;
 }
 
-.card-camisa {
+.container-camisas a {
+    display: block;
+    text-decoration: none;;
+    
+}
+
+.slot1-camisa,
+.slot2-camisa,
+.slot3-camisa,
+.slot4-camisa,
+.slot5-camisa {
+    width: 250px;
+    flex-shrink: 0; /* impede o card de encolher */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-3);
+    border: 2px solid var(--cor-5);
+    border-radius: 0px;
+    padding: 0px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-sizing: border-box;
+}
+
+.slot1-camisa img,
+.slot2-camisa img,
+.slot3-camisa img,
+.slot4-camisa img,
+.slot5-camisa img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0px;
+    border: 0px solid var(--cor-5);
+    
+}
+
+.slot1-camisa{
+    font-family: var(--fonte-titulo);
+    
+}
+.slot2-camisa{
+    font-family: var(--fonte-titulo);
+}
+
+
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* ====================== CALÇAS ========================================== */
+
+
+
+.container-calcas {
+    display: flex;
+    justify-content: center;
+    gap: 122px;
+    width: 100%;
+    flex-wrap: nowrap; /* impede quebrar linha */
+    padding: 20px;
+}
+
+.container-calca a {
+    display: block;
+    text-decoration: none;
+    
+}
+
+.slot1-calca,
+.slot2-calca,
+.slot3-calca,
+.slot4-calca,
+.slot5-calca {
+    width: 250px;
+    flex-shrink: 0; /* impede o card de encolher */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-3);
+    border: 2px solid var(--cor-5);
+    border-radius: 0px;
+    padding: 0px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-sizing: border-box;
+}
+
+.slot1-calca img,
+.slot2-calca  img,
+.slot3-calca  img,
+.slot4-calca  img,
+.slot5-calca  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0px;
+    border: 0px solid var(--cor-5);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* ====================== JAQUETAS ========================================== */
+
+
+
+.container-jaquetas {
+    display: flex;
+    justify-content: center;
+    gap: 122px;
+    width: 100%;
+    flex-wrap: nowrap; /* impede quebrar linha */
+    padding: 20px;
+}
+
+.card-jaqueta {
     width: 300px;
     flex-shrink: 0;
     display: flex;
@@ -51,217 +149,49 @@
     box-sizing: border-box;
 }
 
-.card-camisa img {
+.card-jaqueta img {
     width: 100%;
-    height: 250px;
+    height: 400px;
     object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid var(--cor-5);
+    border-radius: 0px;
+    border: 0px solid var(--cor-5);
 }
 
 
-.container-camisas a {
+.container-jaqueta a {
     display: block;
     text-decoration: none;
     
 }
 
-
-.slot1-camisa {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-}
-
-.slot1-camisa img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 2px solid var(--cor-5);
-}
-
-.slot1-camisa h2 {
-    margin-top: 20px;
-    color: #5a1a00;
-    font-weight: 900;
-    text-align: center;
-    line-height: 1.5;
-    font-family: var(--fonte-titulo);
-    font-size: 15px;
-}
-
-.slot2-camisa {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-}
-
-.slot2-camisa img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 2px solid var(--cor-5);
-}
-
-.slot2-camisa h2 {
-    display: grid;
-    margin-top: 20px;
-    color: #5a1a00;
-    font-weight: 900;
-    text-align: center;
-    line-height: 1.5;
-    font-family: var(--fonte-titulo);
-    font-size: 15px;
-}
-
-.slot3-camisa {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-}
-
-.slot3-camisa img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 2px solid var(--cor-5);
-}
-
-.slot3-camisa h2 {
-    margin-top: 20px;
-    color: #5a1a00;
-    font-weight: 900;
-    text-align: center;
-    line-height: 1.5;
-    font-family: var(--fonte-titulo);
-    font-size: 15px;
-}
-
-.slot4-camisa {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-}
-
-.slot4-camisa img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 2px solid var(--cor-5);
-}
-
-.slot4-camisa h2 {
-    margin-top: 20px;
-    color: #5a1a00;
-    font-weight: 900;
-    text-align: center;
-    line-height: 1.5;
-    font-family: var(--fonte-titulo);
-    font-size: 15px;
-}
-
-.slot5-camisa {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 20px;
-    width: 300px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-}
-
-.slot5-camisa img {
-    width: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 2px solid var(--cor-5);
-}
-
-.slot5-camisa h2 {
-    margin-top: 20px;
-    color: #5a1a00;
-    font-weight: 900;
-    text-align: center;
-    line-height: 1.5;
-    font-family: var(--fonte-titulo);
-    font-size: 15px;
-}
-
-
-.preco {
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--cor-6);
-    margin-top: 10px;
-    font-family: var(--fonte-titulo);
-}
-
-.cashback {
-    font-size: 13px;
-    font-weight: 600;
-    color: white;
-    background-color: var(--cor-5);
-    padding: 6px 14px;
-    border-radius: 100px;
-    margin-top: 8px;
-    text-align: center;
-}
-
-
-.slot1-camisa,
-.slot2-camisa,
-.slot3-camisa,
-.slot4-camisa,
-.slot5-camisa {
-    width: 300px;
+.slot1-jaqueta,
+.slot2-jaqueta,
+.slot3-jaqueta,
+.slot4-jaqueta,
+.slot5-jaqueta {
+    width: 250px;
     flex-shrink: 0; /* impede o card de encolher */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--cor-3);
     border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: 0px;
+    padding: 0px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     box-sizing: border-box;
 }
 
-.slot1-camisa img,
-.slot2-camisa img,
-.slot3-camisa img,
-.slot4-camisa img,
-.slot5-camisa img {
+.slot1-jaqueta img,
+.slot2-jaqueta  img,
+.slot3-jaqueta  img,
+.slot4-jaqueta  img,
+.slot5-jaqueta  img {
     width: 100%;
-    height: 250px;
+    height: 400px;
     object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid var(--cor-5);
+    border-radius: 0px;
+    border: 0px solid var(--cor-5);
 }
 
 img {
@@ -269,3 +199,308 @@ img {
     height: auto;
 }
 
+/* ====================== CASACOS ========================================== */
+
+
+
+.container-casacos {
+    display: flex;
+    justify-content: center;
+    gap: 122px;
+    width: 100%;
+    flex-wrap: nowrap; /* impede quebrar linha */
+    padding: 20px;
+}
+
+.container-casaco a {
+    display: block;
+    text-decoration: none;
+    
+}
+
+.slot1-casaco,
+.slot2-casaco,
+.slot3-casaco,
+.slot4-casaco,
+.slot5-casaco {
+    width: 250px;
+    flex-shrink: 0; /* impede o card de encolher */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-3);
+    border: 2px solid var(--cor-5);
+    border-radius: 0px;
+    padding: 0px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-sizing: border-box;
+}
+
+.slot1-casaco  img,
+.slot2-casaco  img,
+.slot3-casaco  img,
+.slot4-casaco  img,
+.slot5-casaco  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0px;
+    border: 0px solid var(--cor-5);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* ====================== SAPATOS ========================================== */
+
+
+
+.container-sapatos {
+    display: flex;
+    justify-content: center;
+    gap: 122px;
+    width: 100%;
+    flex-wrap: nowrap; /* impede quebrar linha */
+    padding: 20px;
+}
+
+.container-sapato a {
+    display: block;
+    text-decoration: none;
+    
+}
+
+.slot1-sapato,
+.slot2-sapato,
+.slot3-sapato,
+.slot4-sapato,
+.slot5-sapato {
+    width: 250px;
+    flex-shrink: 0; /* impede o card de encolher */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-3);
+    border: 2px solid var(--cor-5);
+    border-radius: 0px;
+    padding: 0px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-sizing: border-box;
+}
+
+.slot1-sapato  img,
+.slot2-sapato  img,
+.slot3-sapato  img,
+.slot4-sapato  img,
+.slot5-sapato  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0px;
+    border: 0px solid var(--cor-5);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* ====================== TENIS ========================================== */
+
+
+
+.container-tenis {
+    display: flex;
+    justify-content: center;
+    gap: 122px;
+    width: 100%;
+    flex-wrap: nowrap; /* impede quebrar linha */
+    padding: 20px;
+}
+
+
+.container-tenis a {
+    display: block;
+    text-decoration: none;
+    
+}
+
+.slot1-tenis,
+.slot2-tenis,
+.slot3-tenis,
+.slot4-tenis,
+.slot5-tenis {
+    width: 250px;
+    flex-shrink: 0; /* impede o card de encolher */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-3);
+    border: 2px solid var(--cor-5);
+    border-radius: 0px;
+    padding: 0px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-sizing: border-box;
+}
+
+.slot1-tenis  img,
+.slot2-tenis  img,
+.slot3-tenis  img,
+.slot4-tenis  img,
+.slot5-tenis  img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0px;
+    border: 0px solid var(--cor-5);
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* ============= LINHAS =========================== */
+
+.container-camisas,
+.container-calcas,
+.container-jaquetas,
+.container-tenis,
+.container-sapatos,
+.container-casacos
+ {
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--cor-5);
+}
+.container-tenis {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+/* ============= PREÇO =========================== */
+.preco {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--cor-6);
+    margin-top: 10px;
+    font-family: var(--fonte-titulo);
+    align-self: flex-start; /* Alinha à esquerda do card */
+    margin-left: 2px;
+}
+
+/* ================= TITULO ==========================*/
+
+.titulo{
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--cor-6);
+    margin-top: 10px;
+    font-family: var(--fonte-corpo);
+    align-self: flex-start; /* Alinha à esquerda do card */
+    margin-left: 2px;
+}
+
+/*====================== DESCRIÇÃO ==========================*/
+
+.descricao{
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--cor-6);
+    margin-top: 10px;
+    font-family: var(--fonte-corpo);
+    align-self: flex-start; /* Alinha à esquerda do card */
+    margin-left: 2px;
+}
+
+/* ============= FOOTER DO CARD (preço + botão) =========================== */
+.produto-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 12px 15px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+
+.btn-add-carrinho {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--cor-5);
+    color: var(--cor-2);
+    border: none;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color .2s ease, transform .2s ease;
+}
+
+.btn-add-carrinho:hover {
+    background-color: var(--cor-6);
+    transform: scale(1.08);
+}
+
+.btn-add-carrinho:active {
+    transform: scale(0.95);
+}
+
+[class*="slot"] {
+    min-height: 400px; /* ajuste esse valor conforme a descrição mais longa */
+}
+
+/* Empurra o footer (preço + botão) para o final do card */
+.produto-footer {
+    margin-top: auto;
+}
+
+/* ============= EFEITO HOVER NOS CARDS (versão explícita) =========================== */
+
+.slot1-camisa, .slot2-camisa, .slot3-camisa, .slot4-camisa, .slot5-camisa,
+.slot1-calca, .slot2-calca, .slot3-calca, .slot4-calca, .slot5-calca,
+.slot1-jaqueta, .slot2-jaqueta, .slot3-jaqueta, .slot4-jaqueta, .slot5-jaqueta,
+.slot1-casaco, .slot2-casaco, .slot3-casaco, .slot4-casaco, .slot5-casaco,
+.slot1-sapato, .slot2-sapato, .slot3-sapato, .slot4-sapato, .slot5-sapato,
+.slot1-tenis, .slot2-tenis, .slot3-tenis, .slot4-tenis, .slot5-tenis {
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.slot1-camisa:hover, .slot2-camisa:hover, .slot3-camisa:hover, .slot4-camisa:hover, .slot5-camisa:hover,
+.slot1-calca:hover, .slot2-calca:hover, .slot3-calca:hover, .slot4-calca:hover, .slot5-calca:hover,
+.slot1-jaqueta:hover, .slot2-jaqueta:hover, .slot3-jaqueta:hover, .slot4-jaqueta:hover, .slot5-jaqueta:hover,
+.slot1-casaco:hover, .slot2-casaco:hover, .slot3-casaco:hover, .slot4-casaco:hover, .slot5-casaco:hover,
+.slot1-sapato:hover, .slot2-sapato:hover, .slot3-sapato:hover, .slot4-sapato:hover, .slot5-sapato:hover,
+.slot1-tenis:hover, .slot2-tenis:hover, .slot3-tenis:hover, .slot4-tenis:hover, .slot5-tenis:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.slot1-camisa img, .slot2-camisa img, .slot3-camisa img, .slot4-camisa img, .slot5-camisa img,
+.slot1-calca img, .slot2-calca img, .slot3-calca img, .slot4-calca img, .slot5-calca img,
+.slot1-jaqueta img, .slot2-jaqueta img, .slot3-jaqueta img, .slot4-jaqueta img, .slot5-jaqueta img,
+.slot1-casaco img, .slot2-casaco img, .slot3-casaco img, .slot4-casaco img, .slot5-casaco img,
+.slot1-sapato img, .slot2-sapato img, .slot3-sapato img, .slot4-sapato img, .slot5-sapato img,
+.slot1-tenis img, .slot2-tenis img, .slot3-tenis img, .slot4-tenis img, .slot5-tenis img {
+    transition: transform 0.35s ease;
+}
+
+.slot1-camisa:hover img, .slot2-camisa:hover img, .slot3-camisa:hover img, .slot4-camisa:hover img, .slot5-camisa:hover img,
+.slot1-calca:hover img, .slot2-calca:hover img, .slot3-calca:hover img, .slot4-calca:hover img, .slot5-calca:hover img,
+.slot1-jaqueta:hover img, .slot2-jaqueta:hover img, .slot3-jaqueta:hover img, .slot4-jaqueta:hover img, .slot5-jaqueta:hover img,
+.slot1-casaco:hover img, .slot2-casaco:hover img, .slot3-casaco:hover img, .slot4-casaco:hover img, .slot5-casaco:hover img,
+.slot1-sapato:hover img, .slot2-sapato:hover img, .slot3-sapato:hover img, .slot4-sapato:hover img, .slot5-sapato:hover img,
+.slot1-tenis:hover img, .slot2-tenis:hover img, .slot3-tenis:hover img, .slot4-tenis:hover img, .slot5-tenis:hover img {
+    transform: scale(1.08);
+}

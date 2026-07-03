@@ -8,14 +8,22 @@
                     <li><a routerLink="/categorias" routerLinkActive="ativo" class="nav-link">Categoria</a></li>
                     <li><a routerLink="/inicio"  fragment="sobre" class="nav-link">Sobre</a></li>
                     <li><a routerLink="/inicio" fragment="ajuda" class="nav-link">Ajuda</a></li>
+                    @if (authService.isLoggedIn()) {
+                    <li><a routerLink="/admin/dashboard" class="nav-link">Dashboard</a></li>
+                    }
                 </ul>
+                 @if (authService.isLoggedIn()) {
+                  <button type="button" class="btn-sair" (click)="authService.logout()">Sair</button>
+                } @else {
+                  <a routerLink="/login" class="btn-sair">Login</a>
+                }
 
                 <span class="carrinho">
                 <img src="/lumière9.9.png" routerLink="carrinho">
             </span>
                 
               <nav class="icone-usuario">
-            <img src="usernofoto.png" onclick="window.location.href='/perfil'">
+            <img src="usernofoto.png" onclick="window.location.href='/login'">
         
         </nav>
 

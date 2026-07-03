@@ -1,43 +1,361 @@
-<div class="container-camisas">
+<head>
+  <link rel="stylesheet" href="/../lumiere/src/styles.css">
+</head>
 
-    <div class="" >
-        <img src="/camisa.1.jpg" alt="">
-        <h2>Camiseta básica de manga curta, modelagem regular e caimento confortável para o dia a dia.</h2>
-        <p class="preco">R$ 49,90</p>
-        <p class="cashback">🎉 Ganhe 5% de cashback nessa compra!</p>
-    </div>
+<div class="container-camisas" *ngIf="mostrar('camisas')">
 
-    
+   <div class="slot1-camisa" [routerLink]="['/produto', 1]" style="cursor: pointer;">
+      <img src="/camisa.1.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Midnight Summit</p>
+      <p class="descricao">Midnight Summit combina elegância e personalidade.</p>
+      <div class="produto-footer">
+          <p class="preco">R$ 69,90</p>
+          <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(1, 'Midnight Summit', 69.90, '/camisa.1.png')">+</button>
+      </div>
+  </div>
 
-        <div class="" routerLink="/produto">
-            <img src="/camisa.2.jpg" alt="">
-            <h2>Camiseta básica de manga curta, modelagem regular e caimento confortável para o dia a dia.</h2>
-            <p class="preco">R$ 49,90</p>
-            <p class="cashback">🎉 Ganhe 5% de cashback nessa compra!</p>
-            
+    <div class="slot2-camisa" [routerLink]="['/produto', 2]" style="cursor: pointer;">
+        <img src="/camisa.2.png" alt="" class="roupas">
+        <h2></h2>
+        <p class="titulo">Signature Sand Élégance</p>
+        <p class="descricao">A Signature Woodland traduz a serenidade da natureza em um visual contemporâneo.</p>
+         <div class="produto-footer">
+            <p class="preco">R$ 69,90</p>
+            <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(2, 'Signature Sand Élégance', 69.90, '/camisa.2.png')">+</button>
         </div>
+     </div>
     
+     <div class="slot3-camisa" [routerLink]="['/produto', 3]" style="cursor: pointer;">
+        <img src="/camisa.3.png" alt="" class="roupas">
+        <h2></h2>
+        <p class="titulo">Ivory Prestige</p>
+        <p class="descricao">Ivory Prestige foi criada para quem acredita que a verdadeira elegância está nos detalhes.</p>
+      <div class="produto-footer">
+          <p class="preco">R$ 69,90</p>
+          <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(3, 'Ivory Prestige', 69.90, '/camisa.3.png')">+</button>
+      </div>
+     </div>
 
-    <div class="slot3-camisa">
-        <img src="/camisa.3.png" alt="">
-        <h2>Camiseta básica de manga curta, modelagem regular e caimento confortável para o dia a dia.</h2>
-        <p class="preco">R$ 40,90</p>
-        <p class="cashback">🎉 Ganhe 5% de cashback nessa compra!</p>
-    </div>
+     <div class="slot4-camisa" [routerLink]="['/produto', 4]" style="cursor: pointer;">
+        <img src="/camisa.4.png" alt="" class="roupas">
+        <p class="titulo">Midnight Eclipse</p>
+        <p class="descricao">Midnight Eclipse une modernidade e requinte.</p>
+        <div class="produto-footer">
+         <p class="preco">R$ 69,90</p>
+         <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(4, 'Midnight Eclipse', 69.90, '/camisa.4.png')">+</button>
+        </div>
+     </div>
 
-    <div class="slot4-camisa">
-        <img src="/camisa.4.png" alt="">
-        <h2>Camiseta básica de manga curta, modelagem regular e caimento confortável para o dia a dia.</h2>
-        <p class="preco">R$ 40,90</p>
-        <p class="cashback">🎉 Ganhe 5% de cashback nessa compra!</p>
-    </div>
-
-    <div class="">
-        <img src="camisa.5.png" alt="">
-        <h2>Camiseta básica de manga curta, modelagem regular e caimento confortável para o dia a dia.</h2>
-        <p class="preco">R$ 40,90</p>
-        <p class="cashback">🎉 Ganhe 5% de cashback nessa compra!</p>
-    </div>
+     <div class="slot5-camisa" [routerLink]="['/produto', 5]" style="cursor: pointer;">
+        <img src="/camisa.5.png" alt="" class="roupas">
+        <h2></h2>
+        <p class="titulo">Royal Noir</p>
+        <p class="descricao">Royal Noir representa o clássico reinventado.</p>
+       <div class="produto-footer">
+         <p class="preco">R$ 69,90</p>
+         <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(5, 'Royal Noir', 69.90, '/camisa.5.png')">+</button>
+       </div>
+     </div>
 
 </div>
 
+
+<div class="container-calcas" *ngIf="mostrar('calcas')">
+
+    <div class="slot1-calca" [routerLink]="['/produto', 6]" style="cursor: pointer;">
+        <img src="/calças.1.png" alt="" class="roupas">
+        <h2></h2>
+        <p class="titulo">Imperial Cocoa</p>
+        <p class="descricao">Imperial Cocoa entrega conforto e caimento impecável em um tom sóbrio e refinado.</p>
+        <div class="produto-footer">
+          <p class="preco">R$ 89,90</p>
+          <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(6, 'Imperial Cocoa', 89.90, '/calças.1.png')">+</button>
+        </div>
+    </div>
+
+    <div class="slot2-calca" [routerLink]="['/produto', 7]" style="cursor: pointer;">
+        <img src="/calças.2.png" alt="" class="roupas">
+        <h2></h2>
+        <p class="titulo">Desert Prestige</p>
+        <p class="descricao">Desert Prestige combina leveza, sofisticação e versatilidade em um design contemporâneo.</p>
+        <div class="produto-footer">
+          <p class="preco">R$ 89,90</p>
+          <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(7, 'Desert Prestige', 89.90, '/calças.2.png')">+</button>
+        </div>
+     </div>
+    
+     <div class="slot3-calca" [routerLink]="['/produto', 8]" style="cursor: pointer;">
+        <img src="/calças.3.png" alt="" class="roupas">
+        <h2></h2>
+        <p class="titulo">Golden Dune</p>
+        <p class="descricao">Golden Dune apresenta um visual elegante com inspiração nas dunas douradas.</p>
+        <div class="produto-footer">
+          <p class="preco">R$ 89,90</p>
+          <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(8, 'Golden Dune', 89.90, '/calças.3.png')">+</button>
+        </div>
+     </div>
+
+     <div class="slot4-calca" [routerLink]="['/produto', 9]" style="cursor: pointer;">
+        <img src="/calças.4.png" alt="" class="roupas">
+        <h2></h2>
+        <p class="titulo">Executive Noir</p>
+        <p class="descricao">Clássica e sofisticada, a Executive Noir foi desenvolvida para quem busca elegância em todos os momentos.</p>
+        <div class="produto-footer">
+          <p class="preco">R$ 89,90</p>
+          <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(9, 'Executive Noir', 89.90, '/calças.4.png')">+</button>
+        </div>
+     </div>
+
+     <div class="slot5-calca" [routerLink]="['/produto', 10]" style="cursor: pointer;">
+      <img src="/calças.5.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Ivory Heritage</p>
+      <p class="descricao">Ivory Heritage une tradição e modernidade em uma peça de acabamento impecável.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 89,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(10, 'Ivory Heritage', 89.90, '/calças.5.png')">+</button>
+      </div>
+   </div>
+
+</div>
+
+
+<div class="container-jaquetas" *ngIf="mostrar('jaquetas')">
+
+  <div class="slot1-jaqueta" [routerLink]="['/produto', 11]" style="cursor: pointer;">
+      <img src="/jaqueta.1.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Urban Legacy</p>
+      <p class="descricao">Urban Legacy combina proteção, conforto e um design minimalista, Ideal para acompanhar a rotina com elegância.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 169,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(11, 'Urban Legacy', 169.90, '/jaqueta.1.png')">+</button>
+      </div>
+  </div>
+
+  <div class="slot2-jaqueta" [routerLink]="['/produto', 12]" style="cursor: pointer;">
+      <img src="/jaqueta.2.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Navy Prestige</p>
+      <p class="descricao">Navy Prestige entrega um visual refinado sem abrir mão da funcionalidade e do conforto.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 169,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(12, 'Navy Prestige', 169.90, '/jaqueta.2.png')">+</button>
+      </div>
+   </div>
+  
+   <div class="slot3-jaqueta" [routerLink]="['/produto', 13]" style="cursor: pointer;">
+      <img src="/jaqueta.3.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Alpine Ivory</p>
+      <p class="descricao">Alpine Ivory traz inspiração nas paisagens alpinas para compor looks elegantes em qualquer clima.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 169,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(13, 'Alpine Ivory', 169.90, '/jaqueta.3.png')">+</button>
+      </div>
+   </div>
+
+   <div class="slot4-jaqueta" [routerLink]="['/produto', 14]" style="cursor: pointer;">
+      <img src="/jaqueta.4.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Silver Horizon</p>
+      <p class="descricao">Silver Horizon foi criada para quem aprecia um estilo urbano e refinado.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 169,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(14, 'Silver Horizon', 169.90, '/jaqueta.4.png')">+</button>
+      </div>
+   </div>
+
+   <div class="slot5-jaqueta" [routerLink]="['/produto', 15]" style="cursor: pointer;">
+      <img src="/jaqueta.5.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Pure Essence</p>
+      <p class="descricao">Pure Essence representa a simplicidade elevada ao máximo nível de elegância.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 169,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(15, 'Pure Essence', 169.90, '/jaqueta.5.png')">+</button>
+      </div>
+   </div>
+
+</div>
+
+<div class="container-casacos" *ngIf="mostrar('casacos')">
+
+  <div class="slot1-casaco" [routerLink]="['/produto', 16]" style="cursor: pointer;">
+      <img src="/casaco.1.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Vintage Oak</p>
+      <p class="descricao">Vintage Oak combina tradição, conforto e sofisticação em uma única peça.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 149,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(16, 'Vintage Oak', 149.90, '/casaco.1.png')">+</button>
+      </div>
+  </div>
+
+  <div class="slot2-casaco" [routerLink]="['/produto', 17]" style="cursor: pointer;">
+      <img src="/casaco.2.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Graphite Elite</p>
+      <p class="descricao">Graphite Elite apresenta linhas modernas e acabamento premium, oferecendo um visual marcante para quem valoriza exclusividade.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 149,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(17, 'Graphite Elite', 149.90, '/casaco.2.png')">+</button>
+      </div>
+   </div>
+  
+   <div class="slot3-casaco" [routerLink]="['/produto', 18]" style="cursor: pointer;">
+      <img src="/casaco.3.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Royal Coast</p>
+      <p class="descricao">Royal Coast une o estilo clássico ao espírito contemporâneo.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 149,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(18, 'Royal Coast', 149.90, '/casaco.3.png')">+</button>
+      </div>
+   </div>
+
+   <div class="slot4-casaco" [routerLink]="['/produto', 19]" style="cursor: pointer;">
+      <img src="/casaco.4.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Sand Heritage</p>
+      <p class="descricao">Sand Heritage traduz a beleza dos tons naturais em uma peça sofisticada, pensada para quem busca autenticidade e requinte.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 149,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(19, 'Sand Heritage', 149.90, '/casaco.4.png')">+</button>
+      </div>
+   </div>
+
+   <div class="slot5-casaco" [routerLink]="['/produto', 20]" style="cursor: pointer;">
+      <img src="/casaco.5.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Olive Legacy</p>
+      <p class="descricao">Olive Legacy entrega personalidade e conforto em cada detalhe.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 149,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(20, 'Olive Legacy', 149.90, '/casaco.5.png')">+</button>
+      </div>
+   </div>
+
+</div>
+
+
+<div class="container-sapatos" *ngIf="mostrar('sapatos')">
+
+  <div class="slot1-sapato" [routerLink]="['/produto', 21]" style="cursor: pointer;">
+      <img src="/sapato.1.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">White Signature</p>
+      <p class="descricao">White Signature combina design minimalista, conforto e acabamento premium.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 299,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(21, 'White Signature', 299.90, '/sapato.1.png')">+</button>
+      </div>
+  </div>
+
+  <div class="slot2-sapato" [routerLink]="['/produto', 22]" style="cursor: pointer;">
+      <img src="/sapato.2.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Midnight Motion</p>
+      <p class="descricao">Midnight Motion oferece visual moderno e conforto para o dia a dia.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 299,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(22, 'Midnight Motion', 299.90, '/sapato.2.png')">+</button>
+      </div>
+   </div>
+  
+   <div class="slot3-sapato" [routerLink]="['/produto', 23]" style="cursor: pointer;">
+      <img src="/sapato.3.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Desert Classic</p> 
+      <p class="descricao">Desert Classic une sofisticação e versatilidade em um modelo atemporal.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 299,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(23, 'Desert Classic', 299.90, '/sapato.3.png')">+</button>
+      </div>
+   </div>
+
+   <div class="slot4-sapato" [routerLink]="['/produto', 24]" style="cursor: pointer;">
+      <img src="/sapato.4.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Urban Steel</p>
+      <p class="descricao">Urban Steel apresenta um design contemporâneo com acabamento refinado, perfeito para quem valoriza exclusividade e conforto.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 299,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(24, 'Urban Steel', 299.90, '/sapato.4.png')">+</button>
+      </div>
+   </div>
+
+   <div class="slot5-sapato" [routerLink]="['/produto', 25]" style="cursor: pointer;">
+      <img src="/sapato.5.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Dual Prestige</p>
+      <p class="descricao">Dual Prestige um modelo elegante e versátil, desenvolvido para destacar qualquer produção.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 299,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(25, 'Dual Prestige', 299.90, '/sapato.5.png')">+</button>
+      </div>
+   </div>
+
+</div>
+
+
+<div class="container-tenis" *ngIf="mostrar('tenis')">
+
+
+  <div class="slot1-tenis" [routerLink]="['/produto', 26]" style="cursor: pointer;">
+      <img src="/tenis.1.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Pure Comfort</p>
+      <p class="descricao">Pure Comfort oferece leveza, conforto e um visual minimalista para acompanhar todos os momentos com sofisticação.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 249,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(26, 'Pure Comfort', 249.90, '/tenis.1.png')">+</button>
+      </div>
+  </div>
+
+  <div class="slot2-tenis" [routerLink]="['/produto', 27]" style="cursor: pointer;">
+      <img src="/tenis.2.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Noir Comfort</p>
+      <p class="descricao">Noir Comfort une praticidade e design premium em um modelo pensado para o uso diário.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 249,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(27, 'Noir Comfort', 249.90, '/tenis.2.png')">+</button>
+      </div>
+   </div>
+  
+   <div class="slot3-tenis" [routerLink]="['/produto', 28]" style="cursor: pointer;">
+      <img src="/tenis.3.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Sand Comfort</p>
+      <p class="descricao">Sand Comfort proporciona uma experiência de conforto aliada a um visual elegante.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 249,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(28, 'Sand Comfort', 249.90, '/tenis.3.png')">+</button>
+      </div>
+   </div>
+
+   <div class="slot4-tenis" [routerLink]="['/produto', 29]" style="cursor: pointer;">
+      <img src="/tenis.4.png" alt="" class="roupas">
+      <h2></h2>
+      <p class="titulo">Steel Comfort</p>
+      <p class="descricao">Steel Comfort apresenta um acabamento contemporâneo e materiais selecionados para oferecer estilo e bem-estar em cada passo.</p>
+      <div class="produto-footer">
+        <p class="preco">R$ 249,90</p>
+        <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(29, 'Steel Comfort', 249.90, '/tenis.4.png')">+</button>
+      </div>
+   </div>
+
+   <div class="slot5-tenis" [routerLink]="['/produto', 30]" style="cursor: pointer;">
+    <img src="/tenis.5.png" alt="" class="roupas">
+    <h2></h2>
+    <p class="titulo">Contrast Comfort</p>
+    <p class="descricao">Contrast Comfort destaca-se pelo design bicolor sofisticado, entregando conforto, versatilidade e um toque exclusivo para o dia a dia.</p>
+    <div class="produto-footer">
+      <p class="preco">R$ 249,90</p>
+      <button class="btn-add-carrinho" aria-label="Adicionar ao carrinho" (click)="$event.stopPropagation(); adicionarAoCarrinho(30, 'Contrast Comfort', 249.90, '/tenis.5.png')">+</button>
+    </div>
+ </div>
+
+</div>

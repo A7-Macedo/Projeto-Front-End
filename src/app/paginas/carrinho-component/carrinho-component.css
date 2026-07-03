@@ -1,309 +1,573 @@
-:root {
-  --c1: #DEE4B8; --c2: #F0FFCE; --c3: #DECFA6;
-  --c4: #CB9F7D; --c5: #A53F2B; --c6: #79311B;
-  --c7: #4C230A; --c8: #3A1207; --c9: #280004;
-  --card-bg: #F7F0E6; --page-bg: #EFE8D8;
+/* ==========================================================================
+   ESTILOS DA PÁGINA DE CARRINHO DE COMPRAS
+   ========================================================================== */
+
+   :root {
+    /* ===== Paleta de cores =====
+       Escala de tons terrosos/quentes, do mais claro (cor-1) ao mais escuro
+       (cor-9), mais um dourado de destaque (cor-10) usado em ícones/gradientes. */
+    --cor-1: #DEE4B8;   /* fundo geral / elementos claros */
+    --cor-2: #F0FFCE;   /* fundo de cards (itens, resumo, barra de frete) */
+    --cor-3: #DECFA6;   /* bordas sutis */
+    --cor-4: #CB9F7D;   /* bordas de destaque / ícones neutros */
+    --cor-5: #A53F2B;   /* cor de ação principal (botões, links ativos) */
+    --cor-6: #79311B;   /* hover/estado mais escuro da cor de ação */
+    --cor-7: #4C230A;   /* texto secundário */
+    --cor-8: #3A1207;   /* texto de títulos, mais escuro */
+    --cor-9: #280004;   /* tom mais escuro da paleta (reservado) */
+    --cor-10: #daa520;  /* dourado, usado no ícone de frete e gradiente */
+  
+    --cor-fundo: var(--cor-1); /* alias semântico para o fundo da página */
+  
+    /* ===== Tipografia =====
+       Fraunces para títulos (serifada, com personalidade),
+       Inter para corpo de texto (legível em telas). */
+    --fonte-titulo: "Fraunces", serif;
+    --fonte-corpo: "Inter", sans-serif;
+  
+    /* ===== Espaçamentos =====
+       Escala progressiva usada em paddings, gaps e margens
+       para manter consistência visual em toda a página. */
+    --espcaco-xs: 4px;
+    --espcaco-sm: 8px;
+    --espcaco-md: 16px;
+    --espcaco-lg: 24px;
+    --espcaco-xl: 40px;
+    --espcaco-2x1: 56px;
+  
+    /* ===== Raios / sombras / transições ===== */
+    --raio: 18px;           /* cantos arredondados de cards maiores (resumo) */
+    --raio-sm: 10px;        /* cantos arredondados de cards menores/inputs */
+    --raio-pill: 999px;     /* formato "pílula" para botões e barra de progresso */
+    --sombra-sm: 0 2px 8px rgba(40, 0, 4, 0.08);   /* sombra leve */
+    --sombra-md: 0 8px 24px rgba(40, 0, 4, 0.12);  /* sombra mais pronunciada */
+    --transicao: 0.2s ease; /* duração/curva padrão para hovers e mudanças de estado */
+  }
+  
+  /* Reset simples: garante que padding/border entrem no tamanho total do elemento */
+  * { box-sizing: border-box; }
+  
+  body {
+    margin: 0;
+    background: var(--cor-fundo);
+    font-family: var(--fonte-corpo);
+    color: var(--cor-7);
+  }
+  
+  /* Container geral da página do carrinho */
+  .carrinho-pagina {
+    min-height: 100vh;
+    /* padding-bottom maior (120px) para dar espaço a elementos fixos/flutuantes,
+       como uma barra de finalizar compra fixada no rodapé em telas menores */
+    padding: var(--espcaco-xl) var(--espcaco-lg) 120px;
+  }
+  
+  /* ===== Breadcrumb (trilha de navegação: Home > Carrinho) ===== */
+  .carrinho-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--espcaco-sm);
+    font-size: 0.85rem;
+    color: var(--cor-7);
+    opacity: 1;              /* texto do breadcrumb mais discreto */
+    margin-bottom: var(--espcaco-xl);
+    max-width: 1100px;           /* alinhado à largura máxima do conteúdo */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .breadcrumb-sep { opacity: 0.4; }               /* separador (ex: "/") mais apagado */
+  .breadcrumb-atual { color: var(--cor-5); font-weight: 600; opacity: 1; } /* página atual em destaque */
+  
+  /* ===== Cabeçalho (título "Carrinho" + link "continuar comprando") ===== */
+  .carrinho-topo {
+    max-width: 1100px;
+    margin: 0 auto var(--espcaco-lg);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between; /* título à esquerda, link à direita */
+    flex-wrap: wrap;                /* quebra em telas estreitas */
+    gap: var(--espcaco-sm);
+  }
+  
+  .carrinho-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 2rem;
+    color: var(--cor-8);
+    margin: 0;
+  }
+  
+  /* Texto auxiliar dentro do título, ex: "(3 itens)" */
+  .carrinho-titulo span {
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--cor-7);
+    opacity: 0.65;
+    margin-left: var(--espcaco-sm);
+  }
+  
+  /* Link "continuar comprando" com sublinhado sutil que muda de cor no hover */
+  .continuar-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--cor-6);
+    text-decoration: none;
+    border-bottom: 1px solid var(--cor-4);
+    padding-bottom: 2px;
+    transition: color var(--transicao), border-color var(--transicao);
+  }
+  .continuar-link:hover { color: var(--cor-5); border-color: var(--cor-5); }
+  
+  /* ===== Barra de frete grátis (progresso até atingir valor mínimo) ===== */
+  .frete-barra {
+    max-width: 1100px;
+    margin: 0 auto var(--espcaco-xl);
+    background: var(--cor-4);
+    border: 1px solid var(--cor-3);
+    border-radius: var(--raio-sm);
+    padding: var(--espcaco-md) var(--espcaco-lg);
+  }
+  
+  /* Linha superior: texto informativo + ícone */
+  .frete-barra-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--espcaco-sm);
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: black;
+  }
+  
+  .frete-barra-topo .icone-frete { color: black; font-size: 1rem; }
+  
+  /* "Trilho" (fundo) da barra de progresso */
+  .frete-trilho {
+    height: 8px;
+    border-radius: var(--raio-pill);
+    background: var(--cor-2);
+    overflow: hidden;
+  }
+  
+  /* Preenchimento da barra: a largura (width) deve ser controlada via JS,
+     de acordo com o progresso do valor do carrinho até o frete grátis */
+  .frete-preenchimento {
+    height: 100%;
+    border-radius: var(--raio-pill);
+    background: linear-gradient(90deg, var(--cor-5), var(--cor-10));
+    width: 0%; /* valor inicial; atualizado dinamicamente */
+    transition: width 0.6s cubic-bezier(.2,.8,.2,1); /* animação suave ao mudar */
+  }
+  
+  /* ===== Layout principal: lista de itens (esquerda) + resumo (direita) ===== */
+  .carrinho-container {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr; /* lista de itens maior que o resumo */
+    gap: var(--espcaco-xl);
+    max-width: 4100px;
+    margin: 0 auto;
+    align-items: start; /* resumo não estica para acompanhar altura da lista */
+  }
+  
+  /* ===== Lista de itens do carrinho ===== */
+  .carrinho-lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espcaco-md);
+  }
+  
+  /* Cabeçalho da lista: "selecionar tudo" + botão "esvaziar carrinho" */
+  .lista-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 var(--espcaco-sm);
+  }
+  
+  .selecionar-tudo {
+    display: flex;
+    align-items: center;
+    gap: var(--espcaco-sm);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--cor-7);
+    cursor: pointer;  
+  }
+  
+  .esvaziar-btn {
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    color: var(--cor-7);
+    opacity: 1;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .esvaziar-btn:hover { opacity: 1; color: var(--cor-5); }
+  
+  /* ===== Checkbox customizado (usado tanto no "selecionar tudo" quanto por item) =====
+     Remove a aparência nativa e desenha um checkbox quadrado com cantos
+     arredondados; o "check" (marca de visto) é um clip-path revelado via
+     transform: scale() ao marcar. */
+  input[type="checkbox"].check-item,
+  input[type="checkbox"].check-tudo {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--cor-4);
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-grid;
+    place-content: center;
+    background: var(--cor-1);
+    flex-shrink: 0;
+    transition: border-color var(--transicao), background var(--transicao);
+  }
+  /* Desenho do "visto" (check mark), escondido por padrão (scale(0)) */
+  input[type="checkbox"].check-item::before,
+  input[type="checkbox"].check-tudo::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: transform var(--transicao);
+    box-shadow: inset 1em 1em var(--cor-1); /* preenche a forma com a cor-1 */
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); /* formato de "check" */
+  }
+  /* Estado marcado: fundo escuro + revela o "visto" */
+  input[type="checkbox"].check-item:checked,
+  input[type="checkbox"].check-tudo:checked {
+    background: var(--cor-5);
+    border-color: var(--cor-5);
+  }
+  input[type="checkbox"].check-item:checked::before,
+  input[type="checkbox"].check-tudo:checked::before { transform: scale(1); }
+  
+  /* ===== Card de item do carrinho =====
+     Grid com 4 colunas: checkbox | miniatura | informações | ações/preço */
+  .carrinho-item {
+    display: grid;
+    grid-template-columns: auto 96px 1fr auto;
+    gap: var(--espcaco-md);
+    align-items: center;
+    background: var(--cor-2);
+    border: 1px solid var(--cor-3);
+    border-radius: var(--raio-sm);
+    padding: var(--espcaco-md);
+    transition: box-shadow var(--transicao), opacity var(--transicao);
+  }
+  
+  /* Item desmarcado (checkbox desativado): fica esmaecido, indicando que
+     não entra no total da compra */
+  .carrinho-item.desmarcado { opacity: 0.5; }
+  
+  /* Estado de saída ao remover um item (classe adicionada/removida via JS
+     para animar a remoção antes de excluir o elemento do DOM) */
+  .carrinho-item.removendo { opacity: 0; transform: scale(0.96); }
+  
+  /* Miniatura (imagem) do produto */
+  .item-thumb {
+    width: 96px;
+    height: 96px;
+    border-radius: var(--raio-sm);
+    background: var(--cor-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .item-thumb svg { width: 56%; height: 56%; color: var(--cor-5); } /* ícone placeholder */
+  
+  /* Bloco de informações textuais do produto (nome, variante, preço) */
+  .item-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; } /* min-width:0 evita overflow em grid */
+  
+  .item-nome {
+    font-family: var(--fonte-titulo);
+    font-size: 1.05rem;
+    color: var(--cor-8);
+    margin: 0;
+  }
+  
+  /* Ex: "Tamanho M, Cor Azul" */
+  .item-variante {
+    font-size: 0.78rem;
+    color: var(--cor-7);
+    opacity: 0.7;
+  }
+  
+  /* Linha com preço atual + preço original (se houver desconto) */
+  .item-precos {
+    display: flex;
+    align-items: baseline;
+    gap: var(--espcaco-sm);
+    margin-top: 4px;
+  }
+  
+  .item-preco { font-weight: 700; color: var(--cor-6); font-size: 1rem; }
+  .item-preco-original {
+    font-size: 0.8rem;
+    color: var(--cor-7);
+    text-decoration: line-through; /* preço "riscado" */
+    opacity: 0.45;
+  }
+  
+  /* Coluna da direita: botão de remover + seletor de quantidade + subtotal */
+  .item-lado-direito {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--espcaco-sm);
+  }
+  
+  .item-remover {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--cor-7);
+    opacity: 0.5;
+    font-size: 1rem;
+    padding: 2px;
+    transition: opacity var(--transicao), color var(--transicao);
+  }
+  .item-remover:hover { opacity: 1; color: var(--cor-5); }
+  
+  /* Stepper de quantidade: botões [-] [valor] [+] dentro de uma cápsula */
+  .qtd-stepper {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--cor-3);
+    border-radius: var(--raio-pill);
+    overflow: hidden;
+  }
+  .qtd-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: var(--cor-1);
+    color: var(--cor-7);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background var(--transicao), color var(--transicao);
+  }
+  .qtd-btn:hover { background: var(--cor-5); color: var(--cor-1); }
+  .qtd-valor {
+    width: 34px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--cor-8);
+  }
+  
+  /* Subtotal do item (preço unitário × quantidade) */
+  .item-subtotal {
+    font-family: var(--fonte-titulo);
+    font-weight: 600;
+    color: var(--cor-8);
+    font-size: 1rem;
+  }
+  
+  /* ===== Estado vazio (carrinho sem itens) =====
+     Escondido por padrão; a classe "visivel" deve ser adicionada via JS
+     quando a lista de itens estiver vazia. */
+  .carrinho-vazio {
+     display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--espcaco-md);
+    padding: var(--espcaco-2x1) var(--espcaco-lg);
+    background: #ffff;
+    border: 1px dashed var(--cor-3);
+    border-radius: var(--raio-sm);
+
+  }
+  .carrinho-vazio.visivel { display: flex; }
+  .carrinho-vazio svg { width: 64px; height: 64px; color: var(--cor-4); }
+  .carrinho-vazio h3 { font-family: var(--fonte-titulo); color: var(--cor-8); margin: 0; }
+  .carrinho-vazio p { margin: 0; color: var(--cor-7); opacity: 0.7; font-size: 0.9rem; }
+  .carrinho-vazio a {
+    margin-top: var(--espcaco-sm);
+    background: var(--cor-5);
+    color: var(--cor-1);
+    padding: var(--espcaco-sm) var(--espcaco-lg);
+    border-radius: var(--raio-pill);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  /* ===== Resumo do pedido (coluna lateral) ===== */
+  .carrinho-resumo {
+    background: var(--cor-2);
+    border: 1px solid var(--cor-3);
+    border-radius: var(--raio);
+    padding: var(--espcaco-lg);
+    box-shadow: var(--sombra-md);
+    position: sticky;  /* acompanha o scroll enquanto a lista de itens é maior */
+    top: var(--espcaco-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--espcaco-md);
+  }
+  
+  .resumo-titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 1.25rem;
+    color: var(--cor-8);
+    margin: 0;
+  }
+  
+  /* Linha genérica do resumo: "Subtotal ... R$ X" */
+  .resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--cor-7);
+  }
+  .resumo-linha.desconto { color: var(--cor-5); } /* linha de desconto em destaque */
+  
+  /* Campo de cupom de desconto: input + botão "aplicar" lado a lado */
+  .resumo-cupom {
+    display: flex;
+    gap: var(--espcaco-sm);
+  }
+  .resumo-cupom input {
+    flex: 1;
+    padding: var(--espcaco-sm) var(--espcaco-md);
+    border: 1.5px solid var(--cor-6);
+    border-radius: var(--raio-sm);
+    font-family: var(--fonte-corpo);
+    font-size: 0.85rem;
+    background: var(--cor-1);
+    color: var(--cor-8);
+  }
+  .resumo-cupom input:focus { outline: 2px solid var(--cor-8); outline-offset: 1px; }
+  .resumo-cupom button {
+    padding: var(--espcaco-sm) var(--espcaco-md);
+    border: 1.5px solid var(--cor-4);
+    background: transparent;
+    color: var(--cor-6);
+    border-radius: var(--raio-sm);
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all var(--transicao);
+  }
+  .resumo-cupom button:hover { background: var(--cor-1); }
+  
+
+  
+  /* Linha divisória simples entre o resumo e o total */
+  .resumo-divisor { height: 1px; background: var(--cor-3); border: none; margin: 0; }
+  
+  /* Linha do valor total, com destaque maior que as demais linhas do resumo */
+  .resumo-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .resumo-total span:first-child { font-size: 0.95rem; font-weight: 600; color: var(--cor-8); }
+  .resumo-total-valor {
+    font-family: var(--fonte-titulo);
+    font-size: 1.7rem;
+    color: var(--cor-6);
+    font-weight: 700;
+  }
+  
+  /* Botão principal "Finalizar compra" */
+  .btn-finalizar {
+    width: 100%;
+    padding: var(--espcaco-md) var(--espcaco-lg);
+    background: var(--cor-5);
+    color: var(--cor-1);
+    border: none;
+    border-radius: var(--raio-pill);
+    font-family: var(--fonte-titulo);
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: var(--sombra-md);
+    transition: background var(--transicao), transform var(--transicao);
+  }
+  .btn-finalizar:hover { background: var(--cor-6); transform: translateY(-2px); } /* leve elevação no hover */
+  
+  /* Selo/texto de segurança abaixo do botão (ex: "Compra 100% segura") */
+  .resumo-seguranca {
+    display: flex;
+    align-items: center;
+    gap: var(--espcaco-sm);
+    font-size: 0.78rem;
+    color: var(--cor-7);
+    opacity: 0.7;
+    justify-content: center;
+  }
+  
+  /* ==========================================================================
+     RESPONSIVO — telas até 860px de largura (tablets e celulares)
+     ========================================================================== */
+  @media (max-width: 860px) {
+    /* Lista de itens e resumo passam a ficar empilhados em uma única coluna */
+    .carrinho-container { grid-template-columns: 1fr; }
+  
+    /* Resumo deixa de ser "sticky" pois não há mais coluna lateral longa */
+    .carrinho-resumo { position: static; }
+  
+    /* Reorganiza o card do item em áreas nomeadas:
+       linha 1: checkbox | miniatura | informações
+       linha 2: ações (ocupando toda a largura) */
+    .carrinho-item {
+      grid-template-columns: auto 72px 1fr;
+      grid-template-areas:
+        "check thumb info"
+        "acoes acoes acoes";
+      row-gap: var(--espcaco-sm);
+    }
+    .carrinho-item > input.check-item { grid-area: check; }
+    .item-thumb { grid-area: thumb; width: 72px; height: 72px; } /* miniatura menor */
+    .item-info { grid-area: info; }
+    .item-lado-direito {
+      grid-area: acoes;
+      flex-direction: row;              /* ações lado a lado em vez de empilhadas */
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+  
+    /* Mais espaço no rodapé para acomodar elementos fixos em telas menores */
+    .carrinho-pagina { padding-bottom: 140px; }
+  }
+  
+
+  /* Quando o carrinho estiver vazio */
+.carrinho-vazio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.carrinho-vazio-container .carrinho-lista {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+} 
+
+.carrinho-vazio {
+    width: 100%;
+    max-width: 700px;
+    min-height: 350px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    margin: 0 auto;
 }
 
-body {
-  background: var(--page-bg);
-  color: var(--c8);
-  min-height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-/* LAYOUT */
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* HEADER */
-header {
-  background: var(--c6);
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.logo {
-  color: var(--c2);
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.search-bar {
-  flex: 1;
-  display: flex;
-  background: var(--c2);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.search-bar input {
-  flex: 1;
-  border: none;
-  outline: none;
-  padding: 8px 12px;
-  background: transparent;
-  color: var(--c8);
-  font-size: 13px;
-}
-
-.search-bar button {
-  background: var(--c5);
-  color: var(--c2);
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.cart-btn {
-  background: none;
-  border: none;
-  color: var(--c2);
-  cursor: pointer;
-  position: relative;
-  font-size: 22px;
-  display: flex;
-}
-
-.cart-badge {
-  position: absolute;
-  top: -6px;
-  right: -8px;
-  background: var(--c2);
-  color: var(--c5);
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  font-size: 10px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* TABS */
-.tabs {
-  background: var(--c7);
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.tab-btn {
-  background: none;
-  border: none;
-  color: var(--c3);
-  padding: 10px 20px;
-  font-size: 13px;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: 0.2s;
-}
-
-.tab-btn.active {
-  color: var(--c2);
-  border-bottom-color: var(--c2);
-  background: rgba(255,255,255,0.08);
-}
-
-.tab-btn:hover {
-  color: var(--c1);
-}
-
-/* PAGES */
-.page {
-  display: none;
-  padding: 16px 20px;
-}
-
-.page.active {
-  display: block;
-}
-
-/* TITLE */
-.section-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--c6);
-  margin-bottom: 16px;
-  border-bottom: 2px solid var(--c5);
-  padding-bottom: 8px;
-  text-transform: uppercase;
-}
-
-/* PRODUCTS */
-.product-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.product-card {
-  background: var(--card-bg);
-  border-radius: 10px;
-  border: 1px solid var(--c3);
-  display: flex;
-  overflow: hidden;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.product-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(74,35,10,0.15);
-  border-color: var(--c4);
-}
-
-.product-img-wrap {
-  width: 150px;
-  min-width: 150px;
-  height: 160px;
-  background: #c9c0b4;
-  overflow: hidden;
-  position: relative;
-}
-
-.product-img-wrap img {
+.item-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.badge-cashback,
-.badge-new {
-  position: absolute;
-  font-size: 9px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 20px;
-}
-
-.badge-cashback {
-  bottom: 8px;
-  left: 8px;
-  background: var(--c5);
-  color: var(--c2);
-}
-
-.badge-new {
-  top: 8px;
-  left: 8px;
-  background: var(--c7);
-  color: var(--c1);
-}
-
-.wishlist-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  border: none;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  background: rgba(247,240,230,0.88);
-  cursor: pointer;
-}
-
-/* INFO */
-.product-info {
-  padding: 14px 16px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.product-name {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.price-row {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.product-price {
-  color: var(--c5);
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.product-price-old {
-  font-size: 12px;
-  text-decoration: line-through;
-  color: var(--c4);
-}
-
-.discount-tag {
-  font-size: 10px;
-  background: var(--c2);
-  color: var(--c5);
-  padding: 2px 6px;
-  border-radius: 4px;
-  border: 1px solid var(--c5);
-}
-
-.rating-row {
-  display: flex;
-  gap: 6px;
-  font-size: 11px;
-  margin-top: 6px;
-}
-
-.stars {
-  color: #c8860a;
-}
-
-.sold-count {
-  border-left: 1px solid var(--c3);
-  padding-left: 6px;
-  color: var(--c4);
-}
-
-.stock-bar {
-  height: 4px;
-  background: var(--c1);
-  border-radius: 4px;
-  overflow: hidden;
-  margin-top: 6px;
-}
-
-.stock-fill {
-  height: 100%;
-  background: var(--c5);
-}
-
-/* BUTTON */
-.add-btn {
-  background: var(--c5);
-  color: var(--c2);
-  border: none;
-  padding: 9px 22px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.add-btn:hover {
-  background: var(--c6);
+  border-radius: var(--raio-sm);
 }

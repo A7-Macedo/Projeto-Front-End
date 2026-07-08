@@ -7,7 +7,7 @@
 .container-camisas {
     display: flex;
     justify-content: center;
-    gap: 122px;
+    gap: 30px;
     width: 100%;
     flex-wrap: nowrap; /* impede quebrar linha */
     padding: 20px;
@@ -24,14 +24,14 @@
 .slot3-camisa,
 .slot4-camisa,
 .slot5-camisa {
-    width: 250px;
+    width: 410px;
     flex-shrink: 0; /* impede o card de encolher */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--cor-3);
     border: 2px solid var(--cor-5);
-    border-radius: 0px;
+    border-radius: 16px;
     padding: 0px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     box-sizing: border-box;
@@ -45,7 +45,7 @@
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 0px;
+    border-radius: 10px;
     border: 0px solid var(--cor-5);
     
 }
@@ -74,7 +74,7 @@ img {
 .container-calcas {
     display: flex;
     justify-content: center;
-    gap: 122px;
+    gap: 30px;
     width: 100%;
     flex-wrap: nowrap; /* impede quebrar linha */
     padding: 20px;
@@ -91,14 +91,14 @@ img {
 .slot3-calca,
 .slot4-calca,
 .slot5-calca {
-    width: 250px;
+    width: 410px;
     flex-shrink: 0; /* impede o card de encolher */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--cor-3);
     border: 2px solid var(--cor-5);
-    border-radius: 0px;
+    border-radius: 16px;
     padding: 0px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     box-sizing: border-box;
@@ -112,7 +112,7 @@ img {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 0px;
+    border-radius: 10px;
     border: 0px solid var(--cor-5);
 }
 
@@ -129,7 +129,7 @@ img {
 .container-jaquetas {
     display: flex;
     justify-content: center;
-    gap: 122px;
+    gap: 30px;
     width: 100%;
     flex-wrap: nowrap; /* impede quebrar linha */
     padding: 20px;
@@ -169,14 +169,14 @@ img {
 .slot3-jaqueta,
 .slot4-jaqueta,
 .slot5-jaqueta {
-    width: 250px;
+    width: 410px;
     flex-shrink: 0; /* impede o card de encolher */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--cor-3);
     border: 2px solid var(--cor-5);
-    border-radius: 0px;
+    border-radius: 16px;
     padding: 0px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     box-sizing: border-box;
@@ -190,7 +190,7 @@ img {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 0px;
+    border-radius: 10px;
     border: 0px solid var(--cor-5);
 }
 
@@ -206,7 +206,7 @@ img {
 .container-casacos {
     display: flex;
     justify-content: center;
-    gap: 122px;
+    gap: 30px;
     width: 100%;
     flex-wrap: nowrap; /* impede quebrar linha */
     padding: 20px;
@@ -223,14 +223,14 @@ img {
 .slot3-casaco,
 .slot4-casaco,
 .slot5-casaco {
-    width: 250px;
+    width: 410px;
     flex-shrink: 0; /* impede o card de encolher */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--cor-3);
     border: 2px solid var(--cor-5);
-    border-radius: 0px;
+    border-radius: 16px;
     padding: 0px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     box-sizing: border-box;
@@ -244,7 +244,7 @@ img {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 0px;
+    border-radius: 10px;
     border: 0px solid var(--cor-5);
 }
 
@@ -260,7 +260,7 @@ img {
 .container-sapatos {
     display: flex;
     justify-content: center;
-    gap: 122px;
+    gap: 30px;
     width: 100%;
     flex-wrap: nowrap; /* impede quebrar linha */
     padding: 20px;
@@ -277,14 +277,14 @@ img {
 .slot3-sapato,
 .slot4-sapato,
 .slot5-sapato {
-    width: 250px;
+    width: 410px;
     flex-shrink: 0; /* impede o card de encolher */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--cor-3);
     border: 2px solid var(--cor-5);
-    border-radius: 0px;
+    border-radius: 16px;
     padding: 0px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     box-sizing: border-box;
@@ -298,7 +298,7 @@ img {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 0px;
+    border-radius: 10px;
     border: 0px solid var(--cor-5);
 }
 
@@ -315,7 +315,7 @@ img {
 .container-tenis {
     display: flex;
     justify-content: center;
-    gap: 122px;
+    gap: 30px;
     width: 100%;
     flex-wrap: nowrap; /* impede quebrar linha */
     padding: 20px;
@@ -333,14 +333,14 @@ img {
 .slot3-tenis,
 .slot4-tenis,
 .slot5-tenis {
-    width: 250px;
+    width: 410px;
     flex-shrink: 0; /* impede o card de encolher */
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--cor-3);
     border: 2px solid var(--cor-5);
-    border-radius: 0px;
+    border-radius: 16px;
     padding: 0px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
     box-sizing: border-box;
@@ -354,7 +354,7 @@ img {
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 0px;
+    border-radius: 10px;
     border: 0px solid var(--cor-5);
 }
 
@@ -387,7 +387,7 @@ img {
     font-size: 30px;
     font-weight: 600;
     color: var(--cor-6);
-    margin-top: 10px;
+    margin-top: 1px;
     font-family: var(--fonte-titulo);
     align-self: flex-start; /* Alinha à esquerda do card */
     margin-left: 2px;

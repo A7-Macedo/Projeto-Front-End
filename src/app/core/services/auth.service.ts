@@ -24,6 +24,10 @@ export class AuthService {
       )
   }
 
+    esqueceuSenha(email: string): Observable<any> {
+      return this.http.post(`${this.apiUrl}/auth/forgot-password`, { email })
+    }
+
     logout(): void {
       localStorage.removeItem('token');
       this.rounter.navigate(['/login'])
@@ -36,11 +40,5 @@ export class AuthService {
     getToken(): string | null {
       return localStorage.getItem('token');
     }
-
-
-
-
-
-
 
 }

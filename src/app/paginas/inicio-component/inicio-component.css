@@ -29,7 +29,7 @@ a{
 .artigos-banner{
     background-color: #534933;
     color: var(--cor-6);
-    padding: 80px 100px;   /* ← era 200px, reduzi para 80px */
+    padding: 80px 100px;  
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -40,19 +40,35 @@ a{
 
 .banner-fundo {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     pointer-events: none;
     user-select: none;
+
+    padding: 3px;
+
+    background: linear-gradient(
+        45deg,
+        #5A4212,
+        #A67C00,
+        #F6E27A,
+        #D4AF37,
+        #A67C00,
+        #5A4212
+    );
+
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,0.35),
+        0 0 25px rgba(212,175,55,.4);
+
+    overflow: hidden;
 }
 
-.banner-fundo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;     /* ← cover cobre sem achatar */
-    object-position: top;
+.banner-fundo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:top;
+    display:block;
 }
 
 

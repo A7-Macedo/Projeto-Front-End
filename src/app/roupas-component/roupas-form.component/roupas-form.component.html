@@ -1,22 +1,50 @@
-<p>Funcionando</p>
+<div class="pagina-cadastro">
+  <form class="form-roupa" [formGroup]="roupasForm" (ngSubmit)="onSubmit()">
 
-<form >
-    <h1>Cadastrar novo artigo</h1>
-    <input type="text" placeholder="titulo">
-    <br>
-    <input type="text" placeholder="descrição">
-    <br>
-    <select name="" id="">
-        <option value="HTML">HTML</option>
-        <option value="CSS">CSS</option>
-        <option value="Carreira">Carreira</option>
-    </select>
-    <br>
-    <input type="number" placeholder="Tempo leitura">
-    <br>
-    <input type="date" placeholder="Data publicação">
-    <br>
-    <input type="file" name="" id="" accept=".png,.jpg">
-    <br>
-    <button type="submit">Cadastrar Artigo</button>
-</form>
+    <h1>Cadastrar nova Roupa</h1>
+
+    <label>
+      <span>Nome da Roupa</span>
+      <input type="text" placeholder="Ex: Camiseta Oversized" formControlName="name" required />
+    </label>
+
+    <label>
+      <span>Descrição</span>
+      <input type="text" placeholder="Ex: 100% algodão, corte reto" formControlName="description" required />
+    </label>
+
+    <label>
+      <span>Preço</span>
+      <input type="number" step="0.01" placeholder="Ex: 89.90" formControlName="price" required />
+    </label>
+
+    <label>
+      <span>Categoria</span>
+      <select formControlName="categoryId" required>
+        <option value="" disabled selected>Selecione uma categoria</option>
+        @for (item of categories(); track $index) {
+        <option value="{{item.id}}">{{item.name}}</option>
+        }
+      </select>
+    </label>
+
+
+    <!-- <label>
+      <span>Tamanho</span>
+
+      <select formControlName="size" required>
+        <option value="" disabled selected>Selecione um tamanho</option>
+        <option value="PP">PP</option>
+        <option value="P">P</option>
+        <option value="M">M</option>
+        <option value="G">G</option>
+        <option value="GG">GG</option>
+      </select>
+    </label> -->
+    <label class="input-arquivo">
+      <span>Imagem da Roupa</span>
+      <input type="file" accept=".png,.jpg,.jpeg,.webp" (change)="onFileChange($event)" required />
+
+      <button type="submit">
+        Cadastrar Roupa
+      </button>

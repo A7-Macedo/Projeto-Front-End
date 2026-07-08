@@ -65,3 +65,26 @@ a{
     text-decoration: none;
     color: inherit;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1 0 auto; /* faz o conteúdo "empurrar" o footer para baixo */
+  }
+  
+  .footer {
+    flex-shrink: 0; /* impede que o footer encolha */
+    background-color: #3A1207;
+    color: #F0FFCE;
+    padding: 40px 20px 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }

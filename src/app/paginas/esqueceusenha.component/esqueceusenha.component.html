@@ -1,0 +1,51 @@
+<div class="login-pagina">
+
+    <div class="login-painel-esquerdo fundo-pontos">
+        <a href="../../index.html" class="logo"></a>
+
+        <div>
+            <div class="linha-acento"></div>
+            <h2 class="login-frase">
+                Esqueceu.<br>
+                Sua.<br>
+                <span>Senha?</span>
+            </h2>
+        </div>
+
+        <p class="login-rodape-painel">
+            Plataforma de compra de roupas · 2026
+        </p>
+    </div>
+
+
+    <div class="login-painel-direito">
+
+        <div class="login-form-card card-brilho">
+
+            <h1 class="login-titulo">Recuperar senha</h1>
+            <p class="login-subtitulo">
+                Informe seu e-mail e enviaremos um link para você redefinir sua senha
+            </p>
+
+            <form class="login-form" [formGroup]="esqueceuSenhaForm" (ngSubmit)="onSubmit()">
+
+                <div class="campo-grupo">
+                    <label class="campo-label" for="email">E-mail</label>
+                    <input class="campo-input" type="email" id="email" name="email" placeholder="seu@email.com"
+                        formControlName="email" required />
+                </div>
+
+                <button class="btn-primario login-btn-submit" type="submit">
+                    Enviar link de recuperação <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+
+            <p class="login-cadastro-link">
+                Lembrou a senha? <a routerLink="/login">Voltar para o login</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<footer></footer>

@@ -1,2 +1,24 @@
-<a routerLink="/admin/cadastrar-roupa">Cadastrar novo artigo</a>
 
+<a class="btn-cadastrar" routerLink="/admin/cadastrar"  style="cursor: pointer;">
+    Cadastrar novo produto
+</a>
+<a class="btn-cadastrar" routerLink="/admin/categories"  style="cursor: pointer;">
+    Cadastrar nova categoria
+</a>
+
+
+
+<div>
+    @for (item of roupas(); track $index) {
+    <ul>
+        <li><img [src]="item.image_url" alt="Imagem da roupa"></li>
+        <li>Id: {{item.id}}</li>
+        <li>Nome: {{item.name}}</li>
+        <li>Descrição: {{item.description}}</li>
+        <li>Preco: {{item.price}}</li>
+        <li>Categoria: {{item.categoryId}}</li>
+        <li>Ações: <button (click)="(item.id)">editar</button> &nbsp; <button (click)="deletarRoupas(item.id)">Deletar</button></li>
+
+    </ul>
+    }
+</div>

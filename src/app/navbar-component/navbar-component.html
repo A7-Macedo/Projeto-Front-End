@@ -5,8 +5,7 @@
             <nav class="navbar">
                 <ul class="nav-lista">
                     <li><a routerLink="/inicio" routerLinkActive="ativo" class="nav-link">Inicio</a></li>
-                    <li><a routerLink="/categorias" routerLinkActive="ativo" class="nav-link">Categoria</a></li>
-                    <li><a routerLink="/inicio"  fragment="sobre" class="nav-link">Sobre</a></li>
+                    <li><a routerLink="/sobre"  fragment="sobre" class="nav-link">Sobre</a></li>
                     <li><a routerLink="/inicio" fragment="ajuda" class="nav-link">Ajuda</a></li>
                     @if (authService.isLoggedIn()) {
                     <li><a routerLink="/admin/dashboard" class="nav-link">Dashboard</a></li>

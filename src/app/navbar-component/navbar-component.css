@@ -1,3 +1,25 @@
+
+
+:root {
+
+    --cor-1: #DEE4B8;
+    --cor-2: #F0FFCE;
+    --cor-3: #DECFA6;
+
+    --cor-4: #CB9F7D;
+    --cor-5: #A53F2B;
+    --cor-6: #79311B;
+
+    --cor-7: #4C230A;
+    --cor-8: #3A1207;
+    --cor-9: #280004;
+
+        /* Fontes */
+        --fonte-titulo: "Dosis", sans-serif;
+        --fonte-corpo:  "Oswald", sans-serif;
+
+}
+
 .cabecalho {
     display: flex;
     align-items: center;
@@ -34,7 +56,8 @@
     gap: 26px;
 }
 
-.nav-link {
+.nav-link
+ {
     font-size: 15px;
     font-weight: 900;
     color: var(--cor-4);
@@ -87,3 +110,24 @@
 .carrinho img:hover {
     transform: scale(1.1);
 }
+
+.btn-sair{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-6);
+    color: var(--cor-4);
+    border: none;
+    font-family: "Oswald", sans-serif; 
+    font-weight: 900;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    
+}
+
+.btn-sair:hover{
+    color: var(--cor-3);
+    object-fit: contain;
+}
+

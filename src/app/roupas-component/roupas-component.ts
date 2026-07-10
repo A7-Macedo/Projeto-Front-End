@@ -91,14 +91,14 @@ export class RoupasComponent implements OnInit {
     return this.produtos.filter(p => p.categoria === categoria);
   }
 
-  adicionarAoCarrinho(produto: Produto): void {
+ adicionarAoCarrinho(id: number, titulo: string, preco: number, imagem: string): void {
     this.carrinhoService.adicionar({
-      id: produto.id,
-      nome: produto.titulo,
+      id,
+      nome: titulo,
       variante: 'Único',
-      unit: produto.preco,
-      original: produto.preco,
-      imagem: produto.imagem,
+      unit: preco,
+      original: preco,
+      imagem,
     });
   }
 }

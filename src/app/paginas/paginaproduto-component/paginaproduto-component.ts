@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CarrinhoService } from '../../../app/services/carrinho';
-import { ProdutosService } from '../../../app/services/produtos.service';
+import { ProdutoService } from '../../../app/services/produtos.service';
 import { Produto } from '../../../app/services/produto';
 
 @Component({
@@ -12,6 +12,8 @@ import { Produto } from '../../../app/services/produto';
   styleUrl: './paginaproduto-component.css',
 })
 export class PaginaprodutoComponent {
+
+
 
   // guarda o produto atual, carregado a partir do id da rota
   produto = signal<Produto | undefined>(undefined);
@@ -23,12 +25,12 @@ export class PaginaprodutoComponent {
     private route: ActivatedRoute,
     private carrinhoService: CarrinhoService,
     private router: Router,
-    private produtosService: ProdutosService,
+    private ProdutoService: ProdutoService,
   ) {
     // toda vez que o :id da URL mudar, busca o produto correspondente
     this.route.paramMap.subscribe(params => {
       const id = Number(params.get('id'));
-      this.produto.set(this.produtosService.getPorId(id));
+      this.produto.set(this.ProdutoService.getPorId(id));
     });
   }
 

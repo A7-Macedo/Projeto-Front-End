@@ -1,90 +1,88 @@
-
 :root {
-
-    --cor-1: #DEE4B8;
-    --cor-2: #F0FFCE;
-    --cor-3: #DECFA6;
-
-    --cor-4: #CB9F7D;
-    --cor-5: #A53F2B;
-    --cor-6: #79311B;
-
-    --cor-7: #4C230A;
-    --cor-8: #3A1207;
-    --cor-9: #280004;
-
-
-    --cor-10: ;
-    --cor-11: #aa341c;
-    
-
-    /* Outras cores */
-    --cor-fundo:rgba(238, 220, 187);
-
-    /* Fontes */
-    --fonte-titulo: "Dosis", sans-serif;
-    --fonte-corpo:  "Oswald", sans-serif;
-
-    /*================ . ========================================================================*/
-
-    --espcaco-xs: 4px;
-    --espcaco-sm: 8px;
-    --espcaco-md: 16px;
-    --espcaco-lg: 24px;
-    --espcaco-xl: 40px;
-    --espcaco-2x1: 60px;
-
-    --raio: 12px ;
-    --raio-sm: 8px ;
-    --raio-pill: 100px ;
-    --sombra-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-    --sombra-md: 0 4px 24px rgba(0, 0, 0, 0.10);
-    --sombra-lg: 0 12px 48px rgba(0, 0, 0, 0.14);
-
-    --transicao: 0.25s ease;
+  --cor-1: #DEE4B8; /* cor clara usada em textos e destaques */
+  --cor-2: #F0FFCE; /* cor de fundo de cards e texto sobre fundos escuros */
+  --cor-3: #DECFA6; /* cor de texto de apoio / bordas sutis */
+ 
+  --cor-4: #CB9F7D; /* cor de texto, ícones e bordas neutras */
+  --cor-5: #A53F2B; /* cor de ação principal (botões, links ativos) */
+  --cor-6: #79311B; /* cor de fundo escuro / hover da cor de ação */
+ 
+  --cor-7: #4C230A; /* cor de texto secundário */
+  --cor-8: #3A1207; /* cor de fundo bem escura / texto de títulos */
+  --cor-9: #280004; /* tom mais escuro da paleta */
+ 
+  --cor-10: ; /* ATENÇÃO: valor não definido */
+  --cor-11: #aa341c; /* cor de destaque (ex: hover de ícones sociais) */
+ 
+  /* Outras cores */
+  --cor-fundo: rgba(238, 220, 187); /* cor de fundo geral da página */
+ 
+  /* Fontes */
+  --fonte-titulo: "Dosis", sans-serif; /* fonte usada em títulos */
+  --fonte-corpo: "Oswald", sans-serif; /* fonte usada em textos e botões */
+ 
+  /*================ Espaçamentos ========================================================================*/
+ 
+  --espcaco-xs: 4px; /* espaçamento extra pequeno */
+  --espcaco-sm: 8px; /* espaçamento pequeno */
+  --espcaco-md: 16px; /* espaçamento médio */
+  --espcaco-lg: 24px; /* espaçamento grande */
+  --espcaco-xl: 40px; /* espaçamento extra grande */
+  --espcaco-2x1: 60px; /* espaçamento máximo */
+ 
+  --raio: 12px; /* arredondamento padrão de cards */
+  --raio-sm: 8px; /* arredondamento de cards/inputs menores */
+  --raio-pill: 100px; /* formato "pílula" para botões */
+  --sombra-sm: 0 2px 8px rgba(0, 0, 0, 0.06); /* sombra leve */
+  --sombra-md: 0 4px 24px rgba(0, 0, 0, 0.10); /* sombra média */
+  --sombra-lg: 0 12px 48px rgba(0, 0, 0, 0.14); /* sombra mais pronunciada */
+ 
+  --transicao: 0.25s ease; /* duração/curva padrão para hovers e mudanças de estado */
 }
-
+ 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0; /* remove margem externa padrão de todos os elementos */
+  padding: 0; /* remove espaçamento interno padrão de todos os elementos */
+  box-sizing: border-box; /* inclui padding e borda no cálculo do tamanho de todos os elementos */
 }
-
+ 
 body {
-    background-color: rgba(238, 220, 187);
-    color: var(--cor-6);
-    line-height: 1.6;
-    font-family: var(--fonte-corpo);
+  background-color: rgba(238, 220, 187); /* cor de fundo geral da página (mesmo valor de --cor-fundo) */
+  color: var(--cor-6); /* cor padrão do texto da página */
+  line-height: 1.6; /* espaçamento entre linhas padrão da página */
+  font-family: var(--fonte-corpo); /* fonte padrão do corpo do texto */
 }
-
+ 
 ul {
-    list-style: none;
+  list-style: none; /* remove marcadores padrão de todas as listas */
 }
-
-a{
-    text-decoration: none;
-    color: inherit;
+ 
+a {
+  text-decoration: none; /* remove sublinhado padrão de todos os links */
+  color: inherit; /* faz o link herdar a cor do elemento pai, em vez da cor azul padrão */
 }
-
+ 
+/*================ Layout de página com footer fixo no fim ========================================================================*/
+ 
 html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  main {
-    flex: 1 0 auto; /* faz o conteúdo "empurrar" o footer para baixo */
-  }
-  
-  .footer {
-    flex-shrink: 0; /* impede que o footer encolha */
-    background-color: #3A1207;
-    color: #F0FFCE;
-    padding: 40px 20px 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+  height: 100%; /* garante que html e body ocupem toda a altura da tela, base para o layout esticar */
+  margin: 0; /* remove margem externa (já coberto pelo reset "*", mantido aqui por reforço) */
+}
+ 
+body {
+  display: flex; /* organiza o conteúdo da página em coluna (topo, main, footer) */
+  flex-direction: column; /* empilha os elementos verticalmente */
+  min-height: 100vh; /* garante altura mínima igual à tela, mesmo com pouco conteúdo */
+}
+ 
+main {
+  flex: 1 0 auto; /* faz o conteúdo "empurrar" o footer para baixo */
+}
+ 
+.footer {
+  flex-shrink: 0; /* impede que o footer encolha */
+  background-color: #3A1207; /* fundo do footer (mesmo valor de --cor-8, mas em hex direto) */
+  color: #F0FFCE; /* cor do texto do footer (mesmo valor de --cor-2, mas em hex direto) */
+  padding: 40px 20px 0; /* espaçamento interno: topo, laterais e sem espaço embaixo */
+  font-family: Arial, Helvetica, sans-serif; /* fonte usada no footer */
+}

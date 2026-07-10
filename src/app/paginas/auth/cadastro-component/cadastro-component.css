@@ -1,251 +1,249 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/*============== Página ==============*/
-.cadastro-pagina{
-    min-height: 110vh;
-    background-image: url("/log.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-}
-
-.cadastro-topo{
-    background-color: var(--cor-escuro);
-    padding: 1px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.cadastro-topo .logo{
-    color: var(--cor-fundo);
-}
-
-/*============== Conteúdo Principal ==============*/
-
-.pag-principal-total{
-    flex: 1;
-    display: flex;
+* {
+    margin: 0; /* remove margem externa padrão de todos os elementos */
+    padding: 0; /* remove espaçamento interno padrão de todos os elementos */
+    box-sizing: border-box; /* inclui padding e borda no cálculo do tamanho de todos os elementos */
+  }
+   
+  /*============== Página ==============*/
+  .cadastro-pagina {
+    min-height: 110vh; /* garante altura mínima maior que a tela, evitando cortes */
+    background-image: url("/log.png"); /* imagem de fundo da página */
+    background-size: cover; /* faz a imagem cobrir toda a área sem distorcer */
+    background-position: center; /* centraliza a imagem de fundo */
+    background-repeat: no-repeat; /* evita repetição da imagem de fundo */
+    display: flex; /* organiza o topo e o conteúdo principal em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+  }
+   
+  .cadastro-topo {
+    background-color: var(--cor-escuro); /* fundo escuro da barra superior */
+    padding: 1px 30px; /* espaçamento interno da barra superior */
+    display: flex; /* alinha logo e demais itens do topo em linha */
+    align-items: center; /* centraliza os itens verticalmente */
+    justify-content: space-between; /* distribui os itens nas extremidades */
+  }
+   
+  .cadastro-topo .logo {
+    color: var(--cor-fundo); /* cor do texto da logo no topo */
+  }
+   
+  /*============== Conteúdo Principal ==============*/
+   
+  .pag-principal-total {
+    flex: 1; /* ocupa todo o espaço vertical restante da página */
+    display: flex; /* alinha o texto e o card de cadastro em linha */
     justify-content: flex-end; /* joga o card para a direita */
-    align-items: center;
-    padding-right: 23.7%;
-    padding-left: 40px;
-
-}
-
-/*============== Texto da Esquerda ==============*/
-
-.escritas-esquerda h1{
-    font-family: var(--fonte-titulo);
-    font-size: 50px;
-    line-height: 1.6;
-    color: var(--cor-6);
-}
-
-/*============== Card ==============*/
-
-.cadastro-form-card{
-    width: 75%;
-    max-width: 600px;
-    background-color: var(--cor-4);
-    color: var(--cor-5);
-    border: 1px solid var(--cor-7);
-    border-radius: 15%;
-    padding: 75px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
-    animation: subirFadeIn .5s ease both;
-    width: 100%;
-    max-width: 500px;
-    background-color: var(--cor-fundo);
-    border: 1px solid var(--cor-7);
-    border-radius: 40px;
-    padding: 75px;
-    backdrop-filter: blur(8px);
-}
-
-.cadastro-titulo{
-    font-size: 40px;
-    color: var(--cor-texto-suave);
-    margin-bottom: 30px;
-}
-
-/*============== Formulário ==============*/
-
-.cadastro-form{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    
-}
-
-.campos-duplos{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.campo-grupo{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.campo-label{
-    font-size: 15px;
-    font-weight: 500;
-}
-
-.campo-input{
-    height: 48px;
-    padding: 8px 12px;
-    border: 1px solid var(--cor-5);
-    border-radius: 20px;
-    outline: none;
-}
-
-.campo-input:focus{
-    border-color: var(--cor-5);
-}
-
-/*============== Termos ==============*/
-
-.cadastro-termos{
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    font-size: 14px;
-}
-
-.cadastro-termos input[type="checkbox"]{
-    width: 15px;
-    height: 15px;
-    margin-top: 2px;
-    accent-color: var(--cor-5);
-    flex-shrink: 0;
-}
-
-.cadastro-termos a{
-    color: var(--cor-9);
-    text-decoration: none;
-}
-
-/*============== Botão ==============*/
-
-.btn-primario{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 100%;
-    padding: 15px;
-    background-color: var(--cor-5);
-    color: var(--cor-9);
-    border: none;
-    border-radius: 100px;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: .5s;
-}
-
-.btn-primario:hover{
-    color: var(--cor-2);
-}
-
-/*============== Login ==============*/
-
-.cadastro-login-link{
-    text-align: center;
-    margin-top: 20px;
-    font-size: 18px;
-    color: var(--cor-5);
-}
-
-.cadastro-login-link a{
-    color: var(--cor-6);
-    font-weight: 500;
-    text-decoration: none;
-}
-
-.cadastro-login-link a:hover{
-    color: var(--cor-4);
-}
-
-.cadastro-login-link a:focus{
-    color: var(--cor-2);
-}
-/*============== Responsividade ==============*/
-
-@media (max-width: 900px){
-
-    .pag-principal-total{
-        flex-direction: column;
-        gap: 40px;
-        padding: 30px;
+    align-items: center; /* centraliza o conteúdo verticalmente */
+    padding-right: 23.7%; /* espaço à direita, afastando o card da borda */
+    padding-left: 40px; /* espaço à esquerda do conteúdo */
+  }
+   
+  /*============== Texto da Esquerda ==============*/
+   
+  .escritas-esquerda h1 {
+    font-family: var(--fonte-titulo); /* fonte do título de destaque */
+    font-size: 50px; /* tamanho do título */
+    line-height: 1.6; /* espaçamento entre as linhas do título */
+    color: var(--cor-6); /* cor do título */
+  }
+   
+  /*============== Card ==============*/
+   
+  .cadastro-form-card {
+    width: 75%; /* largura inicial do card (sobrescrita logo abaixo) */
+    max-width: 600px; /* largura máxima inicial do card (sobrescrita logo abaixo) */
+    background-color: var(--cor-4); /* fundo inicial do card (sobrescrito logo abaixo) */
+    color: var(--cor-5); /* cor do texto do card */
+    border: 1px solid var(--cor-7); /* borda inicial do card (sobrescrita logo abaixo) */
+    border-radius: 15%; /* arredondamento inicial do card (sobrescrito logo abaixo) */
+    padding: 75px; /* espaçamento interno inicial do card (sobrescrito logo abaixo) */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1); /* sombra do card */
+    animation: subirFadeIn .5s ease both; /* animação de entrada do card (sobe e aparece suavemente) */
+    width: 100%; /* largura final do card, sobrescreve a declaração anterior */
+    max-width: 500px; /* largura máxima final do card, sobrescreve a declaração anterior */
+    background-color: var(--cor-fundo); /* fundo final do card, sobrescreve a declaração anterior */
+    border: 1px solid var(--cor-7); /* borda final do card (repete o mesmo valor anterior) */
+    border-radius: 40px; /* arredondamento final do card, sobrescreve a declaração anterior */
+    padding: 75px; /* espaçamento interno final do card (repete o mesmo valor anterior) */
+    backdrop-filter: blur(8px); /* desfoca o conteúdo atrás do card, criando efeito vidro fosco */
+  }
+   
+  .cadastro-titulo {
+    font-size: 40px; /* tamanho do título do formulário de cadastro */
+    color: var(--cor-texto-suave); /* cor suave do título */
+    margin-bottom: 30px; /* espaço abaixo do título */
+  }
+   
+  /*============== Formulário ==============*/
+   
+  .cadastro-form {
+    display: flex; /* organiza os campos do formulário em coluna */
+    flex-direction: column; /* empilha os campos verticalmente */
+    gap: 4px; /* espaço entre os grupos de campos */
+  }
+   
+  .campos-duplos {
+    display: grid; /* organiza dois campos lado a lado em grade */
+    grid-template-columns: 1fr 1fr; /* cria duas colunas de largura igual */
+    gap: 20px; /* espaço entre as duas colunas */
+  }
+   
+  .campo-grupo {
+    display: flex; /* organiza label e input em coluna */
+    flex-direction: column; /* empilha label acima do input */
+    gap: 8px; /* espaço entre o label e o input */
+  }
+   
+  .campo-label {
+    font-size: 15px; /* tamanho do texto do label */
+    font-weight: 500; /* peso (grossura) do texto do label */
+  }
+   
+  .campo-input {
+    height: 48px; /* altura do campo de input */
+    padding: 8px 12px; /* espaçamento interno do campo */
+    border: 1px solid var(--cor-5); /* borda padrão do campo */
+    border-radius: 20px; /* arredondamento das bordas do campo */
+    outline: none; /* remove o contorno padrão do navegador */
+  }
+   
+  .campo-input:focus {
+    border-color: var(--cor-5); /* mantém a cor da borda ao focar no campo */
+  }
+   
+  /*============== Termos ==============*/
+   
+  .cadastro-termos {
+    display: flex; /* alinha o checkbox e o texto dos termos em linha */
+    gap: 10px; /* espaço entre o checkbox e o texto */
+    align-items: flex-start; /* alinha os itens pelo topo, útil para textos longos */
+    font-size: 14px; /* tamanho do texto dos termos */
+  }
+   
+  .cadastro-termos input[type="checkbox"] {
+    width: 15px; /* largura do checkbox */
+    height: 15px; /* altura do checkbox */
+    margin-top: 2px; /* pequeno ajuste para alinhar com a primeira linha do texto */
+    accent-color: var(--cor-5); /* cor de destaque do checkbox quando marcado */
+    flex-shrink: 0; /* impede que o checkbox encolha em telas menores */
+  }
+   
+  .cadastro-termos a {
+    color: var(--cor-9); /* cor do link dentro do texto de termos */
+    text-decoration: none; /* remove sublinhado do link */
+  }
+   
+  /*============== Botão ==============*/
+   
+  .btn-primario {
+    display: inline-flex; /* alinha ícone/texto do botão em linha */
+    align-items: center; /* centraliza o conteúdo verticalmente */
+    justify-content: center; /* centraliza o conteúdo horizontalmente */
+    gap: 8px; /* espaço entre ícone e texto, se houver */
+    width: 100%; /* botão ocupa toda a largura disponível */
+    padding: 15px; /* espaçamento interno do botão */
+    background-color: var(--cor-5); /* fundo do botão */
+    color: var(--cor-9); /* cor do texto do botão */
+    border: none; /* remove borda padrão do botão */
+    border-radius: 100px; /* deixa o botão com formato de pílula */
+    font-size: 15px; /* tamanho do texto do botão */
+    font-weight: 500; /* peso (grossura) do texto do botão */
+    cursor: pointer; /* indica que o botão é clicável */
+    transition: .5s; /* suaviza qualquer mudança visual no botão */
+  }
+   
+  .btn-primario:hover {
+    color: var(--cor-2); /* cor do texto do botão ao passar o mouse */
+  }
+   
+  /*============== Login ==============*/
+   
+  .cadastro-login-link {
+    text-align: center; /* centraliza o texto do link de login */
+    margin-top: 20px; /* espaço acima do link de login */
+    font-size: 18px; /* tamanho do texto */
+    color: var(--cor-5); /* cor do texto */
+  }
+   
+  .cadastro-login-link a {
+    color: var(--cor-6); /* cor do link de login */
+    font-weight: 500; /* peso (grossura) do texto do link */
+    text-decoration: none; /* remove sublinhado do link */
+  }
+   
+  .cadastro-login-link a:hover {
+    color: var(--cor-4); /* cor do link ao passar o mouse */
+  }
+   
+  .cadastro-login-link a:focus {
+    color: var(--cor-2); /* cor do link ao ser focado (navegação por teclado) */
+  }
+   
+  /*============== Responsividade ==============*/
+   
+  @media (max-width: 900px) {
+   
+    .pag-principal-total {
+      flex-direction: column; /* empilha texto e card verticalmente em telas médias */
+      gap: 40px; /* espaço entre o texto e o card */
+      padding: 30px; /* espaçamento interno reduzido */
     }
-
-    .escritas-esquerda h1{
-        font-size: 32px;
-        text-align: center;
+   
+    .escritas-esquerda h1 {
+      font-size: 32px; /* reduz o tamanho do título em telas médias */
+      text-align: center; /* centraliza o título */
     }
-
-    .cadastro-form-card{
-        width: 90%;
-        padding: 40px;
-        border-radius: 30px;
+   
+    .cadastro-form-card {
+      width: 90%; /* aumenta a largura do card em telas médias */
+      padding: 40px; /* reduz o espaçamento interno do card */
+      border-radius: 30px; /* reduz o arredondamento do card */
     }
-}
-
-@media (max-width: 600px){
-
-    .campos-duplos{
-        grid-template-columns: 1fr;
+  }
+   
+  @media (max-width: 600px) {
+   
+    .campos-duplos {
+      grid-template-columns: 1fr; /* empilha os campos duplos em uma única coluna */
     }
-
-    .escritas-esquerda h1{
-        font-size: 28px;
+   
+    .escritas-esquerda h1 {
+      font-size: 28px; /* reduz ainda mais o tamanho do título em telas pequenas */
     }
-
-    .cadastro-form-card{
-        width: 95%;
-        padding: 25px;
+   
+    .cadastro-form-card {
+      width: 95%; /* aumenta ainda mais a largura do card em telas pequenas */
+      padding: 25px; /* reduz ainda mais o espaçamento interno do card */
     }
-
-    .cadastro-titulo{
-        font-size: 30px;
+   
+    .cadastro-titulo {
+      font-size: 30px; /* reduz o tamanho do título do formulário em telas pequenas */
     }
-}
-
-.logo{
-
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    user-select: none;
-} 
-
-.logo img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;     /* ← cover cobre sem achatar */
-    object-position: top;
-}
-
-
-
-input {
-     border-radius: 50px; 
-     height: 48px;
-     padding: 8px 12px; 
-     border: solid 0.5px var(--cor-6);
-    }
-
-
+  }
+   
+  /*============== Logo ==============*/
+   
+  .logo {
+    top: 0; /* posição no topo (sem efeito sem position definido) */
+    left: 0; /* posição à esquerda (sem efeito sem position definido) */
+    width: 100%; /* logo ocupa toda a largura do container */
+    height: 100%; /* logo ocupa toda a altura do container */
+    pointer-events: none; /* impede que a logo capture cliques do mouse */
+    user-select: none; /* impede que o texto/imagem da logo seja selecionado */
+  }
+   
+  .logo img {
+    width: 100%; /* imagem ocupa toda a largura do container da logo */
+    height: 100%; /* imagem ocupa toda a altura do container da logo */
+    object-fit: cover; /* cover cobre sem achatar */
+    object-position: top; /* prioriza a parte superior da imagem no recorte */
+  }
+   
+  /*============== Inputs (global) ==============*/
+   
+  input {
+    border-radius: 50px; /* arredondamento padrão de todos os inputs da página */
+    height: 48px; /* altura padrão de todos os inputs */
+    padding: 8px 12px; /* espaçamento interno padrão de todos os inputs */
+    border: solid 0.5px var(--cor-6); /* borda fina padrão de todos os inputs */
+  }

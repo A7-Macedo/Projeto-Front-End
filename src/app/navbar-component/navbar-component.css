@@ -1,133 +1,125 @@
-
-
-:root {
-
-    --cor-1: #DEE4B8;
-    --cor-2: #F0FFCE;
-    --cor-3: #DECFA6;
-
-    --cor-4: #CB9F7D;
-    --cor-5: #A53F2B;
-    --cor-6: #79311B;
-
-    --cor-7: #4C230A;
-    --cor-8: #3A1207;
-    --cor-9: #280004;
-
-        /* Fontes */
-        --fonte-titulo: "Dosis", sans-serif;
-        --fonte-corpo:  "Oswald", sans-serif;
-
-}
-
 .cabecalho {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 30px;
-    background-color: var(--cor-6);
-    border-bottom: 5px solid var(--cor-5);
-}
-
-.logo{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    object-fit: cover;  
-    border: 3px solid var(--cor-5);
-    
-}
-
-
-.logo span {
-    color: var(--cor-5);
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding-right: 1px;
-
-}
-
-.nav-lista {
-    display: flex;
-    gap: 26px;
-}
-
-.nav-link
- {
-    font-size: 15px;
-    font-weight: 900;
-    color: var(--cor-4);
-    transition: all ease 0.5s;
-}
-
-.nav-link:hover {
-    color: var(--cor-1);
-}
-
-.icone-usuario{
-    display: flex;
-    align-items: center;
-   font-size: 32px;
-    color: var(--cor-4);
-    transition: all ease 0.5s;
-    text-decoration: none;
-}
-
-.icone-usuario img{
-    height: 60px;        
-    width: 60px;
-    min-width: 38px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
-    border: 2px solid var(--cor-4);
-    background-color: var(--cor-4);
-}
-
-.icone-usuario:hover {
-    color: var(--cor-1);
-}
-
-.carrinho {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 20px;
-    cursor: pointer;
-}
-
-.carrinho img {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-    transition: all 0.3s ease;
-}
-
-.carrinho img:hover {
-    transform: scale(1.1);
-}
-
-.btn-sair{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--cor-6);
-    color: var(--cor-4);
-    border: none;
-    font-family: "Oswald", sans-serif; 
-    font-weight: 900;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    
-}
-
-.btn-sair:hover{
-    color: var(--cor-3);
-    object-fit: contain;
-}
-
+    display: flex; /* alinha logo, navbar e ícones em linha */
+    align-items: center; /* centraliza os itens verticalmente */
+    justify-content: space-between; /* separa logo de um lado e navbar do outro */
+    padding: 15px 30px; /* espaçamento interno do cabeçalho */
+    background-color: var(--cor-6); /* fundo do cabeçalho */
+    border-bottom: 5px solid var(--cor-5); /* linha de destaque na base do cabeçalho */
+  }
+   
+  .logo {
+    width: 70px; /* largura da logo */
+    height: 70px; /* altura da logo */
+    border-radius: 50%; /* deixa a logo circular */
+    object-fit: cover; /* ajusta a imagem sem distorcer */
+    border: 3px solid var(--cor-5); /* borda de destaque ao redor da logo */
+  }
+   
+  .logo span {
+    color: var(--cor-5); /* cor de destaque de parte do texto da logo */
+  }
+   
+  .navbar {
+    display: flex; /* alinha os itens do menu em linha */
+    align-items: center; /* centraliza os itens verticalmente */
+    gap: 20px; /* espaço entre os itens do menu */
+    padding-right: 1px; /* pequeno ajuste de espaçamento à direita */
+  }
+   
+  .nav-lista {
+    display: flex; /* alinha os links do menu em linha */
+    gap: 26px; /* espaço entre os links */
+  }
+   
+  .nav-link {
+    font-size: 15px; /* tamanho do texto do link */
+    font-weight: 900; /* peso (grossura) do texto do link */
+    color: var(--cor-4); /* cor padrão do link */
+    transition: all ease 0.5s; /* suaviza qualquer mudança visual no link */
+  }
+   
+  .nav-link:hover {
+    color: var(--cor-1); /* cor do link ao passar o mouse */
+  }
+   
+  .icone-usuario {
+    display: flex; /* alinha ícone e possível texto/imagem */
+    align-items: center; /* centraliza verticalmente */
+    font-size: 32px; /* tamanho do ícone */
+    color: var(--cor-4); /* cor padrão do ícone */
+    transition: all ease 0.5s; /* suaviza a troca de cor no hover */
+    text-decoration: none; /* remove sublinhado, caso seja um link */
+  }
+   
+  .icone-usuario img {
+    height: 60px; /* altura da foto do usuário */
+    width: 60px; /* largura da foto do usuário */
+    min-width: 38px; /* largura mínima garantida da imagem */
+    border-radius: 50%; /* deixa a foto circular */
+    object-fit: cover; /* ajusta a imagem sem distorcer */
+    object-position: center top; /* prioriza a parte superior da imagem no recorte */
+    border: 2px solid var(--cor-4); /* borda ao redor da foto */
+    background-color: var(--cor-4); /* cor de fundo enquanto a imagem carrega */
+  }
+   
+  .icone-usuario:hover {
+    color: var(--cor-1); /* cor do ícone ao passar o mouse */
+  }
+   
+  .carrinho {
+    display: flex; /* centraliza o ícone do carrinho */
+    align-items: center; /* alinha verticalmente */
+    justify-content: center; /* alinha horizontalmente */
+    margin-left: 20px; /* espaço à esquerda, separando dos outros ícones */
+    cursor: pointer; /* indica que o ícone é clicável */
+    position: relative; /* permite posicionar o badge de quantidade sobre o ícone */
+    display: inline-block; /* faz o container se ajustar ao tamanho do conteúdo */
+  }
+   
+  .carrinho img {
+    width: 38px; /* largura do ícone do carrinho */
+    height: 38px; /* altura do ícone do carrinho */
+    object-fit: contain; /* mantém a proporção da imagem sem cortar */
+    transition: all 0.3s ease; /* suaviza o efeito de hover */
+  }
+   
+  .carrinho img:hover {
+    transform: scale(1.1); /* aumenta levemente o ícone ao passar o mouse */
+  }
+   
+  .carrinho-badge {
+    position: absolute; /* posiciona o badge sobre o ícone do carrinho */
+    top: -6px; /* desloca o badge para cima, saindo do canto do ícone */
+    right: -6px; /* desloca o badge para a direita, saindo do canto do ícone */
+    background: #e63946; /* cor de fundo do badge (vermelho de alerta/quantidade) */
+    color: #fff; /* cor do texto/número dentro do badge */
+    font-size: 11px; /* tamanho do texto do badge */
+    font-weight: bold; /* deixa o número do badge em negrito */
+    min-width: 16px; /* largura mínima do badge, garantindo formato circular */
+    height: 16px; /* altura do badge */
+    border-radius: 50%; /* deixa o badge circular */
+    display: flex; /* centraliza o número dentro do badge */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    padding: 0 3px; /* espaçamento interno para números com mais de um dígito */
+    line-height: 1; /* evita espaçamento extra vertical no texto */
+  }
+   
+  .btn-sair {
+    display: flex; /* alinha ícone/texto do botão */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    background-color: var(--cor-6); /* fundo do botão, igual ao cabeçalho */
+    color: var(--cor-4); /* cor do texto do botão */
+    border: none; /* remove borda padrão do botão */
+    font-family: var(--fonte-corpo); /* fonte do texto do botão */
+    font-weight: 900; /* peso (grossura) do texto do botão */
+    font-size: 15px; /* tamanho do texto do botão */
+    cursor: pointer; /* indica que o botão é clicável */
+    transition: all 0.5s ease; /* suaviza qualquer mudança visual no botão */
+  }
+   
+  .btn-sair:hover {
+    color: var(--cor-3); /* cor do texto ao passar o mouse */
+    object-fit: contain; /* sem efeito aqui, propriedade não se aplica a texto/botão */
+  }

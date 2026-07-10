@@ -1,5 +1,8 @@
+// src/app/services/produto.ts
 export interface Produto {
   id: number;
+  slot: number;
+  titulo: string;
   nome: string;
   categoria: string;
   descricao: string;
@@ -9,5 +12,5 @@ export interface Produto {
   imagem: string;
   avaliacao: number;
   totalAvaliacoes: number;
-  badge?: string;
+  badge: string;
 }

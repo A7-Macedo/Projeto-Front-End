@@ -1,96 +1,96 @@
 .footer {
-  background-color: #3A1207; /* cor-8 */
-  color: #F0FFCE; /* cor-2 */
-  padding: 40px 20px 0;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cor-8); /* fundo escuro do rodapé */
+  color: var(--cor-2); /* cor padrão do texto dentro do rodapé */
+  padding: 40px 20px 0; /* espaçamento interno: topo, laterais e sem espaço embaixo */
+  font-family: Arial, Helvetica, sans-serif; /* fonte usada em todo o rodapé */
 }
-
+ 
 .footer-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: space-between;
-  padding-bottom: 30px;
+  max-width: 1100px; /* largura máxima do conteúdo do rodapé */
+  margin: 0 auto; /* centraliza o container horizontalmente */
+  display: flex; /* organiza as colunas em linha */
+  flex-wrap: wrap; /* permite quebrar as colunas em telas menores */
+  gap: 30px; /* espaço entre as colunas */
+  justify-content: space-between; /* distribui as colunas uniformemente */
+  padding-bottom: 30px; /* espaço abaixo do conteúdo, antes da borda inferior */
 }
-
+ 
 .footer-col {
-  flex: 1;
-  min-width: 200px;
+  flex: 1; /* faz cada coluna crescer igualmente */
+  min-width: 200px; /* largura mínima antes de quebrar linha */
 }
-
+ 
 .footer-col h3 {
-  color: #DEE4B8; /* cor-1 */
-  margin-bottom: 12px;
-  font-size: 20px;
+  color: var(--cor-1); /* título principal da coluna */
+  margin-bottom: 12px; /* espaço abaixo do título */
+  font-size: 20px; /* tamanho do título */
 }
-
+ 
 .footer-col h4 {
-  color: #DEE4B8; /* cor-1 */
-  margin-bottom: 14px;
-  font-size: 16px;
+  color: var(--cor-1); /* subtítulo da coluna */
+  margin-bottom: 14px; /* espaço abaixo do subtítulo */
+  font-size: 16px; /* tamanho do subtítulo */
 }
-
+ 
 .footer-col p {
-  line-height: 1.6;
-  color: #CB9F7D; /* cor-4 */
-  font-size: 14px;
+  line-height: 1.6; /* espaçamento entre linhas do parágrafo */
+  color: var(--cor-4); /* texto descritivo da coluna */
+  font-size: 14px; /* tamanho do texto */
 }
-
+ 
 .footer-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: none; /* remove marcadores da lista */
+  padding: 0; /* remove espaçamento interno padrão */
+  margin: 0; /* remove espaçamento externo padrão */
 }
-
+ 
 .footer-col ul li {
-  margin-bottom: 10px;
-  font-size: 14px;
-  color: #CB9F7D; /* cor-4 */
+  margin-bottom: 10px; /* espaço entre os itens da lista */
+  font-size: 14px; /* tamanho do texto do item */
+  color: var(--cor-4); /* cor dos itens de lista */
 }
-
+ 
 .footer-col ul li a {
-  color: #CB9F7D; /* cor-4 */
-  text-decoration: none;
-  transition: color 0.2s;
+  color: var(--cor-4); /* cor padrão dos links */
+  text-decoration: none; /* remove sublinhado do link */
+  transition: color 0.2s; /* suaviza a troca de cor no hover */
 }
-
+ 
 .footer-col ul li a:hover {
-  color: #DEE4B8; /* cor-1 */
+  color: var(--cor-1); /* cor do link ao passar o mouse */
 }
-
+ 
 .footer-social {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: flex; /* organiza os ícones/links sociais */
+  flex-direction: column; /* empilha os itens verticalmente */
+  gap: 10px; /* espaço entre os itens sociais */
 }
-
+ 
 .footer-social a {
-  color: #CB9F7D; /* cor-4 */
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.2s;
+  color: var(--cor-4); /* cor padrão dos links sociais */
+  text-decoration: none; /* remove sublinhado do link */
+  font-size: 14px; /* tamanho do texto do link */
+  transition: color 0.2s; /* suaviza a troca de cor no hover */
 }
-
+ 
 .footer-social a:hover {
-  color: #aa341c; /* cor-11 */
+  color: var(--cor-11); /* cor de destaque ao passar o mouse */
 }
-
+ 
 .footer-bottom {
-  border-top: 1px solid #79311B; /* cor-6 */
-  text-align: center;
-  padding: 16px 0;
+  border-top: 1px solid var(--cor-6); /* linha divisória acima do rodapé inferior */
+  text-align: center; /* centraliza o texto */
+  padding: 16px 0; /* espaçamento interno acima e abaixo */
 }
-
+ 
 .footer-bottom p {
-  font-size: 13px;
-  color: #DECFA6; /* cor-3 */
-  margin: 0;
+  font-size: 13px; /* tamanho do texto de copyright */
+  color: var(--cor-3); /* cor do texto de copyright */
+  margin: 0; /* remove espaçamento externo padrão */
 }
-
+ 
 @media (max-width: 600px) {
   .footer-container {
-    flex-direction: column;
+    flex-direction: column; /* empilha as colunas verticalmente em telas pequenas */
   }
 }

@@ -12,11 +12,11 @@
       <span class="breadcrumb-atual">Meu Carrinho</span>
     </nav>
 
-    <!-- Título da página + contador de itens + link pra voltar a comprar -->
+    <!-- Título da página + contador de peças + link pra voltar a comprar -->
     <div class="carrinho-topo">
       <h1 class="carrinho-titulo">
         Meu carrinho
-        <span>({{ itens.length }} {{ itens.length === 1 ? 'item' : 'itens' }})</span>
+        <span>({{ totalUnidades }} {{ totalUnidades === 1 ? 'peça' : 'peças' }})</span>
       </h1>
       <a href="#" class="continuar-link">← Continuar comprando</a>
     </div>
@@ -54,8 +54,7 @@
             [checked]="item.marcado"
             (change)="toggleItem(item)">
 
-          <!-- miniatura do produto (ícone placeholder, trocar por <img> quando tiver fotos reais) -->
-         <!-- miniatura do produto -->
+          <!-- miniatura do produto -->
           <div class="item-thumb">
           <img [src]="item.imagem" [alt]="item.nome">
           </div>
@@ -121,7 +120,7 @@
           <button type="button">Aplicar</button>
         </div>
 
-      
+
         <hr class="resumo-divisor">
 
         <!-- valor final a ser cobrado -->

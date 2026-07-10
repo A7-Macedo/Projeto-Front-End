@@ -5,7 +5,8 @@
                 
             </h1>
             <div class="banner-fundo">
-                <img src="rangel.png" alt="banner">
+                <video src="lumiere_luxury_banner_seamless_loop.mp4" alt="banner" autoplay loop
+                ></video>
             </div>
         </section>
 
@@ -26,6 +27,7 @@
     <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'jaquetas'" (click)="selecionarFiltro('jaquetas')">Jaqueta</button>
     <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'sapatos'" (click)="selecionarFiltro('sapatos')">Sapatos</button>
     <button class="filtro-btn" [class.ativo]="filtroAtivo() === 'tenis'" (click)="selecionarFiltro('tenis')">Tênis</button>
+        <a class="filtro-btn" routerLink="/kids">kid's</a> 
 </div>
             </div>
         

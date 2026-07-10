@@ -1,0 +1,262 @@
+/* ==========================================================================
+   Página / Layout geral
+   ========================================================================== */
+ 
+   .pagina-categorias {
+    background-color: var(--cor-fundo); /* cor de fundo da página */
+    font-family: var(--fonte-corpo); /* fonte padrão do corpo do texto */
+    padding: var(--espcaco-xl); /* espaçamento interno geral da página */
+   
+    display: flex; /* organiza os elementos filhos em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    align-items: center; /* centraliza os elementos horizontalmente */
+  }
+   
+  /* Os dois quadros terão exatamente a mesma largura */
+  .card-formulario,
+  .card-listagem {
+    width: 90%; /* ocupa 90% da largura disponível */
+    max-width: 1100px; /* largura máxima dos cards */
+    margin: 0 auto 32px; /* centraliza horizontalmente e adiciona espaço abaixo */
+    box-sizing: border-box; /* inclui padding e borda no cálculo da largura */
+  }
+   
+   
+  /* ==========================================================================
+     Títulos
+     ========================================================================== */
+   
+  .titulo-principal {
+    width: 90%; /* ocupa 90% da largura disponível */
+    max-width: 1100px; /* largura máxima do título */
+    font-family: var(--fonte-titulo); /* fonte usada nos títulos */
+    font-size: 2rem; /* tamanho do título principal */
+    color: var(--cor-7); /* cor do título principal */
+    margin-bottom: .5rem; /* espaço abaixo do título */
+  }
+   
+  .subtitulo {
+    width: 90%; /* ocupa 90% da largura disponível */
+    max-width: 1100px; /* largura máxima do subtítulo */
+    color: var(--cor-6); /* cor do subtítulo */
+    margin-bottom: var(--espcaco-xl); /* espaço abaixo do subtítulo */
+  }
+   
+   
+  /* ==========================================================================
+     Formulário
+     ========================================================================== */
+   
+  .card-formulario {
+    background-color: var(--cor-2); /* fundo do card do formulário */
+    border: 1px solid var(--cor-3); /* borda sutil ao redor do card */
+    border-radius: var(--raio); /* arredondamento das bordas do card */
+    box-shadow: var(--sombra-md); /* sombra do card */
+    padding: var(--espcaco-xl); /* espaçamento interno do card */
+    transition: transform .3s ease, box-shadow .3s ease; /* suaviza o efeito de hover */
+    height: 100%; /* ocupa toda a altura disponível do container */
+    min-width: 400px; /* largura mínima do card */
+  }
+   
+  .card-formulario:hover {
+    transform: translateY(-3px); /* levanta levemente o card ao passar o mouse */
+    box-shadow: 0 10px 22px rgba(0,0,0,.18); /* aumenta a sombra no hover */
+  }
+   
+  .titulo-formulario {
+    font-family: var(--fonte-titulo); /* fonte do título do formulário */
+    font-size: 1.5rem; /* tamanho do título do formulário */
+    color: var(--cor-7); /* cor do título do formulário */
+    margin-bottom: var(--espcaco-lg); /* espaço abaixo do título */
+  }
+   
+  .label-campo {
+    display: block; /* faz o label ocupar a linha inteira, ficando acima do campo */
+    margin-bottom: 6px; /* espaço entre o label e o campo */
+    color: var(--cor-7); /* cor do texto do label */
+    font-weight: 600; /* peso (grossura) do texto do label */
+  }
+   
+  .campo-obrigatorio {
+    color: #E63946; /* cor de destaque (vermelho) para indicar campo obrigatório */
+  }
+   
+  .input-campo {
+    width: 100%; /* campo ocupa toda a largura disponível */
+    padding: 12px 16px; /* espaçamento interno do campo */
+    border: 1px solid var(--cor-3); /* borda padrão do campo */
+    border-radius: 10px; /* arredondamento das bordas do campo */
+    background: #fff; /* fundo branco do campo */
+    font-family: var(--fonte-corpo); /* fonte do texto digitado */
+    transition: border-color .3s ease, box-shadow .3s ease; /* suaviza o efeito de foco */
+    box-sizing: border-box; /* inclui padding e borda no cálculo da largura */
+  }
+   
+  .input-campo:focus {
+    outline: none; /* remove o contorno padrão do navegador ao focar */
+    border-color: var(--cor-5); /* cor da borda ao focar no campo */
+    box-shadow: 0 0 0 4px rgba(203,159,125,.25); /* halo de destaque ao redor do campo focado */
+  }
+   
+   
+  /* ==========================================================================
+     Botão cadastrar
+     ========================================================================== */
+   
+  .btn-cadastrar {
+    display: inline-flex; /* alinha ícone/texto do botão em linha */
+    align-items: center; /* centraliza o conteúdo verticalmente */
+    justify-content: center; /* centraliza o conteúdo horizontalmente */
+    margin-top: 15px; /* espaço acima do botão */
+   
+    padding: 14px 28px; /* espaçamento interno do botão */
+   
+    background: linear-gradient(135deg, var(--cor-5), var(--cor-6)); /* gradiente de fundo do botão */
+    color: var(--cor-2); /* cor do texto do botão */
+   
+    font-family: var(--fonte-titulo); /* fonte do texto do botão */
+    font-size: 18px; /* tamanho do texto do botão */
+    letter-spacing: .8px; /* espaçamento entre as letras do texto */
+   
+    border: 2px solid var(--cor-4); /* borda de destaque do botão */
+    border-radius: 50px; /* deixa o botão com cantos bem arredondados (pílula) */
+   
+    cursor: pointer; /* indica que o botão é clicável */
+   
+    transition: all .3s ease; /* suaviza qualquer mudança visual no botão */
+    box-shadow: 0 6px 15px rgba(0,0,0,.18); /* sombra do botão */
+  }
+   
+  .btn-cadastrar:hover {
+    background: linear-gradient(135deg, var(--cor-6), var(--cor-7)); /* gradiente mais escuro no hover */
+    transform: translateY(-3px); /* levanta levemente o botão ao passar o mouse */
+    box-shadow: 0 10px 22px rgba(0,0,0,.25); /* aumenta a sombra no hover */
+  }
+   
+  .btn-cadastrar:active {
+    transform: scale(.97); /* efeito de "clique" ao pressionar o botão */
+  }
+   
+   
+  /* ==========================================================================
+     Listagem
+     ========================================================================== */
+   
+  .card-listagem {
+    background: var(--cor-2); /* fundo do card de listagem */
+    border: 1px solid var(--cor-3); /* borda sutil ao redor do card */
+    border-radius: var(--raio); /* arredondamento das bordas do card */
+    overflow: hidden; /* garante que o conteúdo interno respeite as bordas arredondadas */
+    box-shadow: var(--sombra-md); /* sombra do card */
+  }
+   
+  .cabecalho-listagem {
+    display: flex; /* alinha título e badge de contagem em linha */
+    justify-content: space-between; /* separa título de um lado e badge do outro */
+    align-items: center; /* centraliza os itens verticalmente */
+   
+    padding: var(--espcaco-lg); /* espaçamento interno do cabeçalho da listagem */
+   
+    background: linear-gradient(135deg, var(--cor-5), var(--cor-6)); /* gradiente de fundo do cabeçalho */
+  }
+   
+  .titulo-listagem {
+    font-family: var(--fonte-titulo); /* fonte do título da listagem */
+    color: var(--cor-2); /* cor do título da listagem */
+    font-size: 1.4rem; /* tamanho do título da listagem */
+  }
+   
+  .badge-contagem {
+    padding: 6px 14px; /* espaçamento interno do badge */
+    background: rgba(255,255,255,.18); /* fundo translúcido do badge */
+    color: var(--cor-2); /* cor do texto do badge */
+    border-radius: 30px; /* deixa o badge com formato de pílula */
+    font-weight: 600; /* peso (grossura) do texto do badge */
+  }
+   
+   
+  /* ==========================================================================
+     Tabela
+     ========================================================================== */
+   
+  table {
+    width: 100%; /* tabela ocupa toda a largura disponível */
+    border-collapse: collapse; /* une as bordas das células, evitando espaçamento duplo */
+  }
+   
+  .cabecalho-tabela {
+    background-color: var(--cor-2); /* fundo do cabeçalho da tabela */
+  }
+   
+  .coluna-titulo {
+    padding: 16px; /* espaçamento interno da célula de título */
+    text-align: left; /* alinha o texto à esquerda */
+    color: var(--cor-7); /* cor do texto do título da coluna */
+    font-family: var(--fonte-titulo); /* fonte do título da coluna */
+    border-bottom: 2px solid var(--cor-3); /* linha de destaque abaixo do cabeçalho */
+  }
+   
+  .linha-tabela {
+    border-bottom: 1px solid var(--cor-3); /* linha divisória entre as linhas da tabela */
+    transition: background-color .3s ease; /* suaviza a mudança de cor no hover */
+  }
+   
+  .linha-tabela:hover {
+    background: rgba(0,0,0,.03); /* leve destaque de fundo ao passar o mouse na linha */
+  }
+   
+  .linha-tabela td {
+    padding: 16px; /* espaçamento interno de cada célula */
+  }
+   
+  .celula-nome {
+    color: var(--cor-7); /* cor do texto da célula de nome */
+    font-weight: 600; /* peso (grossura) do texto do nome */
+  }
+   
+  .celula-descricao {
+    color: var(--cor-6); /* cor do texto da célula de descrição */
+  }
+   
+  .estado-vazio {
+    text-align: center; /* centraliza o texto de estado vazio */
+    padding: 40px; /* espaçamento interno da mensagem de estado vazio */
+    color: var(--cor-6); /* cor do texto de estado vazio */
+    font-style: italic; /* estilo itálico para indicar mensagem informativa */
+  }
+   
+   
+  /* ==========================================================================
+     Botões
+     ========================================================================== */
+   
+  .btn-editar,
+  .btn-excluir {
+    padding: 8px 18px; /* espaçamento interno dos botões de ação */
+    color: #fff; /* cor branca do texto dos botões */
+    border: none; /* remove borda padrão dos botões */
+    border-radius: 8px; /* arredondamento das bordas dos botões */
+    cursor: pointer; /* indica que os botões são clicáveis */
+    font-size: 13px; /* tamanho do texto dos botões */
+    font-weight: 600; /* peso (grossura) do texto dos botões */
+    transition: .3s; /* suaviza qualquer mudança visual nos botões */
+    box-shadow: 0 3px 8px rgba(0,0,0,.15); /* sombra dos botões */
+  }
+   
+  .btn-editar {
+    background: #8B5E3C; /* cor de fundo do botão editar */
+  }
+   
+  .btn-editar:hover {
+    background: #C9A57B; /* cor de fundo do botão editar ao passar o mouse */
+    transform: translateY(-2px); /* levanta levemente o botão ao passar o mouse */
+  }
+   
+  .btn-excluir {
+    background: #E63946; /* cor de fundo do botão excluir */
+  }
+   
+  .btn-excluir:hover {
+    background: #9E1B23; /* cor de fundo do botão excluir ao passar o mouse */
+    transform: translateY(-2px); /* levanta levemente o botão ao passar o mouse */
+  }

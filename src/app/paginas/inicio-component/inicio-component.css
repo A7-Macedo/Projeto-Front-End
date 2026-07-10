@@ -1,365 +1,360 @@
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: rgba(238, 220, 187);
-    color: var(--cor-6);
-    line-height: 1.6;
-    font-family: var(--fonte-corpo);
-}
-
-ul {
-    list-style: none;
-}
-
-a{
-    text-decoration: none;
-    color: inherit;
-}
-
-/*============== Página de Artigos ==========================================================================*/
-
-
-    /*============== Seção Banner ==============*/
-
-.artigos-banner{
-    background-color: #534933;
-    color: var(--cor-6);
-    padding: 80px 100px;  
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    position: relative;
-    overflow: hidden;
-    height: 806px;      
-}
-
-.banner-fundo {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    user-select: none;
-
-    padding: 3px;
-
+    margin: 0; /* remove margem externa padrão de todos os elementos */
+    padding: 0; /* remove espaçamento interno padrão de todos os elementos */
+    box-sizing: border-box; /* inclui padding e borda no cálculo do tamanho de todos os elementos */
+  }
+   
+  body {
+    background-color: rgba(238, 220, 187); /* cor de fundo geral da página */
+    color: var(--cor-6); /* cor padrão do texto da página */
+    line-height: 1.6; /* espaçamento entre linhas padrão da página */
+    font-family: var(--fonte-corpo); /* fonte padrão do corpo do texto */
+  }
+   
+  ul {
+    list-style: none; /* remove marcadores padrão de todas as listas */
+  }
+   
+  a {
+    text-decoration: none; /* remove sublinhado padrão de todos os links */
+    color: inherit; /* faz o link herdar a cor do elemento pai, em vez da cor azul padrão */
+  }
+   
+  /*============== Página de Artigos ==========================================================================*/
+   
+      /*============== Seção Banner ==============*/
+   
+  .artigos-banner {
+    background-color: #534933; /* fundo escuro do banner (sem variável --cor-N correspondente) */
+    color: var(--cor-6); /* cor do texto dentro do banner */
+    padding: 80px 100px; /* espaçamento interno: topo/baixo e laterais */
+    display: flex; /* organiza o conteúdo do banner em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    gap: 16px; /* espaço entre os elementos do banner */
+    position: relative; /* permite posicionar o fundo decorativo (.banner-fundo) dentro do banner */
+    overflow: hidden; /* impede que o fundo decorativo vaze para fora do banner */
+    height: 806px; /* altura fixa do banner */
+  }
+   
+  .banner-fundo {
+    position: absolute; /* posiciona o fundo decorativo sobre todo o banner */
+    inset: 0; /* estica o elemento para preencher todo o banner */
+    pointer-events: none; /* impede que o fundo decorativo capture cliques do mouse */
+    user-select: none; /* impede que o conteúdo do fundo seja selecionado */
+   
+    padding: 3px; /* cria uma borda fina ao redor da imagem interna */
+   
     background: linear-gradient(
-        45deg,
-        #5A4212,
-        #A67C00,
-        #F6E27A,
-        #D4AF37,
-        #A67C00,
-        #5A4212
-    );
-
+      45deg,
+      #5A4212,
+      #A67C00,
+      #F6E27A,
+      #D4AF37,
+      #A67C00,
+      #5A4212
+    ); /* gradiente dourado decorativo, funcionando como moldura */
+   
     box-shadow:
-        inset 0 0 20px rgba(255,255,255,0.35),
-        0 0 25px rgba(212,175,55,.4);
-
-    overflow: hidden;
-}
-
-.banner-fundo img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:top;
-    display:block;
-}
-
-
-/* padding 80px ( cima ), 60px ( direita ), 30px, (baixo), 60px, (esquerda )
-
-/*============== Controles ==========================================================================*/
-
-.artigos-controles{
-    padding: 32px 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border-bottom: 3px solid var(--cor-5);
-    background-color: var(--cor-6);
-}
-
-    /*============== Busca ==============*/
-
-.busca-container{
-    position: relative;
-    max-width: 960px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.busca-icone{
-    position: absolute;
-    left: 20px;
-    top: 47%;
-    transform: translateY(-50%);
-    color: var(--cor-cinza);
-    font-size: 15.5px;
-    pointer-events: none;
-}
-
-.busca-input{
-    width: 100%;
-    padding: 12px 16px 12px 44px;
-    border: 1.5px solid var(--cor-borda);
-    border-radius: 100px;
-    font-size: 14px;
-    background-color: white;
-    color: var(--cor-texto);
-    outline: none;
-}
-
-.busca-input:focus{
-    border-color: var(--cor-principal);
-    box-shadow: 0 0 10px 3px rgba(173, 74, 8, 0.2);
-
-}
-
-    /*============== Filtro ==============*/
-
-.filtro-lista{
-    justify-content: center;
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-.filtro-btn{
-    padding: 1px 18px;
-    border-radius: 100px;
-    border: 2px solid var(--cor-1);
-    background-color: white;
-    font-size: 15px;
-    font-weight: 900;
-    color: var(--cor-texto-suave);
-    cursor: pointer;
-    transition: all .5 ease;
-    
-}
-
-.filtro-btn:hover{
-    border-color: var(--cor-1);
-    color: #daa520;
-}
-
-.filtro-btn.ativo{
-    background-color: var(--cor-principal);
-    color: var(--cor-principal);
-    color:white
-}
-
-/*============== Container Artigos ==========================================================================*/
-
-    .artigos-grid-container{
-        padding: 48px 60px;
-    }
-
-    .artigos-grid-titulo{
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        color: var(--cor-cinza);
-        margin-bottom: 28px;
-    }   
-
-    .artigos-grid{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 24px;
-    }
-
-/*============== Card Artigos ==========================================================================*/
-
-.artigo-card{
-    background-color: white;
-    border: 1px solid var(--cor-borda);
-    border-radius: 12px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: all .5s ease;
-}
-
-.artigo-card:hover{
-    box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.3);
-    transform: translateY(-5px);
-}
-
-.artigo-card-imagem{
-    height: 180px;
-    background-color: var(--cor-escuro);
-    overflow: hidden;
-    position: relative;
-}
-
-.artigo-card-imagem img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all .5s ease;
-}
-
-.artigo-card:hover .artigo-card-imagem img{
-    transform: scale(1.05);
-}
-
-.artigos-card-corpo{
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex: 1;
-}
-
-.artigo-card-titulo{
-    font-family: var(--fonte-titulo);
-    font-size: 20px;
-    line-height: 1.35;
-    color:var(--cor-texto);
-    transition: all .5s ease;
-    
-}
-
-.artigo-card-titulo:hover{
-    color: var(--cor-principal);
-}
-
-.artigo-card-texto{
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--cor-texto-suave);
-    flex: 1;
-}
-
-.artigo-card-rodape{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 8px;
-    padding-top: 16px;
-    border-top: 1px solid var(--cor-borda);
-}
-
-.artigos-card-meta{
-    font-size: 13px;
-    color: var(--cor-cinza);
-}
-
-.artigo-card-link{
-    font-size: 13px;
-    font-weight: 500;
-    color:var(--cor-principal)
-}
-
-/*============== Clamb de texto ==========================================================================*/
-
-.texto-3-linhas{
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-    /*============== Badge ==============*/
-
-.badge{
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 100px;
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    width: fit-content;
-}
-
-.badge-laranja{
-    background-color: var(--cor-principal-claro);
-    color: var(--cor-principal);
-}
-
-/*============== Botões ==========================================================================*/
-
-.btn-primario{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background-color: var(--cor-principal);
-    color: #fff;
-    border-radius: 100px;
-    padding: 10px 20px;
-    font-size: 15px;
-    font-weight: 500;
-    border: none;
-    cursor: pointer;
-    transition: all .5s ease;
-}
-
-.btn-primario:hover{
-    background-color:var(--cor-principal-hover);
-    transform: translateY( -2px);
-}
-
-.btn-secudario{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background-color: transparent;
-    color: var(--cor-texto);
-    border-radius: 100px;
-    padding: 10px 20px;
-    font-size: 15px;
-    font-weight: 500;
-    border: 1.5px solid var(--cor-borda);
-    cursor: pointer;
-    transition: all .5s ease;
-}
-
-.btn-secudario:hover{
-    border-color: var(--cor-principal);
-    color: var(--cor-principal);
-    transform: translateY(-2px);
-}
-
-.campo-grupo{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.campo-label{
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--cor-texto-suave);
-    letter-spacing: 0.3px;
-}
-
-.campo-input{
-    width: 100%;
-    padding: 13px 16xp;
-    border: 1.5 solid var(--cor-borda);
-    border-radius: 6px;
-    font-size: 20px;
-    color: var(--cor-texto);
-    background-color: white;
-    transition: all .5s ease;
-    outline: none;
-}
-
-.campo-input:focus{
-    border-color: var(--cor-principal);
-    box-shadow: 0 0 3px 3px rgba(57, 38, 232, 0.3);
-}
-
-.campo-input::placeholder{
-    color: #bbb;
-}
-
+      inset 0 0 20px rgba(255,255,255,0.35),
+      0 0 25px rgba(212,175,55,.4); /* brilho interno e externo, reforçando o efeito dourado */
+   
+    overflow: hidden; /* garante que a imagem interna respeite os limites do fundo decorativo */
+  }
+   
+  .banner-fundo img {
+    width: 100%; /* imagem ocupa toda a largura do fundo decorativo */
+    height: 100%; /* imagem ocupa toda a altura do fundo decorativo */
+    object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
+    object-position: top; /* prioriza a parte superior da imagem no recorte */
+    display: block; /* remove espaço extra abaixo da imagem (comportamento inline) */
+  }
+   
+  /* padding 80px ( cima ), 60px ( direita ), 30px, (baixo), 60px, (esquerda ) */
+  /* ATENÇÃO: o comentário acima originalmente não estava fechado corretamente;
+     ele "engolia" o comentário seguinte até o primeiro "*/
+   
+  /*============== Controles ==========================================================================*/
+   
+  .artigos-controles {
+    padding: 32px 60px; /* espaçamento interno da barra de controles */
+    display: flex; /* organiza busca e filtros em coluna */
+    flex-direction: column; /* empilha busca e filtros verticalmente */
+    gap: 20px; /* espaço entre a busca e os filtros */
+    border-bottom: 3px solid var(--cor-5); /* linha de destaque na base dos controles */
+    background-color: var(--cor-6); /* fundo da barra de controles */
+  }
+   
+      /*============== Busca ==============*/
+   
+  .busca-container {
+    position: relative; /* permite posicionar o ícone de busca dentro do campo */
+    max-width: 960px; /* largura máxima da barra de busca */
+    margin: 0 auto; /* centraliza a barra de busca horizontalmente */
+    width: 100%; /* ocupa toda a largura disponível até o máximo */
+  }
+   
+  .busca-icone {
+    position: absolute; /* posiciona o ícone sobre o campo de busca */
+    left: 20px; /* distância do ícone em relação à esquerda do campo */
+    top: 47%; /* posiciona o ícone verticalmente próximo ao centro */
+    transform: translateY(-50%); /* ajusta fino para centralizar verticalmente o ícone */
+    color: var(--cor-cinza); /* cor do ícone de busca */
+    font-size: 15.5px; /* tamanho do ícone de busca */
+    pointer-events: none; /* impede que o ícone capture cliques, deixando o clique passar para o campo */
+  }
+   
+  .busca-input {
+    width: 100%; /* campo de busca ocupa toda a largura do container */
+    padding: 12px 16px 12px 44px; /* espaçamento interno, com espaço extra à esquerda para o ícone */
+    border: 1.5px solid var(--cor-borda); /* borda padrão do campo de busca */
+    border-radius: 100px; /* deixa o campo com formato de pílula */
+    font-size: 14px; /* tamanho do texto digitado */
+    background-color: white; /* fundo branco do campo */
+    color: var(--cor-texto); /* cor do texto digitado */
+    outline: none; /* remove o contorno padrão do navegador */
+  }
+   
+  .busca-input:focus {
+    border-color: var(--cor-principal); /* cor da borda ao focar no campo de busca */
+    box-shadow: 0 0 10px 3px rgba(173, 74, 8, 0.2); /* halo de destaque ao redor do campo focado */
+  }
+   
+      /*============== Filtro ==============*/
+   
+  .filtro-lista {
+    justify-content: center; /* centraliza os botões de filtro horizontalmente */
+    display: flex; /* alinha os botões de filtro em linha */
+    gap: 16px; /* espaço entre os botões de filtro */
+    flex-wrap: wrap; /* permite quebrar os botões em telas menores */
+  }
+   
+  .filtro-btn {
+    padding: 1px 18px; /* espaçamento interno do botão de filtro */
+    border-radius: 100px; /* deixa o botão com formato de pílula */
+    border: 2px solid var(--cor-1); /* borda padrão do botão */
+    background-color: white; /* fundo branco do botão */
+    font-size: 15px; /* tamanho do texto do botão */
+    font-weight: 900; /* peso (grossura) bem forte do texto */
+    color: var(--cor-texto-suave); /* cor padrão do texto do botão */
+    cursor: pointer; /* indica que o botão é clicável */
+    transition: all .5 ease; /* ATENÇÃO: falta a unidade de tempo, deveria ser ".5s ease" */
+  }
+   
+  .filtro-btn:hover {
+    border-color: var(--cor-1); /* mantém a cor da borda ao passar o mouse */
+    color: #daa520; /* cor dourada do texto ao passar o mouse */
+  }
+   
+  .filtro-btn.ativo {
+    background-color: var(--cor-principal); /* fundo do filtro selecionado */
+    color: var(--cor-principal); /* ATENÇÃO: cor inicial do texto (sobrescrita logo abaixo, ver aviso no final) */
+    color: white; /* cor final do texto do filtro ativo, sobrescreve a declaração anterior */
+  }
+   
+  /*============== Container Artigos ==========================================================================*/
+   
+  .artigos-grid-container {
+    padding: 48px 60px; /* espaçamento interno da área de listagem de artigos */
+  }
+   
+  .artigos-grid-titulo {
+    font-size: 12px; /* tamanho do título pequeno acima da grade */
+    text-transform: uppercase; /* deixa o texto em maiúsculas */
+    letter-spacing: 2px; /* espaçamento entre as letras do título */
+    color: var(--cor-cinza); /* cor do título */
+    margin-bottom: 28px; /* espaço abaixo do título */
+  }
+   
+  .artigos-grid {
+    display: grid; /* organiza os cards de artigo em grade */
+    grid-template-columns: repeat(3, 1fr); /* cria 3 colunas de largura igual */
+    gap: 24px; /* espaço entre os cards */
+  }
+   
+  /*============== Card Artigos ==========================================================================*/
+   
+  .artigo-card {
+    background-color: white; /* fundo branco do card */
+    border: 1px solid var(--cor-borda); /* borda sutil ao redor do card */
+    border-radius: 12px; /* arredondamento das bordas do card */
+    overflow: hidden; /* garante que a imagem respeite as bordas arredondadas */
+    display: flex; /* organiza imagem e corpo do card em coluna */
+    flex-direction: column; /* empilha imagem e corpo verticalmente */
+    transition: all .5s ease; /* suaviza qualquer mudança visual no card */
+  }
+   
+  .artigo-card:hover {
+    box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.3); /* sombra mais forte ao passar o mouse */
+    transform: translateY(-5px); /* levanta levemente o card ao passar o mouse */
+  }
+   
+  .artigo-card-imagem {
+    height: 180px; /* altura fixa da área de imagem do card */
+    background-color: var(--cor-escuro); /* fundo visível enquanto a imagem carrega */
+    overflow: hidden; /* garante que a imagem respeite os limites do card */
+    position: relative; /* permite posicionar elementos sobre a imagem, se necessário */
+  }
+   
+  .artigo-card-imagem img {
+    width: 100%; /* imagem ocupa toda a largura da área de imagem */
+    height: 100%; /* imagem ocupa toda a altura da área de imagem */
+    object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
+    transition: all .5s ease; /* suaviza o efeito de zoom no hover */
+  }
+   
+  .artigo-card:hover .artigo-card-imagem img {
+    transform: scale(1.05); /* aplica um leve zoom na imagem ao passar o mouse no card */
+  }
+   
+  .artigos-card-corpo {
+    padding: 24px; /* espaçamento interno do corpo do card */
+    display: flex; /* organiza título, texto e rodapé em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    gap: 10px; /* espaço entre os elementos do corpo do card */
+    flex: 1; /* faz o corpo ocupar o espaço restante do card, empurrando o rodapé para baixo */
+  }
+   
+  .artigo-card-titulo {
+    font-family: var(--fonte-titulo); /* fonte do título do artigo */
+    font-size: 20px; /* tamanho do título do artigo */
+    line-height: 1.35; /* espaçamento entre as linhas do título */
+    color: var(--cor-texto); /* cor do título do artigo */
+    transition: all .5s ease; /* suaviza a troca de cor no hover */
+  }
+   
+  .artigo-card-titulo:hover {
+    color: var(--cor-principal); /* cor do título ao passar o mouse */
+  }
+   
+  .artigo-card-texto {
+    font-size: 14px; /* tamanho do texto de resumo do artigo */
+    line-height: 1.7; /* espaçamento entre as linhas do resumo */
+    color: var(--cor-texto-suave); /* cor do texto de resumo */
+    flex: 1; /* faz o resumo ocupar o espaço restante, empurrando o rodapé para baixo */
+  }
+   
+  .artigo-card-rodape {
+    display: flex; /* alinha a meta-informação e o link "ler mais" em linha */
+    align-items: center; /* centraliza os itens verticalmente */
+    justify-content: space-between; /* separa um de cada lado */
+    margin-top: 8px; /* espaço acima do rodapé do card */
+    padding-top: 16px; /* espaçamento interno acima do conteúdo do rodapé */
+    border-top: 1px solid var(--cor-borda); /* linha divisória acima do rodapé */
+  }
+   
+  .artigos-card-meta {
+    font-size: 13px; /* tamanho do texto de meta-informação (ex: data, categoria) */
+    color: var(--cor-cinza); /* cor do texto de meta-informação */
+  }
+   
+  .artigo-card-link {
+    font-size: 13px; /* tamanho do texto do link "ler mais" */
+    font-weight: 500; /* peso (grossura) do texto do link */
+    color: var(--cor-principal); /* cor do link "ler mais" */
+  }
+   
+  /*============== Clamp de texto ==========================================================================*/
+   
+  .texto-3-linhas {
+    display: -webkit-box; /* necessário para o line-clamp funcionar (propriedade não padrão) */
+    -webkit-line-clamp: 3; /* limita o texto a 3 linhas visíveis */
+    -webkit-box-orient: vertical; /* define a orientação da caixa como vertical, exigido pelo line-clamp */
+    overflow: hidden; /* esconde o texto que ultrapassar as 3 linhas */
+  }
+   
+      /*============== Badge ==============*/
+   
+  .badge {
+    display: inline-block; /* permite aplicar padding e largura ao badge sem quebrar o fluxo do texto */
+    padding: 4px 12px; /* espaçamento interno do badge */
+    border-radius: 100px; /* deixa o badge com formato de pílula */
+    font-size: 11px; /* tamanho do texto do badge */
+    font-weight: 500; /* peso (grossura) do texto do badge */
+    text-transform: uppercase; /* deixa o texto em maiúsculas */
+    letter-spacing: 1px; /* espaçamento entre as letras do texto */
+    width: fit-content; /* badge se ajusta ao tamanho do texto, sem esticar */
+  }
+   
+  .badge-laranja {
+    background-color: var(--cor-principal-claro); /* fundo claro do badge laranja */
+    color: var(--cor-principal); /* cor do texto do badge laranja */
+  }
+   
+  /*============== Botões ==========================================================================*/
+   
+  .btn-primario {
+    display: inline-flex; /* alinha ícone/texto do botão em linha */
+    align-items: center; /* centraliza o conteúdo verticalmente */
+    justify-content: center; /* centraliza o conteúdo horizontalmente */
+    gap: 8px; /* espaço entre ícone e texto, se houver */
+    background-color: var(--cor-principal); /* fundo do botão primário */
+    color: #fff; /* cor branca do texto do botão */
+    border-radius: 100px; /* deixa o botão com formato de pílula */
+    padding: 10px 20px; /* espaçamento interno do botão */
+    font-size: 15px; /* tamanho do texto do botão */
+    font-weight: 500; /* peso (grossura) do texto do botão */
+    border: none; /* remove borda padrão do botão */
+    cursor: pointer; /* indica que o botão é clicável */
+    transition: all .5s ease; /* suaviza qualquer mudança visual no botão */
+  }
+   
+  .btn-primario:hover {
+    background-color: var(--cor-principal-hover); /* fundo do botão ao passar o mouse */
+    transform: translateY(-2px); /* levanta levemente o botão ao passar o mouse */
+  }
+   
+  .btn-secudario {
+    display: inline-flex; /* alinha ícone/texto do botão em linha */
+    align-items: center; /* centraliza o conteúdo verticalmente */
+    justify-content: center; /* centraliza o conteúdo horizontalmente */
+    gap: 8px; /* espaço entre ícone e texto, se houver */
+    background-color: transparent; /* fundo transparente do botão secundário */
+    color: var(--cor-texto); /* cor do texto do botão secundário */
+    border-radius: 100px; /* deixa o botão com formato de pílula */
+    padding: 10px 20px; /* espaçamento interno do botão */
+    font-size: 15px; /* tamanho do texto do botão */
+    font-weight: 500; /* peso (grossura) do texto do botão */
+    border: 1.5px solid var(--cor-borda); /* borda visível do botão secundário */
+    cursor: pointer; /* indica que o botão é clicável */
+    transition: all .5s ease; /* suaviza qualquer mudança visual no botão */
+  }
+   
+  .btn-secudario:hover {
+    border-color: var(--cor-principal); /* cor da borda ao passar o mouse */
+    color: var(--cor-principal); /* cor do texto ao passar o mouse */
+    transform: translateY(-2px); /* levanta levemente o botão ao passar o mouse */
+  }
+   
+  .campo-grupo {
+    display: flex; /* organiza label e input em coluna */
+    flex-direction: column; /* empilha label acima do input */
+    gap: 8px; /* espaço entre o label e o input */
+  }
+   
+  .campo-label {
+    font-size: 13px; /* tamanho do texto do label */
+    font-weight: 500; /* peso (grossura) do texto do label */
+    color: var(--cor-texto-suave); /* cor do texto do label */
+    letter-spacing: 0.3px; /* espaçamento entre as letras do label */
+  }
+   
+  .campo-input {
+    width: 100%; /* campo ocupa toda a largura disponível */
+    padding: 13px 16xp; /* ATENÇÃO: "16xp" é inválido (deveria ser "16px"); isso invalida todo o padding */
+    border: 1.5 solid var(--cor-borda); /* ATENÇÃO: falta a unidade em "1.5" (deveria ser "1.5px"); isso invalida toda a borda */
+    border-radius: 6px; /* arredondamento das bordas do campo */
+    font-size: 20px; /* tamanho do texto digitado (maior que os demais campos do site, que usam ~13-14px) */
+    color: var(--cor-texto); /* cor do texto digitado */
+    background-color: white; /* fundo branco do campo */
+    transition: all .5s ease; /* suaviza qualquer mudança visual no campo */
+    outline: none; /* remove o contorno padrão do navegador */
+  }
+   
+  .campo-input:focus {
+    border-color: var(--cor-principal); /* cor da borda ao focar no campo */
+    box-shadow: 0 0 3px 3px rgba(57, 38, 232, 0.3); /* halo azulado ao redor do campo focado (destoa da paleta laranja usada no restante do site) */
+  }
+   
+  .campo-input::placeholder {
+    color: #bbb; /* cor do texto de exemplo (placeholder) dentro do campo */
+  }

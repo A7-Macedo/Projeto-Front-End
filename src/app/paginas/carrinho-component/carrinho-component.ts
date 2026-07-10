@@ -91,6 +91,13 @@ export class CarrinhoComponent {
     return this.subtotalUnit;
   }
 
+  // ===== Contador de peças =====
+
+  // soma a quantidade de TODOS os itens do carrinho (independente de estarem marcados)
+  get totalUnidades(): number {
+    return this.itens.reduce((soma, i) => soma + i.qtd, 0);
+  }
+
   finalizarCompra(): void {
     alert('Pedido finalizado!');
   }

@@ -6,22 +6,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CategoriesService {
-  private readonly http = inject(HttpClient)
-  private readonly apiUrl = 'https://api-senai-angular.vercel.app/api/lumiere/categories'
 
+  private readonly http = inject(HttpClient);
+
+  private readonly apiUrl =
+    'https://api-senai-angular.vercel.app/api/lumiere/categories';
 
   get(): Observable<any> {
-    return this.http.get(this.apiUrl)
+    return this.http.get(this.apiUrl);
   }
 
   post(formData: FormData): Observable<any> {
-    return this.http.post(this.apiUrl, formData)
+    return this.http.post(this.apiUrl, formData);
   }
 
-  delete(id: any): Observable<any> {
-    return this.http.delete(this.apiUrl + "/" + id)
+  put(id: number, formData: FormData): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, formData);
   }
 
-
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 
 }

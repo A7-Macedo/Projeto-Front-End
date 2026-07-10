@@ -41,10 +41,11 @@
         <option value="GG">GG</option>
       </select>
     </label> -->
+    
     <label class="input-arquivo">
       <span>Imagem da Roupa</span>
       <input type="file" accept=".png,.jpg,.jpeg,.webp" (change)="onFileChange($event)" required />
 
       <button type="submit">
-        Cadastrar Roupa
+        {{id ? "Atualizar Roupa" : "Publicar nova roupa"}}
       </button>

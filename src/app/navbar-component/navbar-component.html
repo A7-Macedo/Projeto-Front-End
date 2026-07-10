@@ -1,7 +1,7 @@
 <header class="cabecalho">
   <img src="logolumiere.png" alt="logo" class="logo" onclick="window.location.href='/inicio'" style="cursor: pointer;">
-        
-  
+
+
             <nav class="navbar">
                 <ul class="nav-lista">
                     <li><a routerLink="/inicio" routerLinkActive="ativo" class="nav-link">Inicio</a></li>
@@ -18,12 +18,17 @@
                 }
 
                 <span class="carrinho">
-                <img src="/lumière9.9.png" routerLink="carrinho">
-            </span>
-                
+                  <img src="/lumière9.9.png" routerLink="/carrinho">
+                  @if ((totalItens$ | async); as totalItens) {
+                    @if (totalItens > 0) {
+                      <span class="carrinho-badge">{{ totalItens }}</span>
+                    }
+                  }
+                </span>
+
               <nav class="icone-usuario">
             <img src="usernofoto.png" onclick="window.location.href='/login'">
-        
+
         </nav>
 
 

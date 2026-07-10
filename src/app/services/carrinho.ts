@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface ItemCarrinho {
   id: number;
@@ -20,8 +21,13 @@ export class CarrinhoService {
 
   private itens: ItemCarrinho[] = [];
 
+  // ===== Contador global (pra badge no header, por exemplo) =====
+  private totalItensSubject = new BehaviorSubject<number>(0);
+  readonly totalItens$: Observable<number> = this.totalItensSubject.asObservable();
+
   constructor() {
     this.itens = this.carregar();
+    this.atualizarContador();
   }
 
   private carregar(): ItemCarrinho[] {
@@ -35,6 +41,13 @@ export class CarrinhoService {
 
   private salvar(): void {
     localStorage.setItem(CHAVE_STORAGE, JSON.stringify(this.itens));
+    this.atualizarContador();
+  }
+
+  // soma a quantidade de todas as peças (independente de estarem marcadas)
+  private atualizarContador(): void {
+    const total = this.itens.reduce((soma, i) => soma + i.qtd, 0);
+    this.totalItensSubject.next(total);
   }
 
   getItens(): ItemCarrinho[] {

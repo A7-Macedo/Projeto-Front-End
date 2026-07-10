@@ -1,0 +1,53 @@
+<div class="quadro-edicao">
+  <h2>Editar Roupa</h2>
+
+  <div class="barra-busca">
+    <input
+      type="number"
+      [(ngModel)]="idBusca"
+      placeholder="Digite o ID da roupa"
+      class="input-busca"
+      (keyup.enter)="buscarProduto()"
+    />
+    <button (click)="buscarProduto()" class="btn-buscar">Buscar</button>
+    <button (click)="limparBusca()" class="btn-limpar">Limpar</button>
+  </div>
+
+  <p class="mensagem-erro" *ngIf="mensagemErro">{{ mensagemErro }}</p>
+
+  <div class="formulario-edicao" *ngIf="produtoEncontrado">
+    <div class="preview-imagem">
+      <img [src]="previewUrl || produtoEncontrado.image_url" alt="" class="imagem-produto">
+
+      <label class="input-arquivo">
+        <span>Trocar imagem</span>
+        <input type="file" accept=".png,.jpg,.jpeg,.webp" (change)="onFileChange($event)" />
+      </label>
+    </div>
+
+    <div class="campos">
+      <label>ID</label>
+      <input type="text" [value]="produtoEncontrado.id" disabled class="campo-disabled">
+
+      <label>Título</label>
+      <input type="text" [(ngModel)]="produtoEncontrado.name">
+
+      <label>Descrição</label>
+      <textarea [(ngModel)]="produtoEncontrado.description" rows="3"></textarea>
+
+      <label>Categoria</label>
+      <select [(ngModel)]="produtoEncontrado.categoryId">
+        @for (item of categories(); track item.id) {
+          <option [value]="item.id">{{ item.name }}</option>
+        }
+      </select>
+
+      <label>Preço (R$)</label>
+      <input type="number" step="0.01" [(ngModel)]="produtoEncontrado.price">
+
+      <div class="botoes-acao">
+        <button (click)="salvarEdicao()" class="btn-salvar">Salvar Alterações</button>
+      </div>
+    </div>
+  </div>
+</div>

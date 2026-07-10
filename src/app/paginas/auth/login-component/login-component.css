@@ -1,189 +1,178 @@
-
-
 /*================  Painel esquerdo ==========================================================================*/
-
-
-.login-pagina{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 100vh;
-}
-
-.login-painel-esquerdo{
-    background-color: var(--cor-5);
-    display: flex;
-    flex-direction: column  ;
-    justify-content: space-between;
-    padding: 48px;
-    color: var(--cor-6);
-}
-
-.login-painel-esquerdo{
-    background-color: var(--cor-6);
-    display: flex;
-    flex-direction:column ;
-    justify-content: space-between;
-    padding: 48px;
-    color: var(--cor-5);
-}
-
-.login-painel-esquerdo .logo{
-    color: var(--cor-2);
-}
-
-.login-frase{
-    font-family: var(--fonte-titulo);
-    font-size: 48px;
-    line-height: 1.2;
-    color: var(--cor-2);
-}
-
-.login-frase span{
-    color: var(--cor-3);
-}
-
-.linha-acento {
-    width: 48px;
-    height: 3px;
-    background: linear-gradient(to right, var(--cor-5),transparent);
-    border-radius: 4px;
-    margin-bottom: 16px;
-}
-
-.login-rodape-painel{
-    font-size: 14px;
-    color: var(--cor-3)
-}
-
-.fundo-pontos{
-    position: relative;
-    overflow: hidden;       
-}
-
-.fundo-pontos::before{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle, rgba(39, 32, 32, 0.5) 2px, transparent 2px);
-    background-size: 100px 10px;
-    pointer-events: none;
-}
-
-/*================  Painel Direito ==========================================================================*/
-
-.login-painel-direito{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 48px ;
-    background-color: var(--cor-fundo);
-}
-
-.login-form-card{
-    width: 100%;
-    max-width: 480px;
-    padding: 32px;
-    box-shadow: 0 0 30px 3px rgba(63, 63, 63, 0.09);
-    border-radius: 15px;
-}
-
-.login-titulo{
-    font-family: var(--fonte-titulo);
-    font-size: 34px;
-    margin-bottom: 16px;
-}
-
-.login-btn-submit{
-    width: 100%;
-    margin-top: 8px;
-    font-size: 14px;
-    color: var(--cor-5);
-}
-
-.login-cadastro-link{
-    text-align: center;
-    margin-top: 8px;
-    font-size: 14px;
-    color: var(--cor-5);
-}
-
-.login-cadastro-link a {
-    color: var(--cor-5);
-    font-weight: 500;
-    transition: all .5 ease;
-}
-
-.login-cadastro-link a:hover{
-    opacity: 0.75;
-}
-
-.login-esqueceu{
-  font-size: 13px;
-  color: var(--cor-7);
-  text-align: right;
-  display: block;
-  margin-top: -8px;
-  transition: opacity var(--cor-2);
-}
-
-.login-esqueceu:hover {
-    opacity: 0.75;
+ 
+.login-pagina {
+    display: grid; /* organiza os dois painéis (esquerdo e direito) lado a lado */
+    grid-template-columns: 1fr 1fr; /* cria duas colunas de largura igual */
+    min-height: 100vh; /* garante que a página ocupe toda a altura da tela */
   }
-
-  .campo-input{
-    width: 100%;
-    padding: 12px 14px;
-    font-size: 13px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 50px;
-    background-color: white;
-    color: var(--cor-5);
-    transition: border-color var(--cor-2), box-shadow var(--transicao);
-
+   
+  .login-painel-esquerdo {
+    background-color: var(--cor-5); /* fundo inicial do painel (sobrescrito logo abaixo) */
+    display: flex; /* organiza o conteúdo do painel em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    justify-content: space-between; /* separa o topo (logo/frase) do rodapé do painel */
+    padding: 48px; /* espaçamento interno do painel */
+    color: var(--cor-6); /* cor do texto inicial do painel (sobrescrita logo abaixo) */
   }
-
-  .campo-grupo{
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 20px;
-
+   
+  .login-painel-esquerdo {
+    background-color: var(--cor-6); /* fundo final do painel, sobrescreve a declaração anterior */
+    display: flex; /* repete o mesmo valor da declaração anterior */
+    flex-direction: column; /* repete o mesmo valor da declaração anterior */
+    justify-content: space-between; /* repete o mesmo valor da declaração anterior */
+    padding: 48px; /* repete o mesmo valor da declaração anterior */
+    color: var(--cor-5); /* cor final do texto do painel, sobrescreve a declaração anterior */
   }
-
-  .campo-label{
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--cor-6);
-
+   
+  .login-painel-esquerdo .logo {
+    color: var(--cor-2); /* cor da logo dentro do painel esquerdo */
   }
-
-  .campo-input:focus{
-    outline: none;
-    border-color: var(--cor-5);
-    box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
-}
-
-.campo-input::placeholder{
-    color: rgba(0,0,0,0.4);
-}
-
-.login-btn-submit{
-    width: 100%;
-    margin-top: 8px;
-    font-size: 14px;
-    color: var(--cor-3);
-    background-color: var(--cor-5); /* ou a cor que você quiser */
-    padding: 12px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-.login-btn-submit:hover{
-    color: var(--cor-2);
-}
-
-
-
-
-
+   
+  .login-frase {
+    font-family: var(--fonte-titulo); /* fonte da frase de destaque */
+    font-size: 48px; /* tamanho da frase de destaque */
+    line-height: 1.2; /* espaçamento entre as linhas da frase */
+    color: var(--cor-2); /* cor da frase de destaque */
+  }
+   
+  .login-frase span {
+    color: var(--cor-3); /* cor de destaque para parte da frase */
+  }
+   
+  .linha-acento {
+    width: 48px; /* largura da linha decorativa */
+    height: 3px; /* espessura da linha decorativa */
+    background: linear-gradient(to right, var(--cor-5), transparent); /* gradiente que desaparece da esquerda pra direita */
+    border-radius: 4px; /* arredonda as pontas da linha */
+    margin-bottom: 16px; /* espaço abaixo da linha decorativa */
+  }
+   
+  .login-rodape-painel {
+    font-size: 14px; /* tamanho do texto do rodapé do painel */
+    color: var(--cor-3); /* cor do texto do rodapé do painel */
+  }
+   
+  .fundo-pontos {
+    position: relative; /* permite posicionar o pseudo-elemento ::before dentro deste container */
+    overflow: hidden; /* impede que o padrão de pontos vaze para fora do container */
+  }
+   
+  .fundo-pontos::before {
+    content: ''; /* cria um elemento vazio para desenhar o padrão de pontos */
+    position: absolute; /* posiciona o padrão de pontos sobre todo o container */
+    inset: 0; /* estica o pseudo-elemento para preencher todo o container (topo, direita, baixo, esquerda = 0) */
+    background: radial-gradient(circle, rgba(39, 32, 32, 0.5) 2px, transparent 2px); /* desenha pontinhos repetidos */
+    background-size: 100px 10px; /* define o espaçamento entre os pontos */
+    pointer-events: none; /* impede que o padrão de pontos capture cliques do mouse */
+  }
+   
+  /*================  Painel Direito ==========================================================================*/
+   
+  .login-painel-direito {
+    display: flex; /* centraliza o card de login dentro do painel */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    padding: 48px; /* espaçamento interno do painel direito */
+    background-color: var(--cor-fundo); /* fundo do painel direito */
+  }
+   
+  .login-form-card {
+    width: 100%; /* card ocupa toda a largura disponível até o máximo */
+    max-width: 480px; /* largura máxima do card de login */
+    padding: 32px; /* espaçamento interno do card */
+    box-shadow: 0 0 30px 3px rgba(63, 63, 63, 0.09); /* sombra suave ao redor do card */
+    border-radius: 15px; /* arredondamento das bordas do card */
+  }
+   
+  .login-titulo {
+    font-family: var(--fonte-titulo); /* fonte do título do formulário de login */
+    font-size: 34px; /* tamanho do título */
+    margin-bottom: 16px; /* espaço abaixo do título */
+  }
+   
+  .login-cadastro-link {
+    text-align: center; /* centraliza o texto do link de cadastro */
+    margin-top: 8px; /* espaço acima do link */
+    font-size: 14px; /* tamanho do texto */
+    color: var(--cor-5); /* cor do texto */
+  }
+   
+  .login-cadastro-link a {
+    color: var(--cor-5); /* cor do link de cadastro */
+    font-weight: 500; /* peso (grossura) do texto do link */
+    transition: all .5 ease; /* ATENÇÃO: falta a unidade de tempo, deveria ser ".5s ease" */
+  }
+   
+  .login-cadastro-link a:hover {
+    opacity: 0.75; /* deixa o link levemente transparente ao passar o mouse */
+  }
+   
+  .login-esqueceu {
+    font-size: 13px; /* tamanho do texto "Esqueceu a senha?" */
+    color: var(--cor-7); /* cor do texto */
+    text-align: right; /* alinha o texto à direita */
+    display: block; /* garante que o link ocupe a linha inteira, respeitando o alinhamento */
+    margin-top: -8px; /* aproxima o texto do campo de senha acima */
+    transition: opacity var(--cor-2); /* ATENÇÃO: usa uma variável de cor onde deveria haver uma duração (ex: 0.3s) */
+  }
+   
+  .login-esqueceu:hover {
+    opacity: 0.75; /* deixa o texto levemente transparente ao passar o mouse */
+  }
+   
+  .campo-input {
+    width: 100%; /* campo ocupa toda a largura disponível */
+    padding: 12px 14px; /* espaçamento interno do campo */
+    font-size: 13px; /* tamanho do texto digitado */
+    border: 1px solid rgba(0,0,0,0.15); /* borda sutil do campo */
+    border-radius: 50px; /* deixa o campo com formato de pílula */
+    background-color: white; /* fundo branco do campo */
+    color: var(--cor-5); /* cor do texto digitado */
+    transition: border-color var(--cor-2), box-shadow var(--transicao); /* ATENÇÃO: border-color usa uma variável de cor no lugar de uma duração */
+  }
+   
+  .campo-grupo {
+    display: flex; /* organiza label e input em coluna */
+    flex-direction: column; /* empilha label acima do input */
+    gap: 6px; /* espaço entre o label e o input */
+    margin-bottom: 20px; /* espaço abaixo de cada grupo de campo */
+  }
+   
+  .campo-label {
+    font-size: 14px; /* tamanho do texto do label */
+    font-weight: 500; /* peso (grossura) do texto do label */
+    color: var(--cor-6); /* cor do texto do label */
+  }
+   
+  .campo-input:focus {
+    outline: none; /* remove o contorno padrão do navegador ao focar */
+    border-color: var(--cor-5); /* cor da borda ao focar no campo */
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.05); /* halo suave ao redor do campo focado */
+  }
+   
+  .campo-input::placeholder {
+    color: rgba(0,0,0,0.4); /* cor do texto de exemplo (placeholder) dentro do campo */
+  }
+   
+  .login-btn-submit {
+    width: 100%; /* botão inicial ocupa toda a largura (sobrescrito logo abaixo) */
+    margin-top: 8px; /* espaço acima do botão */
+    font-size: 14px; /* tamanho do texto do botão */
+    color: var(--cor-5); /* cor inicial do texto do botão (sobrescrita logo abaixo) */
+  }
+   
+  .login-btn-submit {
+    width: 100%; /* repete o mesmo valor da declaração anterior */
+    margin-top: 8px; /* repete o mesmo valor da declaração anterior */
+    font-size: 14px; /* repete o mesmo valor da declaração anterior */
+    color: var(--cor-3); /* cor final do texto do botão, sobrescreve a declaração anterior */
+    background-color: var(--cor-5); /* fundo do botão */
+    padding: 12px; /* espaçamento interno do botão */
+    border: none; /* remove borda padrão do botão */
+    border-radius: 15px; /* arredondamento das bordas do botão */
+    cursor: pointer; /* indica que o botão é clicável */
+  }
+   
+  .login-btn-submit:hover {
+    color: var(--cor-2); /* cor do texto do botão ao passar o mouse */
+  }

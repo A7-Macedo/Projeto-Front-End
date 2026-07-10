@@ -1,196 +1,155 @@
-<div class="min-h-screen p-8" style="background-color: var(--cor-fundo); font-family: var(--fonte-corpo);">
+<div class="min-h-screen p-8 pagina-categorias">
 
-    <div class="max-w-7xl mx-auto">
-  
-      <!-- Cabeçalho -->
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <h1 class="text-4xl font-bold" style="font-family: var(--fonte-titulo); color: var(--cor-8);">
-            Categorias
-          </h1>
-          <p class="mt-2 text-sm" style="color: var(--cor-6);">
-            Gerencie as categorias cadastradas no sistema.
-          </p>
-        </div>
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Cabeçalho -->
+    <div class="flex items-center justify-between mb-8">
+      <div>
+        <h1 class="text-4xl font-bold titulo-principal">
+          Categorias
+        </h1>
+        <p class="mt-2 text-sm subtitulo">
+          Gerencie as categorias cadastradas no sistema.
+        </p>
       </div>
-  
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-  
-        <!-- Formulário -->
-        <div
-          class="rounded-xl p-6 h-fit"
-          style="background-color: var(--cor-2); box-shadow: var(--sombra-md);">
-  
-          <h2
-            class="text-2xl font-semibold mb-6"
-            style="font-family: var(--fonte-titulo); color: var(--cor-8);">
-            Nova Categoria
-          </h2>
-  
-          <form class="space-y-5" [formGroup]="categorieForm" (ngSubmit)="onSubmit()">
-  
-            <!-- Nome -->
-            <div>
-              <label
-                for="name"
-                class="block mb-2 font-medium"
-                style="color: var(--cor-7);">
-                Nome <span style="color: var(--cor-5);">*</span>
-              </label>
-  
-              <input
-                id="name"
-                type="text"
-                formControlName="name"
-                placeholder="Digite o nome da categoria"
-                class="w-full rounded-lg border px-4 py-3 outline-none transition"
-                style="
-                  border-color: var(--cor-3);
-                  background-color: white;
-                " />
-            </div>
-  
-            <!-- Descrição -->
-            <div>
-              <label
-                for="description"
-                class="block mb-2 font-medium"
-                style="color: var(--cor-7);">
-                Descrição
-              </label>
-  
-              <textarea
-                id="description"
-                rows="4"
-                formControlName="description"
-                placeholder="Descrição da categoria (opcional)"
-                class="w-full rounded-lg border px-4 py-3 resize-none outline-none transition"
-                style="
-                  border-color: var(--cor-3);
-                  background-color: white;
-                ">
-              </textarea>
-            </div>
-  
-            <!-- Botão -->
-            <button
-              type="submit"
-              class="w-full py-3 rounded-lg font-semibold text-white transition hover:brightness-110"
-              style="background-color: var(--cor-5);">
-              Cadastrar Categoria
-            </button>
-  
-          </form>
-  
-        </div>
-  
-        <!-- Listagem -->
-        <div class="lg:col-span-2">
-  
-          <div
-            class="overflow-hidden rounded-xl"
-            style="background-color: white; box-shadow: var(--sombra-md);">
-  
-            <div
-              class="px-6 py-4 flex items-center justify-between"
-              style="background-color: var(--cor-5);">
-  
-              <h2
-                class="text-xl font-semibold text-white"
-                style="font-family: var(--fonte-titulo);">
-                Lista de Categorias
-              </h2>
-  
-              <span
-                class="text-sm px-3 py-1 rounded-full"
-                style="background-color: var(--cor-3); color: var(--cor-8);">
-                {{ categorias().length }} registros
-              </span>
-  
-            </div>
-  
-            <div class="overflow-x-auto">
-  
-              <table class="w-full">
-  
-                <thead style="background-color: var(--cor-2);">
-  
-                  <tr class="text-left">
-  
-                    <th class="px-6 py-4 font-semibold" style="color: var(--cor-8);">
-                      Nome
-                    </th>
-  
-                    <th class="px-6 py-4 font-semibold" style="color: var(--cor-8);">
-                      Descrição
-                    </th>
-  
-                    <th class="px-6 py-4 text-center font-semibold" style="color: var(--cor-8);">
-                      Ações
-                    </th>
-  
-                  </tr>
-  
-                </thead>
-  
-                <tbody>
-  
-                  <tr
-                    *ngFor="let categoria of categorias()"
-                    class="border-b hover:bg-gray-50 transition"
-                    style="border-color: var(--cor-3);">
-  
-                    <td class="px-6 py-4 font-medium" style="color: var(--cor-8);">
-                      {{ categoria.name }}
-                    </td>
-  
-                    <td class="px-6 py-4" style="color: var(--cor-6);">
-                      {{ categoria.description || '-' }}
-                    </td>
-  
-                    <td class="px-6 py-4">
-  
-                      <div class="flex justify-center gap-2">
-  
-                        <button
-                          type="button"
-                          class="px-4 py-2 rounded-lg text-white transition hover:brightness-110"
-                          style="background-color: var(--cor-4);">
-                          Editar
-                        </button>
-  
-                        <button
-                          type="button"
-                          class="px-4 py-2 rounded-lg text-white transition hover:brightness-110"
-                          style="background-color: var(--cor-5);">
-                          Excluir
-                        </button>
-  
-                      </div>
-  
-                    </td>
-  
-                  </tr>
-  
-                  <!-- Estado vazio -->
-                  <tr *ngIf="categorias().length === 0">
-                    <td colspan="3" class="py-12 text-center" style="color: var(--cor-6);">
-                      Nenhuma categoria cadastrada.
-                    </td>
-                  </tr>
-  
-                </tbody>
-  
-              </table>
-  
-            </div>
-  
-          </div>
-  
-        </div>
-  
-      </div>
-  
     </div>
-  
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Formulário -->
+      <div class="rounded-xl p-6 h-fit card-formulario">
+
+        <h2 class="text-2xl font-semibold mb-6 titulo-formulario">
+          Nova Categoria
+        </h2>
+
+        <form class="space-y-5" [formGroup]="categorieForm" (ngSubmit)="onSubmit()">
+
+          <!-- Nome -->
+          <div>
+            <label for="name" class="block mb-2 font-medium label-campo">
+              Nome <span class="campo-obrigatorio">*</span>
+            </label>
+
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              placeholder="Digite o nome da categoria"
+              class="w-full rounded-lg border px-4 py-3 outline-none transition input-campo" />
+          </div>
+
+          <!-- Descrição -->
+          <div>
+            <label for="description" class="block mb-2 font-medium label-campo">
+              Descrição
+            </label>
+
+            <textarea
+              id="description"
+              rows="4"
+              formControlName="description"
+              placeholder="Descrição da categoria (opcional)"
+              class="w-full rounded-lg border px-4 py-3 resize-none outline-none transition input-campo">
+            </textarea>
+          </div>
+
+          <!-- Botão -->
+          <button
+            type="submit"
+            class="w-full py-3 rounded-lg font-semibold text-white transition hover:brightness-110 btn-cadastrar">
+            Cadastrar Categoria
+          </button>
+
+        </form>
+
+      </div>
+
+      
+      <!-- Listagem -->
+      <div class="lg:col-span-2">
+
+        <div class="overflow-hidden rounded-xl card-listagem">
+
+          <div class="px-6 py-4 flex items-center justify-between cabecalho-listagem">
+
+            <h2 class="text-xl font-semibold text-white titulo-listagem">
+              Lista de Categorias
+            </h2>
+
+            <span class="text-sm px-3 py-1 rounded-full badge-contagem">
+              {{ categorias().length }} registros
+            </span>
+
+          </div>
+
+          <div class="overflow-x-auto">
+
+            <table class="w-full">
+
+              <thead class="cabecalho-tabela">
+
+                <tr class="text-left">
+                  <th class="px-6 py-4 font-semibold coluna-titulo">Nome</th>
+                  <th class="px-6 py-4 font-semibold coluna-titulo">Descrição</th>
+                  <th class="px-6 py-4 text-center font-semibold coluna-titulo">Ações</th>
+                </tr>
+
+              </thead>
+
+              <tbody>
+
+                <tr
+                  *ngFor="let categoria of categorias()"
+                  class="border-b hover:bg-gray-50 transition linha-tabela">
+
+                  <td class="px-6 py-4 font-medium celula-nome">
+                    {{ categoria.name }}
+                  </td>
+
+                  <td class="px-6 py-4 celula-descricao">
+                    {{ categoria.description || '-' }}
+                  </td>
+
+                  <td class="px-6 py-4">
+                    <div class="flex justify-center gap-2">
+                      <button
+                      type="button"
+                      class="btn-editar"
+                      (click)="editCategory(categoria)">
+                      Editar
+                    </button>
+                    
+                    <button
+                      type="button"
+                      class="btn-excluir"
+                      (click)="deleteCategory(categoria)">
+                      Excluir
+                    </button>
+                    </div>
+                  </td>
+
+                </tr>
+
+                <!-- Estado vazio -->
+                <tr *ngIf="categorias().length === 0">
+                  <td colspan="3" class="py-12 text-center estado-vazio">
+                    Nenhuma categoria cadastrada.
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
+</div>

@@ -1,154 +1,252 @@
-
-
-
-
-.btn-cadastrar{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--espcaco-sm);
-    padding: 12px var(--espcaco-lg);
-    background-color: var(--cor-5);
-    color: #fff;
-    font-family: var(--fonte-corpo);
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    border-radius: var(--raio-pill);
-    box-shadow: var(--sombra-sm);
-    transition: background-color var(--transicao), transform var(--transicao), box-shadow var(--transicao);
-}
-
-.btn-cadastrar:hover{
-    background-color: var(--cor-7);
-    box-shadow: var(--sombra-md);
-    transform: translateY(-2px);
-}
-
-.btn-cadastrar:active{
-    background-color: var(--cor-8);
-    transform: translateY(0);
-    box-shadow: var(--sombra-sm);
-}
-
+/* ===== BOTÃO CADASTRAR ===== */
 .btn-cadastrar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    margin: 20px;
-    padding: 14px 28px;
-
-    background: linear-gradient(135deg, var(--cor-5), var(--cor-6));
-    color: var(--cor-2);
-
-    text-decoration: none;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 0.8px;
-
-    border: 2px solid var(--cor-4);
-    border-radius: 50px;
-
-    cursor: pointer;
-
-    transition: all .3s ease;
-    box-shadow: 0 6px 15px rgba(0,0,0,.18);
+  display: inline-flex; /* alinha ícone/texto do botão em linha */
+  align-items: center; /* centraliza o conteúdo verticalmente */
+  justify-content: center; /* centraliza o conteúdo horizontalmente */
+  margin: 0; /* remove margem externa do botão */
+  padding: 14px 28px; /* espaçamento interno do botão */
+  background: linear-gradient(135deg, var(--cor-5), var(--cor-6)); /* gradiente de fundo do botão */
+  color: var(--cor-2); /* cor do texto do botão */
+  text-decoration: none; /* remove sublinhado, caso seja um link */
+  font-family: 'Bebas Neue', sans-serif; /* fonte do texto do botão */
+  font-size: 18px; /* tamanho do texto do botão */
+  letter-spacing: 0.8px; /* espaçamento entre as letras do texto */
+  border: 2px solid var(--cor-4); /* borda de destaque do botão */
+  border-radius: 50px; /* deixa o botão com cantos bem arredondados (pílula) */
+  cursor: pointer; /* indica que o botão é clicável */
+  transition: all .3s ease; /* suaviza qualquer mudança visual no botão */
+  box-shadow: 0 6px 15px rgba(0,0,0,.18); /* sombra do botão */
 }
-
 .btn-cadastrar:hover {
-    background: linear-gradient(135deg, var(--cor-6), var(--cor-7));
-    transform: translateY(-3px);
-    box-shadow: 0 10px 22px rgba(0,0,0,.28);
-    color: var(--cor-2);
+  background: linear-gradient(135deg, var(--cor-6), var(--cor-7)); /* gradiente mais escuro no hover */
+  transform: translateY(-3px); /* levanta levemente o botão ao passar o mouse */
+  box-shadow: 0 10px 22px rgba(0,0,0,.28); /* aumenta a sombra no hover */
+  color: var(--cor-2); /* mantém a cor do texto no hover */
 }
-
 .btn-cadastrar:active {
-    transform: scale(.97);
+  transform: scale(.97); /* efeito de "clique" ao pressionar o botão */
 }
-
 .btn-cadastrar:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px rgba(203, 159, 125, .35);
-}   
-
-div {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--espcaco-lg);
-  padding: var(--espcaco-xl);
-  background-color: var(--cor-fundo);
+  outline: none; /* remove o contorno padrão do navegador ao focar */
+  box-shadow: 0 0 0 4px rgba(203, 159, 125, .35); /* halo de destaque ao redor do botão focado */
+}
+ 
+/* ===== QUADRO DE CADASTRO ===== */
+.quadro-cadastro {
+  max-width: 1100px; /* largura máxima do quadro */
+  width: 100%; /* ocupa toda a largura disponível até o máximo */
+  margin: 40px auto; /* centraliza horizontalmente e adiciona espaço acima/abaixo */
+  padding: var(--espcaco-xl); /* espaçamento interno do quadro */
+  background-color: var(--cor-2); /* fundo do quadro */
+  border: 1px solid var(--cor-3); /* borda sutil ao redor do quadro */
+  border-radius: var(--raio); /* arredondamento das bordas do quadro */
+  box-shadow: var(--sombra-md); /* sombra do quadro */
+  display: flex; /* alinha título e botões em linha */
+  align-items: center; /* centraliza os itens verticalmente */
+  justify-content: center; /* centraliza os itens horizontalmente */
+  flex-wrap: wrap; /* permite quebrar os itens em telas menores */
+  gap: var(--espcaco-md); /* espaço entre título e botões */
+}
+.quadro-cadastro h2 {
+  height: 6.3vh; /* altura do título relativa à altura da tela */
+  font-family: var(--fonte-titulo); /* fonte do título */
+  font-size: 1.5rem; /* tamanho do título */
+  font-weight: 700; /* peso (grossura) do título */
+  color: var(--cor-7); /* cor do título */
+  margin: 0; /* remove margem externa padrão do h2 */
+  text-align: left; /* alinha o texto à esquerda */
+  white-space: nowrap; /* impede que o título quebre em várias linhas */
+}
+.quadro-cadastro-botoes {
+  display: flex; /* alinha os botões em linha */
+  align-items: center; /* centraliza os botões verticalmente */
+  gap: var(--espcaco-md); /* espaço entre os botões */
+  flex-wrap: wrap; /* permite quebrar os botões em telas menores */
+}
+ 
+/* ===== LINHA DIVISÓRIA ===== */
+.divisor-artigos {
+  border: none; /* remove a borda padrão do <hr> */
+  border-top: 1px solid var(--cor-3); /* linha divisória visível apenas no topo */
+  max-width: 90%; /* limita a largura da linha */
+  margin: var(--espcaco-xl) auto; /* centraliza e adiciona espaço acima/abaixo */
+}
+ 
+/* ===== LISTAGEM DE PRODUTOS (grid) ===== */
+.lista-produtos {
+  display: grid; /* organiza os produtos em grade */
+  grid-template-columns: repeat(5, 1fr); /* cria 5 colunas de largura igual */
+  gap: var(--espcaco-lg); /* espaço entre os cards de produto */
+  padding: var(--espcaco-xl); /* espaçamento interno da listagem */
+  background-color: var(--cor-fundo); /* fundo da área de listagem */
+}
+ 
+/* ===== CARD DE PRODUTO ===== */
+.card-produto {
+  box-sizing: border-box; /* inclui padding e borda no cálculo do tamanho */
+  list-style: none; /* remove marcador de lista, caso seja um <li>/<ul> */
+  margin: 0; /* remove margem externa padrão */
+  padding: 0; /* remove espaçamento interno padrão */
+  display: flex; /* organiza o conteúdo do card em coluna */
+  flex-direction: column; /* empilha os itens do card verticalmente */
+  background-color: var(--cor-2); /* fundo do card */
+  border: 1px solid var(--cor-3); /* borda sutil ao redor do card */
+  border-radius: var(--raio); /* arredondamento das bordas do card */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.20); /* sombra do card */
+  overflow: hidden; /* garante que a imagem respeite as bordas arredondadas */
+  transition: transform var(--transicao), box-shadow var(--transicao); /* suaviza o efeito de hover */
+  font-family: var(--fonte-corpo); /* fonte usada no conteúdo do card */
+}
+.card-produto:hover {
+  transform: translateY(-4px); /* levanta levemente o card ao passar o mouse */
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.30); /* aumenta a sombra no hover */
+}
+ 
+/* item 1: imagem */
+.card-produto li:nth-child(1) {
+  padding: 0; /* remove espaçamento interno ao redor da imagem */
+}
+.card-produto li:nth-child(1) img {
+  width: 100%; /* imagem ocupa toda a largura do card */
+  aspect-ratio: 4 / 3; /* mantém proporção fixa da imagem */
+  object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
+  display: block; /* remove espaço extra abaixo da imagem (comportamento inline) */
+  border-top-left-radius: var(--raio); /* arredonda o canto superior esquerdo */
+  border-top-right-radius: var(--raio); /* arredonda o canto superior direito */
+  transition: transform var(--transicao); /* suaviza o efeito de zoom no hover */
+}
+.card-produto:hover li:nth-child(1) img {
+  transform: scale(1.04); /* aplica um leve zoom na imagem ao passar o mouse no card */
+}
+ 
+/* item 2: Id */
+.card-produto li:nth-child(2) {
+  padding: var(--espcaco-sm) var(--espcaco-md) 0; /* espaçamento interno do item Id */
+  color: var(--cor-8); /* cor do texto do Id */
+  font-size: 0.8rem; /* tamanho do texto do Id */
+  opacity: 0.7; /* deixa o Id com menos destaque visual */
+}
+ 
+/* item 3: Nome */
+.card-produto li:nth-child(3) {
+  padding: var(--espcaco-sm) var(--espcaco-md) 0; /* espaçamento interno do nome */
+  font-family: var(--fonte-titulo); /* fonte do nome do produto */
+  font-size: 1.1rem; /* tamanho do texto do nome */
+  font-weight: 600; /* peso (grossura) do nome */
+  color: var(--cor-7); /* cor do nome do produto */
+}
+ 
+/* item 4: Descrição */
+.card-produto li:nth-child(4) {
+  padding: var(--espcaco-sm) var(--espcaco-md) 0; /* espaçamento interno da descrição */
+  color: var(--cor-6); /* cor do texto da descrição */
+  font-size: 0.85rem; /* tamanho do texto da descrição */
+}
+ 
+/* item 5: Preço */
+.card-produto li:nth-child(5) {
+  padding: var(--espcaco-sm) var(--espcaco-md) 0; /* espaçamento interno do preço */
+  font-weight: 700; /* peso (grossura) do preço, para dar destaque */
+  color: var(--cor-5); /* cor do preço */
+  font-size: 1rem; /* tamanho do texto do preço */
+}
+ 
+/* item 6: Categoria */
+.card-produto li:nth-child(6) {
+  padding: var(--espcaco-sm) var(--espcaco-md); /* espaçamento interno da categoria */
+  color: var(--cor-8); /* cor do texto da categoria */
+  font-size: 0.85rem; /* tamanho do texto da categoria */
+}
+ 
+/* item 7: Ações (botões) */
+.card-produto li:last-child {
+  display: flex; /* alinha os botões de ação em linha */
+  align-items: center; /* centraliza os botões verticalmente */
+  font-size: 0.75rem; /* tamanho do texto padrão da área de ações */
+  text-transform: uppercase; /* deixa o texto em maiúsculas */
+  letter-spacing: 0.03em; /* espaçamento entre as letras */
+  color: var(--cor-4); /* cor padrão do texto da área de ações */
+  border-top: 1px solid var(--cor-3); /* linha separando as ações do restante do card */
+  margin-top: var(--espcaco-sm); /* espaço acima da área de ações */
+  padding: var(--espcaco-sm) var(--espcaco-md) var(--espcaco-md); /* espaçamento interno da área de ações */
+  gap: var(--espcaco-sm); /* espaço entre os botões de ação */
+}
+ 
+/* ===== BOTÃO EDITAR ===== */
+.btn-editar {
+  padding: 8px 18px; /* espaçamento interno do botão editar */
+  background-color: #8B5E3C; /* cor de fundo do botão editar */
+  color: #fff; /* cor branca do texto do botão */
+  font-family: var(--fonte-corpo); /* fonte do texto do botão */
+  font-size: 13px; /* tamanho do texto do botão */
+  font-weight: 600; /* peso (grossura) do texto do botão */
+  letter-spacing: 0.3px; /* espaçamento entre as letras do texto */
+  text-transform: none; /* garante que o texto não seja transformado em maiúsculas */
+  border: none; /* remove borda padrão do botão */
+  border-radius: 8px; /* arredondamento das bordas do botão */
+  cursor: pointer; /* indica que o botão é clicável */
+  box-shadow: 0 3px 8px rgba(0,0,0,.15); /* sombra do botão */
+  transition: background-color .3s ease, transform .3s ease, box-shadow .3s ease; /* suaviza hover e clique */
+}
+.btn-editar:hover {
+  background-color: #C9A57B; /* cor de fundo do botão editar ao passar o mouse */
+  transform: translateY(-2px); /* levanta levemente o botão ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0,0,0,.2); /* aumenta a sombra no hover */
+}
+.btn-editar:active {
+  transform: translateY(0); /* remove o efeito de levantar ao clicar */
+  box-shadow: 0 2px 6px rgba(0,0,0,.15); /* reduz a sombra ao clicar, dando efeito de pressionar */
+}
+ 
+/* ===== BOTÃO DELETAR ===== */
+.btn-deletar {
+  padding: 8px 18px; /* espaçamento interno do botão deletar */
+  background-color: #E63946; /* cor de fundo do botão deletar (vermelho de alerta) */
+  color: #fff; /* cor branca do texto do botão */
+  font-family: var(--fonte-corpo); /* fonte do texto do botão */
+  font-size: 13px; /* tamanho do texto do botão */
+  font-weight: 600; /* peso (grossura) do texto do botão */
+  letter-spacing: 0.3px; /* espaçamento entre as letras do texto */
+  text-transform: none; /* garante que o texto não seja transformado em maiúsculas */
+  border: none; /* remove borda padrão do botão */
+  border-radius: 8px; /* arredondamento das bordas do botão */
+  cursor: pointer; /* indica que o botão é clicável */
+  box-shadow: 0 3px 8px rgba(0,0,0,.15); /* sombra do botão */
+  transition: background-color .3s ease, transform .3s ease, box-shadow .3s ease; /* suaviza hover e clique */
+}
+.btn-deletar:hover {
+  background-color: #9E1B23; /* cor de fundo do botão deletar ao passar o mouse (vermelho mais escuro) */
+  transform: translateY(-2px); /* levanta levemente o botão ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0,0,0,.2); /* aumenta a sombra no hover */
+}
+.btn-deletar:active {
+  transform: translateY(0); /* remove o efeito de levantar ao clicar */
+  box-shadow: 0 2px 6px rgba(0,0,0,.15); /* reduz a sombra ao clicar, dando efeito de pressionar */
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--cor-2);
-  border-radius: var(--raio);
-  box-shadow: var(--sombra-sm);
-  overflow: hidden;
-  transition: transform var(--transicao), box-shadow var(--transicao);
-  font-family: var(--fonte-corpo);
+
+.barra-pesquisa {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 0 20px;
 }
 
-ul:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--sombra-md);
+.input-pesquisa {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #a0785a;
+    font-size: 16px;
+    width: 250px;
+    background-color: #fdfde8;
 }
 
-li {
-  padding: var(--espcaco-sm) var(--espcaco-md);
-  color: var(--cor-8);
-  font-size: 0.9rem;
-}
-
-li:first-child {
-  padding: 0;
-}
-
-li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-  border-top-left-radius: var(--raio);
-  border-top-right-radius: var(--raio);
-  transition: transform var(--transicao);
-}
-
-ul:hover li img {
-  transform: scale(1.04);
-}
-
-li:nth-child(2) {
-  font-family: var(--fonte-titulo);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--cor-7);
-  padding-top: var(--espcaco-md);
-}
-
-li:nth-child(3) {
-  color: var(--cor-6);
-  font-size: 0.85rem;
-}
-
-li:nth-child(4) {
-  font-weight: 700;
-  color: var(--cor-5);
-  font-size: 1rem;
-}
-
-li:last-child {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--cor-4);
-  border-top: 1px solid var(--cor-3);
-  margin-top: var(--espcaco-sm);
-  padding-top: var(--espcaco-sm);
-  padding-bottom: var(--espcaco-md);
+.btn-limpar-busca {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    background-color: #a0522d;
+    color: white;
+    cursor: pointer;
 }

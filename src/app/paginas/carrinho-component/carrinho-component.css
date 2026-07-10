@@ -1,7 +1,7 @@
 /* ==========================================================================
    ESTILOS DA PÁGINA DE CARRINHO DE COMPRAS
    ========================================================================== */
-
+ 
    :root {
     /* ===== Paleta de cores =====
        Escala de tons terrosos/quentes, do mais claro (cor-1) ao mais escuro
@@ -16,25 +16,25 @@
     --cor-8: #3A1207;   /* texto de títulos, mais escuro */
     --cor-9: #280004;   /* tom mais escuro da paleta (reservado) */
     --cor-10: #daa520;  /* dourado, usado no ícone de frete e gradiente */
-  
+   
     --cor-fundo: var(--cor-1); /* alias semântico para o fundo da página */
-  
+   
     /* ===== Tipografia =====
        Fraunces para títulos (serifada, com personalidade),
        Inter para corpo de texto (legível em telas). */
-    --fonte-titulo: "Fraunces", serif;
-    --fonte-corpo: "Inter", sans-serif;
-  
+    --fonte-titulo: "Fraunces", serif; /* fonte usada em títulos */
+    --fonte-corpo: "Inter", sans-serif; /* fonte usada em textos e botões */
+   
     /* ===== Espaçamentos =====
        Escala progressiva usada em paddings, gaps e margens
        para manter consistência visual em toda a página. */
-    --espcaco-xs: 4px;
-    --espcaco-sm: 8px;
-    --espcaco-md: 16px;
-    --espcaco-lg: 24px;
-    --espcaco-xl: 40px;
-    --espcaco-2x1: 56px;
-  
+    --espcaco-xs: 4px; /* espaçamento extra pequeno */
+    --espcaco-sm: 8px; /* espaçamento pequeno */
+    --espcaco-md: 16px; /* espaçamento médio */
+    --espcaco-lg: 24px; /* espaçamento grande */
+    --espcaco-xl: 40px; /* espaçamento extra grande */
+    --espcaco-2x1: 56px; /* espaçamento máximo (usado no estado vazio) */
+   
     /* ===== Raios / sombras / transições ===== */
     --raio: 18px;           /* cantos arredondados de cards maiores (resumo) */
     --raio-sm: 10px;        /* cantos arredondados de cards menores/inputs */
@@ -43,531 +43,529 @@
     --sombra-md: 0 8px 24px rgba(40, 0, 4, 0.12);  /* sombra mais pronunciada */
     --transicao: 0.2s ease; /* duração/curva padrão para hovers e mudanças de estado */
   }
-  
+   
   /* Reset simples: garante que padding/border entrem no tamanho total do elemento */
-  * { box-sizing: border-box; }
-  
-  body {
-    margin: 0;
-    background: var(--cor-fundo);
-    font-family: var(--fonte-corpo);
-    color: var(--cor-7);
+  * {
+    box-sizing: border-box; /* inclui padding e borda no cálculo do tamanho de todos os elementos */
   }
-  
+   
+  body {
+    margin: 0; /* remove margem externa padrão do body */
+    background: var(--cor-fundo); /* cor de fundo geral da página */
+    font-family: var(--fonte-corpo); /* fonte padrão do corpo do texto */
+    color: var(--cor-7); /* cor padrão do texto da página */
+  }
+   
   /* Container geral da página do carrinho */
   .carrinho-pagina {
-    min-height: 100vh;
+    min-height: 100vh; /* garante que a página ocupe pelo menos toda a altura da tela */
     /* padding-bottom maior (120px) para dar espaço a elementos fixos/flutuantes,
        como uma barra de finalizar compra fixada no rodapé em telas menores */
-    padding: var(--espcaco-xl) var(--espcaco-lg) 120px;
+    padding: var(--espcaco-xl) var(--espcaco-lg) 120px; /* espaçamento: topo, laterais e base maior */
   }
-  
+   
   /* ===== Breadcrumb (trilha de navegação: Home > Carrinho) ===== */
   .carrinho-breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: var(--espcaco-sm);
-    font-size: 0.85rem;
-    color: var(--cor-7);
+    display: flex; /* alinha os itens da trilha em linha */
+    align-items: center; /* centraliza os itens verticalmente */
+    gap: var(--espcaco-sm); /* espaço entre os itens da trilha */
+    font-size: 0.85rem; /* tamanho do texto da trilha */
+    color: var(--cor-7); /* cor do texto da trilha */
     opacity: 1;              /* texto do breadcrumb mais discreto */
-    margin-bottom: var(--espcaco-xl);
+    margin-bottom: var(--espcaco-xl); /* espaço abaixo da trilha */
     max-width: 1100px;           /* alinhado à largura máxima do conteúdo */
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: auto; /* centraliza a trilha horizontalmente junto com margin-right */
+    margin-right: auto; /* centraliza a trilha horizontalmente junto com margin-left */
   }
   .breadcrumb-sep { opacity: 0.4; }               /* separador (ex: "/") mais apagado */
   .breadcrumb-atual { color: var(--cor-5); font-weight: 600; opacity: 1; } /* página atual em destaque */
-  
+   
   /* ===== Cabeçalho (título "Carrinho" + link "continuar comprando") ===== */
   .carrinho-topo {
-    max-width: 1100px;
-    margin: 0 auto var(--espcaco-lg);
-    display: flex;
-    align-items: baseline;
+    max-width: 1100px; /* largura máxima do cabeçalho, igual ao restante do conteúdo */
+    margin: 0 auto var(--espcaco-lg); /* centraliza horizontalmente e adiciona espaço abaixo */
+    display: flex; /* alinha título e link em linha */
+    align-items: baseline; /* alinha pela linha de base do texto, útil com fontes de tamanhos diferentes */
     justify-content: space-between; /* título à esquerda, link à direita */
     flex-wrap: wrap;                /* quebra em telas estreitas */
-    gap: var(--espcaco-sm);
+    gap: var(--espcaco-sm); /* espaço entre título e link quando quebram de linha */
   }
-  
+   
   .carrinho-titulo {
-    font-family: var(--fonte-titulo);
-    font-size: 2rem;
-    color: var(--cor-8);
-    margin: 0;
+    font-family: var(--fonte-titulo); /* fonte do título "Carrinho" */
+    font-size: 2rem; /* tamanho do título */
+    color: var(--cor-8); /* cor do título */
+    margin: 0; /* remove margem externa padrão */
   }
-  
+   
   /* Texto auxiliar dentro do título, ex: "(3 itens)" */
   .carrinho-titulo span {
-    font-family: var(--fonte-corpo);
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--cor-7);
-    opacity: 0.65;
-    margin-left: var(--espcaco-sm);
+    font-family: var(--fonte-corpo); /* fonte diferente do título, mais neutra */
+    font-size: 1rem; /* tamanho menor que o título principal */
+    font-weight: 500; /* peso (grossura) do texto auxiliar */
+    color: var(--cor-7); /* cor do texto auxiliar */
+    opacity: 0.65; /* deixa o texto auxiliar mais discreto */
+    margin-left: var(--espcaco-sm); /* espaço entre o título e o texto auxiliar */
   }
-  
+   
   /* Link "continuar comprando" com sublinhado sutil que muda de cor no hover */
   .continuar-link {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--cor-6);
-    text-decoration: none;
-    border-bottom: 1px solid var(--cor-4);
-    padding-bottom: 2px;
-    transition: color var(--transicao), border-color var(--transicao);
+    font-size: 0.85rem; /* tamanho do texto do link */
+    font-weight: 600; /* peso (grossura) do texto do link */
+    color: var(--cor-6); /* cor padrão do link */
+    text-decoration: none; /* remove sublinhado padrão do link */
+    border-bottom: 1px solid var(--cor-4); /* cria um sublinhado customizado */
+    padding-bottom: 2px; /* espaço entre o texto e o sublinhado customizado */
+    transition: color var(--transicao), border-color var(--transicao); /* suaviza a troca de cor no hover */
   }
-  .continuar-link:hover { color: var(--cor-5); border-color: var(--cor-5); }
-  
+  .continuar-link:hover { color: var(--cor-5); border-color: var(--cor-5); } /* cor do link e do sublinhado ao passar o mouse */
+   
   /* ===== Barra de frete grátis (progresso até atingir valor mínimo) ===== */
   .frete-barra {
-    max-width: 1100px;
-    margin: 0 auto var(--espcaco-xl);
-    background: var(--cor-4);
-    border: 1px solid var(--cor-3);
-    border-radius: var(--raio-sm);
-    padding: var(--espcaco-md) var(--espcaco-lg);
+    max-width: 1100px; /* largura máxima da barra, igual ao restante do conteúdo */
+    margin: 0 auto var(--espcaco-xl); /* centraliza horizontalmente e adiciona espaço abaixo */
+    background: var(--cor-4); /* fundo da barra de frete */
+    border: 1px solid var(--cor-3); /* borda sutil da barra */
+    border-radius: var(--raio-sm); /* arredondamento das bordas da barra */
+    padding: var(--espcaco-md) var(--espcaco-lg); /* espaçamento interno da barra */
   }
-  
+   
   /* Linha superior: texto informativo + ícone */
   .frete-barra-topo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: var(--espcaco-sm);
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: black;
+    display: flex; /* alinha o texto e o ícone em linha */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: space-between; /* separa texto de um lado e ícone do outro */
+    margin-bottom: var(--espcaco-sm); /* espaço abaixo da linha de texto */
+    font-size: 0.85rem; /* tamanho do texto informativo */
+    font-weight: 800; /* peso (grossura) bem forte do texto */
+    color: black; /* cor do texto informativo */
   }
-  
-  .frete-barra-topo .icone-frete { color: black; font-size: 1rem; }
-  
+   
+  .frete-barra-topo .icone-frete { color: black; font-size: 1rem; } /* cor e tamanho do ícone de frete */
+   
   /* "Trilho" (fundo) da barra de progresso */
   .frete-trilho {
-    height: 8px;
-    border-radius: var(--raio-pill);
-    background: var(--cor-2);
-    overflow: hidden;
+    height: 8px; /* espessura do trilho da barra */
+    border-radius: var(--raio-pill); /* deixa o trilho arredondado, formato de pílula */
+    background: var(--cor-2); /* cor de fundo do trilho (parte não preenchida) */
+    overflow: hidden; /* garante que o preenchimento respeite os cantos arredondados */
   }
-  
+   
   /* Preenchimento da barra: a largura (width) deve ser controlada via JS,
      de acordo com o progresso do valor do carrinho até o frete grátis */
   .frete-preenchimento {
-    height: 100%;
-    border-radius: var(--raio-pill);
-    background: linear-gradient(90deg, var(--cor-5), var(--cor-10));
+    height: 100%; /* preenche toda a altura do trilho */
+    border-radius: var(--raio-pill); /* mantém o formato de pílula do preenchimento */
+    background: linear-gradient(90deg, var(--cor-5), var(--cor-10)); /* gradiente de cor do preenchimento */
     width: 0%; /* valor inicial; atualizado dinamicamente */
     transition: width 0.6s cubic-bezier(.2,.8,.2,1); /* animação suave ao mudar */
   }
-  
+   
   /* ===== Layout principal: lista de itens (esquerda) + resumo (direita) ===== */
   .carrinho-container {
-    display: grid;
+    display: grid; /* organiza lista de itens e resumo lado a lado */
     grid-template-columns: 1.6fr 1fr; /* lista de itens maior que o resumo */
-    gap: var(--espcaco-xl);
-    max-width: 4100px;
-    margin: 0 auto;
+    gap: var(--espcaco-xl); /* espaço entre a lista e o resumo */
+    max-width: 4100px; /* ATENÇÃO: valor muito maior que o resto do layout (1100px); provável erro de digitação */
+    margin: 0 auto; /* centraliza o container horizontalmente */
     align-items: start; /* resumo não estica para acompanhar altura da lista */
   }
-  
+   
   /* ===== Lista de itens do carrinho ===== */
   .carrinho-lista {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espcaco-md);
+    display: flex; /* empilha os itens do carrinho */
+    flex-direction: column; /* organiza os itens em coluna */
+    gap: var(--espcaco-md); /* espaço entre os itens */
   }
-  
+   
   /* Cabeçalho da lista: "selecionar tudo" + botão "esvaziar carrinho" */
   .lista-cabecalho {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; 
-    padding: 0 var(--espcaco-sm);
+    display: flex; /* alinha os dois elementos em linha */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: space-between; /* separa um de cada lado */
+    padding: 0 var(--espcaco-sm); /* pequeno espaçamento lateral */
   }
-  
+   
   .selecionar-tudo {
-    display: flex;
-    align-items: center;
-    gap: var(--espcaco-sm);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--cor-7);
-    cursor: pointer;  
+    display: flex; /* alinha o checkbox e o texto em linha */
+    align-items: center; /* centraliza verticalmente */
+    gap: var(--espcaco-sm); /* espaço entre o checkbox e o texto */
+    font-size: 0.85rem; /* tamanho do texto */
+    font-weight: 500; /* peso (grossura) do texto */
+    color: var(--cor-7); /* cor do texto */
+    cursor: pointer; /* indica que o elemento é clicável */
   }
-  
+   
   .esvaziar-btn {
-    background: none;
-    border: none;
-    font-size: 0.8rem;
-    color: var(--cor-7);
-    opacity: 1;
-    cursor: pointer;
-    text-decoration: underline;
+    background: none; /* remove fundo padrão do botão */
+    border: none; /* remove borda padrão do botão */
+    font-size: 0.8rem; /* tamanho do texto do botão */
+    color: var(--cor-7); /* cor do texto do botão */
+    opacity: 1; /* opacidade total por padrão */
+    cursor: pointer; /* indica que o botão é clicável */
+    text-decoration: underline; /* sublinha o texto, indicando uma ação de link */
   }
-  .esvaziar-btn:hover { opacity: 1; color: var(--cor-5); }
-  
+  .esvaziar-btn:hover { opacity: 1; color: var(--cor-5); } /* cor do botão ao passar o mouse */
+   
   /* ===== Checkbox customizado (usado tanto no "selecionar tudo" quanto por item) =====
      Remove a aparência nativa e desenha um checkbox quadrado com cantos
      arredondados; o "check" (marca de visto) é um clip-path revelado via
      transform: scale() ao marcar. */
   input[type="checkbox"].check-item,
   input[type="checkbox"].check-tudo {
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--cor-4);
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-grid;
-    place-content: center;
-    background: var(--cor-1);
-    flex-shrink: 0;
-    transition: border-color var(--transicao), background var(--transicao);
+    appearance: none; /* remove a aparência nativa do checkbox do navegador */
+    width: 20px; /* largura do checkbox customizado */
+    height: 20px; /* altura do checkbox customizado */
+    border: 2px solid var(--cor-4); /* borda do checkbox */
+    border-radius: 5px; /* arredondamento das bordas do checkbox */
+    cursor: pointer; /* indica que o checkbox é clicável */
+    display: inline-grid; /* permite centralizar o "visto" interno com place-content */
+    place-content: center; /* centraliza o conteúdo (o "visto") dentro do checkbox */
+    background: var(--cor-1); /* fundo do checkbox quando desmarcado */
+    flex-shrink: 0; /* impede que o checkbox encolha dentro de containers flex */
+    transition: border-color var(--transicao), background var(--transicao); /* suaviza a troca de estado */
   }
   /* Desenho do "visto" (check mark), escondido por padrão (scale(0)) */
   input[type="checkbox"].check-item::before,
   input[type="checkbox"].check-tudo::before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    transform: scale(0);
-    transition: transform var(--transicao);
+    content: ""; /* cria um elemento vazio para desenhar o "visto" */
+    width: 10px; /* largura da área do "visto" */
+    height: 10px; /* altura da área do "visto" */
+    transform: scale(0); /* esconde o "visto" por padrão (escala zero) */
+    transition: transform var(--transicao); /* suaviza a revelação do "visto" */
     box-shadow: inset 1em 1em var(--cor-1); /* preenche a forma com a cor-1 */
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); /* formato de "check" */
   }
   /* Estado marcado: fundo escuro + revela o "visto" */
   input[type="checkbox"].check-item:checked,
   input[type="checkbox"].check-tudo:checked {
-    background: var(--cor-5);
-    border-color: var(--cor-5);
+    background: var(--cor-5); /* fundo do checkbox quando marcado */
+    border-color: var(--cor-5); /* cor da borda quando marcado */
   }
   input[type="checkbox"].check-item:checked::before,
-  input[type="checkbox"].check-tudo:checked::before { transform: scale(1); }
-  
+  input[type="checkbox"].check-tudo:checked::before { transform: scale(1); } /* revela o "visto" quando marcado */
+   
   /* ===== Card de item do carrinho =====
      Grid com 4 colunas: checkbox | miniatura | informações | ações/preço */
   .carrinho-item {
-    display: grid;
-    grid-template-columns: auto 96px 1fr auto;
-    gap: var(--espcaco-md);
-    align-items: center;
-    background: var(--cor-2);
-    border: 1px solid var(--cor-3);
-    border-radius: var(--raio-sm);
-    padding: var(--espcaco-md);
-    transition: box-shadow var(--transicao), opacity var(--transicao);
+    display: grid; /* organiza checkbox, miniatura, info e ações em colunas */
+    grid-template-columns: auto 96px 1fr auto; /* define a largura de cada coluna */
+    gap: var(--espcaco-md); /* espaço entre as colunas */
+    align-items: center; /* centraliza o conteúdo verticalmente */
+    background: var(--cor-2); /* fundo do card do item */
+    border: 1px solid var(--cor-3); /* borda sutil do card */
+    border-radius: var(--raio-sm); /* arredondamento das bordas do card */
+    padding: var(--espcaco-md); /* espaçamento interno do card */
+    transition: box-shadow var(--transicao), opacity var(--transicao); /* suaviza mudanças visuais do card */
   }
-  
+   
   /* Item desmarcado (checkbox desativado): fica esmaecido, indicando que
      não entra no total da compra */
-  .carrinho-item.desmarcado { opacity: 0.5; }
-  
+  .carrinho-item.desmarcado { opacity: 0.5; } /* reduz a opacidade do item desmarcado */
+   
   /* Estado de saída ao remover um item (classe adicionada/removida via JS
      para animar a remoção antes de excluir o elemento do DOM) */
-  .carrinho-item.removendo { opacity: 0; transform: scale(0.96); }
-  
+  .carrinho-item.removendo { opacity: 0; transform: scale(0.96); } /* efeito de desaparecer e encolher ao remover */
+   
   /* Miniatura (imagem) do produto */
   .item-thumb {
-    width: 96px;
-    height: 96px;
-    border-radius: var(--raio-sm);
-    background: var(--cor-2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    width: 96px; /* largura da miniatura */
+    height: 96px; /* altura da miniatura */
+    border-radius: var(--raio-sm); /* arredondamento das bordas da miniatura */
+    background: var(--cor-2); /* fundo da miniatura (visível caso a imagem não carregue) */
+    display: flex; /* centraliza o conteúdo interno (ícone/imagem) */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    overflow: hidden; /* garante que a imagem respeite os cantos arredondados */
   }
   .item-thumb svg { width: 56%; height: 56%; color: var(--cor-5); } /* ícone placeholder */
-  
+   
   /* Bloco de informações textuais do produto (nome, variante, preço) */
   .item-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; } /* min-width:0 evita overflow em grid */
-  
+   
   .item-nome {
-    font-family: var(--fonte-titulo);
-    font-size: 1.05rem;
-    color: var(--cor-8);
-    margin: 0;
+    font-family: var(--fonte-titulo); /* fonte do nome do produto */
+    font-size: 1.05rem; /* tamanho do texto do nome */
+    color: var(--cor-8); /* cor do nome do produto */
+    margin: 0; /* remove margem externa padrão */
   }
-  
+   
   /* Ex: "Tamanho M, Cor Azul" */
   .item-variante {
-    font-size: 0.78rem;
-    color: var(--cor-7);
-    opacity: 0.7;
+    font-size: 0.78rem; /* tamanho do texto da variante */
+    color: var(--cor-7); /* cor do texto da variante */
+    opacity: 0.7; /* deixa a variante mais discreta */
   }
-  
+   
   /* Linha com preço atual + preço original (se houver desconto) */
   .item-precos {
-    display: flex;
-    align-items: baseline;
-    gap: var(--espcaco-sm);
-    margin-top: 4px;
+    display: flex; /* alinha o preço atual e o original em linha */
+    align-items: baseline; /* alinha pela linha de base do texto */
+    gap: var(--espcaco-sm); /* espaço entre os dois preços */
+    margin-top: 4px; /* espaço acima da linha de preços */
   }
-  
-  .item-preco { font-weight: 700; color: var(--cor-6); font-size: 1rem; }
+   
+  .item-preco { font-weight: 700; color: var(--cor-6); font-size: 1rem; } /* preço atual em destaque */
   .item-preco-original {
-    font-size: 0.8rem;
-    color: var(--cor-7);
+    font-size: 0.8rem; /* tamanho menor que o preço atual */
+    color: var(--cor-7); /* cor do preço original */
     text-decoration: line-through; /* preço "riscado" */
-    opacity: 0.45;
+    opacity: 0.45; /* deixa o preço original mais apagado */
   }
-  
+   
   /* Coluna da direita: botão de remover + seletor de quantidade + subtotal */
   .item-lado-direito {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: var(--espcaco-sm);
+    display: flex; /* empilha remover, quantidade e subtotal */
+    flex-direction: column; /* organiza os elementos em coluna */
+    align-items: flex-end; /* alinha os elementos à direita */
+    gap: var(--espcaco-sm); /* espaço entre os elementos */
   }
-  
+   
   .item-remover {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--cor-7);
-    opacity: 0.5;
-    font-size: 1rem;
-    padding: 2px;
-    transition: opacity var(--transicao), color var(--transicao);
+    background: none; /* remove fundo padrão do botão */
+    border: none; /* remove borda padrão do botão */
+    cursor: pointer; /* indica que o botão é clicável */
+    color: var(--cor-7); /* cor padrão do ícone de remover */
+    opacity: 0.5; /* deixa o ícone discreto por padrão */
+    font-size: 1rem; /* tamanho do ícone */
+    padding: 2px; /* pequena área de clique extra */
+    transition: opacity var(--transicao), color var(--transicao); /* suaviza a troca de estado no hover */
   }
-  .item-remover:hover { opacity: 1; color: var(--cor-5); }
-  
+  .item-remover:hover { opacity: 1; color: var(--cor-5); } /* destaca o ícone de remover ao passar o mouse */
+   
   /* Stepper de quantidade: botões [-] [valor] [+] dentro de uma cápsula */
   .qtd-stepper {
-    display: flex;
-    align-items: center;
-    border: 1.5px solid var(--cor-3);
-    border-radius: var(--raio-pill);
-    overflow: hidden;
+    display: flex; /* alinha os botões e o valor em linha */
+    align-items: center; /* centraliza verticalmente */
+    border: 1.5px solid var(--cor-3); /* borda ao redor do stepper */
+    border-radius: var(--raio-pill); /* formato de pílula do stepper */
+    overflow: hidden; /* garante que os botões respeitem os cantos arredondados */
   }
   .qtd-btn {
-    width: 30px;
-    height: 30px;
-    border: none;
-    background: var(--cor-1);
-    color: var(--cor-7);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background var(--transicao), color var(--transicao);
+    width: 30px; /* largura de cada botão do stepper */
+    height: 30px; /* altura de cada botão do stepper */
+    border: none; /* remove borda padrão do botão */
+    background: var(--cor-1); /* fundo padrão do botão */
+    color: var(--cor-7); /* cor do símbolo (+/-) do botão */
+    font-size: 1rem; /* tamanho do símbolo do botão */
+    cursor: pointer; /* indica que o botão é clicável */
+    transition: background var(--transicao), color var(--transicao); /* suaviza a troca de cor no hover */
   }
-  .qtd-btn:hover { background: var(--cor-5); color: var(--cor-1); }
+  .qtd-btn:hover { background: var(--cor-5); color: var(--cor-1); } /* cores invertidas ao passar o mouse */
   .qtd-valor {
-    width: 34px;
-    text-align: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--cor-8);
+    width: 34px; /* largura fixa para o número de quantidade */
+    text-align: center; /* centraliza o número */
+    font-weight: 700; /* peso (grossura) do número */
+    font-size: 0.9rem; /* tamanho do número */
+    color: var(--cor-8); /* cor do número */
   }
-  
+   
   /* Subtotal do item (preço unitário × quantidade) */
   .item-subtotal {
-    font-family: var(--fonte-titulo);
-    font-weight: 600;
-    color: var(--cor-8);
-    font-size: 1rem;
+    font-family: var(--fonte-titulo); /* fonte do subtotal do item */
+    font-weight: 600; /* peso (grossura) do subtotal */
+    color: var(--cor-8); /* cor do subtotal */
+    font-size: 1rem; /* tamanho do subtotal */
   }
-  
+   
   /* ===== Estado vazio (carrinho sem itens) =====
      Escondido por padrão; a classe "visivel" deve ser adicionada via JS
      quando a lista de itens estiver vazia. */
   .carrinho-vazio {
-     display: none;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: var(--espcaco-md);
-    padding: var(--espcaco-2x1) var(--espcaco-lg);
-    background: #ffff;
-    border: 1px dashed var(--cor-3);
-    border-radius: var(--raio-sm);
-
+    display: none; /* escondido por padrão (sobrescrito mais abaixo, ver aviso no final do arquivo) */
+    flex-direction: column; /* empilha ícone, título e texto verticalmente */
+    align-items: center; /* centraliza o conteúdo horizontalmente */
+    text-align: center; /* centraliza o texto */
+    gap: var(--espcaco-md); /* espaço entre ícone, título, texto e botão */
+    padding: var(--espcaco-2x1) var(--espcaco-lg); /* espaçamento interno generoso */
+    background: #ffff; /* ATENÇÃO: provável erro de digitação, deveria ser #fff ou #ffffff */
+    border: 1px dashed var(--cor-3); /* borda tracejada, indicando estado vazio */
+    border-radius: var(--raio-sm); /* arredondamento das bordas */
   }
-  .carrinho-vazio.visivel { display: flex; }
-  .carrinho-vazio svg { width: 64px; height: 64px; color: var(--cor-4); }
-  .carrinho-vazio h3 { font-family: var(--fonte-titulo); color: var(--cor-8); margin: 0; }
-  .carrinho-vazio p { margin: 0; color: var(--cor-7); opacity: 0.7; font-size: 0.9rem; }
+  .carrinho-vazio.visivel { display: flex; } /* mostra o estado vazio quando a classe "visivel" é adicionada */
+  .carrinho-vazio svg { width: 64px; height: 64px; color: var(--cor-4); } /* ícone ilustrativo do carrinho vazio */
+  .carrinho-vazio h3 { font-family: var(--fonte-titulo); color: var(--cor-8); margin: 0; } /* título do estado vazio */
+  .carrinho-vazio p { margin: 0; color: var(--cor-7); opacity: 0.7; font-size: 0.9rem; } /* texto explicativo do estado vazio */
   .carrinho-vazio a {
-    margin-top: var(--espcaco-sm);
-    background: var(--cor-5);
-    color: var(--cor-1);
-    padding: var(--espcaco-sm) var(--espcaco-lg);
-    border-radius: var(--raio-pill);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
+    margin-top: var(--espcaco-sm); /* espaço acima do botão/link */
+    background: var(--cor-5); /* fundo do botão de ação */
+    color: var(--cor-1); /* cor do texto do botão */
+    padding: var(--espcaco-sm) var(--espcaco-lg); /* espaçamento interno do botão */
+    border-radius: var(--raio-pill); /* formato de pílula do botão */
+    text-decoration: none; /* remove sublinhado, já que é um link estilizado como botão */
+    font-weight: 600; /* peso (grossura) do texto do botão */
+    font-size: 0.9rem; /* tamanho do texto do botão */
   }
-  
+   
   /* ===== Resumo do pedido (coluna lateral) ===== */
   .carrinho-resumo {
-    background: var(--cor-2);
-    border: 1px solid var(--cor-3);
-    border-radius: var(--raio);
-    padding: var(--espcaco-lg);
-    box-shadow: var(--sombra-md);
+    background: var(--cor-2); /* fundo do card de resumo */
+    border: 1px solid var(--cor-3); /* borda sutil do card */
+    border-radius: var(--raio); /* arredondamento das bordas do card */
+    padding: var(--espcaco-lg); /* espaçamento interno do card */
+    box-shadow: var(--sombra-md); /* sombra do card */
     position: sticky;  /* acompanha o scroll enquanto a lista de itens é maior */
-    top: var(--espcaco-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--espcaco-md);
+    top: var(--espcaco-lg); /* distância do topo da tela ao "grudar" durante o scroll */
+    display: flex; /* organiza os elementos do resumo em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    gap: var(--espcaco-md); /* espaço entre os elementos do resumo */
   }
-  
+   
   .resumo-titulo {
-    font-family: var(--fonte-titulo);
-    font-size: 1.25rem;
-    color: var(--cor-8);
-    margin: 0;
+    font-family: var(--fonte-titulo); /* fonte do título "Resumo do pedido" */
+    font-size: 1.25rem; /* tamanho do título do resumo */
+    color: var(--cor-8); /* cor do título do resumo */
+    margin: 0; /* remove margem externa padrão */
   }
-  
+   
   /* Linha genérica do resumo: "Subtotal ... R$ X" */
   .resumo-linha {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    color: var(--cor-7);
+    display: flex; /* alinha o rótulo e o valor em linha */
+    justify-content: space-between; /* separa rótulo de um lado e valor do outro */
+    font-size: 0.9rem; /* tamanho do texto da linha */
+    color: var(--cor-7); /* cor do texto da linha */
   }
   .resumo-linha.desconto { color: var(--cor-5); } /* linha de desconto em destaque */
-  
+   
   /* Campo de cupom de desconto: input + botão "aplicar" lado a lado */
   .resumo-cupom {
-    display: flex;
-    gap: var(--espcaco-sm);
+    display: flex; /* alinha o campo e o botão em linha */
+    gap: var(--espcaco-sm); /* espaço entre o campo e o botão */
   }
   .resumo-cupom input {
-    flex: 1;
-    padding: var(--espcaco-sm) var(--espcaco-md);
-    border: 1.5px solid var(--cor-6);
-    border-radius: var(--raio-sm);
-    font-family: var(--fonte-corpo);
-    font-size: 0.85rem;
-    background: var(--cor-1);
-    color: var(--cor-8);
+    flex: 1; /* faz o campo ocupar o espaço restante, deixando o botão com largura natural */
+    padding: var(--espcaco-sm) var(--espcaco-md); /* espaçamento interno do campo */
+    border: 1.5px solid var(--cor-6); /* borda do campo de cupom */
+    border-radius: var(--raio-sm); /* arredondamento das bordas do campo */
+    font-family: var(--fonte-corpo); /* fonte do texto digitado */
+    font-size: 0.85rem; /* tamanho do texto digitado */
+    background: var(--cor-1); /* fundo do campo */
+    color: var(--cor-8); /* cor do texto digitado */
   }
-  .resumo-cupom input:focus { outline: 2px solid var(--cor-8); outline-offset: 1px; }
+  .resumo-cupom input:focus { outline: 2px solid var(--cor-8); outline-offset: 1px; } /* destaque ao focar no campo */
   .resumo-cupom button {
-    padding: var(--espcaco-sm) var(--espcaco-md);
-    border: 1.5px solid var(--cor-4);
-    background: transparent;
-    color: var(--cor-6);
-    border-radius: var(--raio-sm);
-    font-weight: 600;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all var(--transicao);
+    padding: var(--espcaco-sm) var(--espcaco-md); /* espaçamento interno do botão "aplicar" */
+    border: 1.5px solid var(--cor-4); /* borda do botão */
+    background: transparent; /* fundo transparente do botão */
+    color: var(--cor-6); /* cor do texto do botão */
+    border-radius: var(--raio-sm); /* arredondamento das bordas do botão */
+    font-weight: 600; /* peso (grossura) do texto do botão */
+    font-size: 0.8rem; /* tamanho do texto do botão */
+    cursor: pointer; /* indica que o botão é clicável */
+    transition: all var(--transicao); /* suaviza qualquer mudança visual no botão */
   }
-  .resumo-cupom button:hover { background: var(--cor-1); }
-  
-
-  
+  .resumo-cupom button:hover { background: var(--cor-1); } /* fundo do botão ao passar o mouse */
+   
   /* Linha divisória simples entre o resumo e o total */
-  .resumo-divisor { height: 1px; background: var(--cor-3); border: none; margin: 0; }
-  
+  .resumo-divisor { height: 1px; background: var(--cor-3); border: none; margin: 0; } /* linha fina separando o resumo do total */
+   
   /* Linha do valor total, com destaque maior que as demais linhas do resumo */
   .resumo-total {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    display: flex; /* alinha o rótulo "Total" e o valor em linha */
+    justify-content: space-between; /* separa rótulo de um lado e valor do outro */
+    align-items: baseline; /* alinha pela linha de base, já que os textos têm tamanhos diferentes */
   }
-  .resumo-total span:first-child { font-size: 0.95rem; font-weight: 600; color: var(--cor-8); }
+  .resumo-total span:first-child { font-size: 0.95rem; font-weight: 600; color: var(--cor-8); } /* estilo do rótulo "Total" */
   .resumo-total-valor {
-    font-family: var(--fonte-titulo);
-    font-size: 1.7rem;
-    color: var(--cor-6);
-    font-weight: 700;
+    font-family: var(--fonte-titulo); /* fonte do valor total */
+    font-size: 1.7rem; /* tamanho grande, dando destaque ao valor total */
+    color: var(--cor-6); /* cor do valor total */
+    font-weight: 700; /* peso (grossura) do valor total */
   }
-  
+   
   /* Botão principal "Finalizar compra" */
   .btn-finalizar {
-    width: 100%;
-    padding: var(--espcaco-md) var(--espcaco-lg);
-    background: var(--cor-5);
-    color: var(--cor-1);
-    border: none;
-    border-radius: var(--raio-pill);
-    font-family: var(--fonte-titulo);
-    font-size: 1.05rem;
-    letter-spacing: 0.5px;
-    cursor: pointer;
-    box-shadow: var(--sombra-md);
-    transition: background var(--transicao), transform var(--transicao);
+    width: 100%; /* botão ocupa toda a largura do resumo */
+    padding: var(--espcaco-md) var(--espcaco-lg); /* espaçamento interno do botão */
+    background: var(--cor-5); /* fundo do botão principal */
+    color: var(--cor-1); /* cor do texto do botão */
+    border: none; /* remove borda padrão do botão */
+    border-radius: var(--raio-pill); /* formato de pílula do botão */
+    font-family: var(--fonte-titulo); /* fonte do texto do botão */
+    font-size: 1.05rem; /* tamanho do texto do botão */
+    letter-spacing: 0.5px; /* espaçamento entre as letras do texto */
+    cursor: pointer; /* indica que o botão é clicável */
+    box-shadow: var(--sombra-md); /* sombra do botão */
+    transition: background var(--transicao), transform var(--transicao); /* suaviza a troca de cor e o efeito de hover */
   }
   .btn-finalizar:hover { background: var(--cor-6); transform: translateY(-2px); } /* leve elevação no hover */
-  
+   
   /* Selo/texto de segurança abaixo do botão (ex: "Compra 100% segura") */
   .resumo-seguranca {
-    display: flex;
-    align-items: center;
-    gap: var(--espcaco-sm);
-    font-size: 0.78rem;
-    color: var(--cor-7);
-    opacity: 0.7;
-    justify-content: center;
+    display: flex; /* alinha ícone e texto de segurança em linha */
+    align-items: center; /* centraliza verticalmente */
+    gap: var(--espcaco-sm); /* espaço entre o ícone e o texto */
+    font-size: 0.78rem; /* tamanho do texto de segurança */
+    color: var(--cor-7); /* cor do texto de segurança */
+    opacity: 0.7; /* deixa o texto mais discreto */
+    justify-content: center; /* centraliza o conteúdo horizontalmente */
   }
-  
+   
   /* ==========================================================================
      RESPONSIVO — telas até 860px de largura (tablets e celulares)
      ========================================================================== */
   @media (max-width: 860px) {
     /* Lista de itens e resumo passam a ficar empilhados em uma única coluna */
-    .carrinho-container { grid-template-columns: 1fr; }
-  
+    .carrinho-container { grid-template-columns: 1fr; } /* uma única coluna em telas menores */
+   
     /* Resumo deixa de ser "sticky" pois não há mais coluna lateral longa */
-    .carrinho-resumo { position: static; }
-  
+    .carrinho-resumo { position: static; } /* remove o comportamento "sticky" em telas menores */
+   
     /* Reorganiza o card do item em áreas nomeadas:
        linha 1: checkbox | miniatura | informações
        linha 2: ações (ocupando toda a largura) */
     .carrinho-item {
-      grid-template-columns: auto 72px 1fr;
+      grid-template-columns: auto 72px 1fr; /* recalcula as colunas para telas menores */
       grid-template-areas:
         "check thumb info"
-        "acoes acoes acoes";
-      row-gap: var(--espcaco-sm);
+        "acoes acoes acoes"; /* define duas linhas: dados do produto e ações */
+      row-gap: var(--espcaco-sm); /* espaço entre as duas linhas do grid */
     }
-    .carrinho-item > input.check-item { grid-area: check; }
+    .carrinho-item > input.check-item { grid-area: check; } /* posiciona o checkbox na área "check" */
     .item-thumb { grid-area: thumb; width: 72px; height: 72px; } /* miniatura menor */
-    .item-info { grid-area: info; }
+    .item-info { grid-area: info; } /* posiciona as informações na área "info" */
     .item-lado-direito {
-      grid-area: acoes;
+      grid-area: acoes; /* posiciona as ações na área "acoes", ocupando a linha toda */
       flex-direction: row;              /* ações lado a lado em vez de empilhadas */
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
+      align-items: center; /* centraliza os itens verticalmente */
+      justify-content: space-between; /* distribui remover, stepper e subtotal na linha */
+      width: 100%; /* ocupa toda a largura da área "acoes" */
     }
-  
+   
     /* Mais espaço no rodapé para acomodar elementos fixos em telas menores */
-    .carrinho-pagina { padding-bottom: 140px; }
+    .carrinho-pagina { padding-bottom: 140px; } /* aumenta o espaço inferior da página */
   }
-  
-
+   
   /* Quando o carrinho estiver vazio */
-.carrinho-vazio-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.carrinho-vazio-container .carrinho-lista {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-} 
-
-.carrinho-vazio {
-    width: 100%;
-    max-width: 700px;
-    min-height: 350px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
-    margin: 0 auto;
-}
-
-.item-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--raio-sm);
-}
+  .carrinho-vazio-container {
+    display: flex; /* centraliza o conteúdo do estado vazio */
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center; /* centraliza verticalmente */
+  }
+   
+  .carrinho-vazio-container .carrinho-lista {
+    width: 100%; /* lista ocupa toda a largura do container vazio */
+    display: flex; /* permite centralizar o conteúdo interno */
+    justify-content: center; /* centraliza o conteúdo horizontalmente */
+  }
+   
+  .carrinho-vazio {
+    width: 100%; /* ocupa toda a largura disponível até o máximo */
+    max-width: 700px; /* largura máxima do bloco de estado vazio */
+    min-height: 350px; /* altura mínima do bloco de estado vazio */
+   
+    display: flex; /* ATENÇÃO: redefine display para "flex" sempre, sobrescrevendo o "display: none" definido antes */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    justify-content: center; /* centraliza o conteúdo verticalmente */
+    align-items: center; /* centraliza o conteúdo horizontalmente */
+   
+    text-align: center; /* centraliza o texto */
+    margin: 0 auto; /* centraliza o bloco horizontalmente */
+  }
+   
+  .item-thumb img {
+    width: 100%; /* imagem do produto ocupa toda a largura da miniatura */
+    height: 100%; /* imagem do produto ocupa toda a altura da miniatura */
+    object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
+    border-radius: var(--raio-sm); /* arredondamento das bordas da imagem */
+  }

@@ -1,24 +1,53 @@
+<div class="quadro-cadastro">
+    <h2>Gerenciar produtos</h2>
+    <div class="quadro-cadastro-botoes">
+        <a class="btn-cadastrar" routerLink="/admin/cadastrar" style="cursor: pointer;">
+            Cadastrar novo produto
+        </a>
+         <a class="btn-cadastrar" routerLink="/admin/roupas/edit" style="cursor: pointer;">
+            Editar Produto Já Existente
+        </a>
+        <a class="btn-cadastrar" routerLink="/admin/categories" style="cursor: pointer;">
+            Cadastrar nova categoria
+        </a>
+    </div>
+</div>
 
-<a class="btn-cadastrar" routerLink="/admin/cadastrar"  style="cursor: pointer;">
-    Cadastrar novo produto
-</a>
-<a class="btn-cadastrar" routerLink="/admin/categories"  style="cursor: pointer;">
-    Cadastrar nova categoria
-</a>
+<div class="barra-pesquisa">
+    <input
+        type="text"
+        placeholder="Buscar por ID..."
+        [value]="searchTerm()"
+        (input)="onSearchChange($event)"
+        class="input-pesquisa"
+    >
+    @if (searchTerm()) {
+        <button class="btn-limpar-busca" (click)="limparBusca()">Limpar</button>
+    }
+</div>
 
+<hr class="divisor-artigos">
 
-
-<div>
-    @for (item of roupas(); track $index) {
-    <ul>
-        <li><img [src]="item.image_url" alt="Imagem da roupa"></li>
-        <li>Id: {{item.id}}</li>
-        <li>Nome: {{item.name}}</li>
-        <li>Descrição: {{item.description}}</li>
-        <li>Preco: {{item.price}}</li>
-        <li>Categoria: {{item.categoryId}}</li>
-        <li>Ações: <button (click)="(item.id)">editar</button> &nbsp; <button (click)="deletarRoupas(item.id)">Deletar</button></li>
-
-    </ul>
+<div class="lista-produtos">
+    @if (isLoading()) {
+        <p>Carregando produtos...</p>
+    } @else if (roupasFiltradas().length === 0) {
+        <p>Nenhum produto encontrado com o ID "{{ searchTerm() }}".</p>
+    } @else {
+        @for (item of roupasFiltradas(); track item.id) {
+        <ul class="card-produto">
+            <li><img [src]="item.image_url" alt="Imagem da roupa"></li>
+            <li>Id: {{item.id}}</li>
+            <li>Nome: {{item.name}}</li>
+            <li>Descrição: {{item.description}}</li>
+            <li>Preco: {{item.price}}</li>
+            <li>Categoria: {{item.categoryId}}</li>
+            <li>Ações: 
+                <button class="btn-editar" (click)="editarRoupa(item.id)">Editar</button> 
+                &nbsp; 
+                <button class="btn-deletar" (click)="deletarRoupas(item.id)">Deletar</button>
+            </li>
+        </ul>
+        }
     }
 </div>

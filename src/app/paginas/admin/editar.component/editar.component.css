@@ -1,0 +1,87 @@
+.quadro-edicao {
+  max-width: 700px; /* largura máxima do quadro de edição */
+  margin: 40px auto; /* centraliza horizontalmente e adiciona espaço acima/abaixo */
+  padding: var(--espcaco-xl); /* espaçamento interno do quadro */
+  background-color: var(--cor-2); /* fundo do quadro */
+  border: 1px solid var(--cor-3); /* borda sutil ao redor do quadro */
+  border-radius: var(--raio); /* arredondamento das bordas do quadro */
+  box-shadow: var(--sombra-md); /* sombra do quadro */
+}
+ 
+.barra-busca {
+  display: flex; /* alinha o campo de busca e os botões em linha */
+  gap: 10px; /* espaço entre o campo e os botões */
+  margin-bottom: 20px; /* espaço abaixo da barra de busca */
+}
+ 
+.input-busca {
+  flex: 1; /* faz o campo ocupar todo o espaço disponível na barra */
+  padding: 10px; /* espaçamento interno do campo */
+  border: 1px solid var(--cor-3); /* borda padrão do campo */
+  border-radius: var(--raio); /* arredondamento das bordas do campo */
+}
+ 
+.btn-buscar, .btn-limpar, .btn-salvar {
+  display: inline-flex; /* alinha ícone/texto do botão em linha */
+  align-items: center; /* centraliza o conteúdo verticalmente */
+  justify-content: center; /* centraliza o conteúdo horizontalmente */
+  margin: 0; /* remove margem externa do botão */
+  padding: 8px 16px; /* espaçamento interno do botão */
+  background: linear-gradient(135deg, var(--cor-5), var(--cor-6)); /* gradiente de fundo do botão */
+  color: var(--cor-2); /* cor do texto do botão */
+  text-decoration: none; /* remove sublinhado, caso seja um link */
+  font-family: 'Bebas Neue', sans-serif; /* fonte do texto do botão */
+  font-size: 14px; /* tamanho do texto do botão */
+  letter-spacing: 0.8px; /* espaçamento entre as letras do texto */
+  border: 2px solid var(--cor-4); /* borda de destaque do botão */
+  border-radius: var(--raio); /* arredondamento das bordas do botão */
+  cursor: pointer; /* indica que o botão é clicável */
+  transition: all .3s ease; /* suaviza qualquer mudança visual no botão */
+  box-shadow: 0 6px 15px rgba(0,0,0,.18); /* sombra do botão */
+}
+ 
+.btn-buscar:hover, .btn-limpar:hover, .btn-salvar:hover {
+  background: linear-gradient(135deg, var(--cor-6), var(--cor-7)); /* gradiente mais escuro no hover */
+  transform: translateY(-3px); /* levanta levemente o botão ao passar o mouse */
+  box-shadow: 0 10px 22px rgba(0,0,0,.28); /* aumenta a sombra no hover */
+  color: var(--cor-2); /* mantém a cor do texto no hover */
+}
+ 
+.btn-buscar:active, .btn-limpar:active, .btn-salvar:active {
+  transform: scale(.97); /* efeito de "clique" ao pressionar o botão */
+}
+ 
+.btn-buscar:focus, .btn-limpar:focus, .btn-salvar:focus {
+  outline: none; /* remove o contorno padrão do navegador ao focar */
+  box-shadow: 0 0 0 4px rgba(203, 159, 125, .35); /* halo de destaque ao redor do botão focado */
+}
+ 
+.mensagem-erro {
+  color: #d9534f; /* cor vermelha para indicar mensagem de erro */
+}
+ 
+.formulario-edicao {
+  display: flex; /* alinha imagem e campos lado a lado */
+  gap: 20px; /* espaço entre a imagem e os campos */
+  flex-wrap: wrap; /* permite quebrar em telas menores */
+}
+ 
+.imagem-produto {
+  width: 150px; /* largura da imagem do produto */
+  height: 150px; /* altura da imagem do produto */
+  object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
+  border-radius: var(--raio); /* arredondamento das bordas da imagem */
+}
+ 
+.campos {
+  flex: 1; /* faz a área de campos ocupar o espaço restante */
+  display: flex; /* organiza os campos em coluna */
+  flex-direction: column; /* empilha os campos verticalmente */
+  gap: 10px; /* espaço entre os campos */
+}
+ 
+.campos input, .campos textarea {
+  padding: 8px; /* espaçamento interno dos campos */
+  border: 1px solid var(--cor-3); /* borda padrão dos campos */
+  border-radius: var(--raio); /* arredondamento das bordas dos campos */
+}

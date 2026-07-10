@@ -10,8 +10,14 @@ import { RouterLink } from '@angular/router';
 })
 export class InicioComponent {
   filtroAtivo = signal('todos');
+  busca = signal('');
 
   selecionarFiltro(categoria: string): void {
     this.filtroAtivo.set(categoria);
+  }
+
+  pesquisar(event: Event): void {
+    const valor = (event.target as HTMLInputElement).value;
+    this.busca.set(valor);
   }
 }

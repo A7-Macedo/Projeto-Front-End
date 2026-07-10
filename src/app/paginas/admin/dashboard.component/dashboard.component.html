@@ -14,14 +14,16 @@
 </div>
 
 
+
 <div class="barra-pesquisa">
-    <input
+    <span class="icone-pesquisa">🔎</span>  
+    <input   
         type="text"
-        placeholder="Buscar por ID..."
+        placeholder=" Buscar por ID..."
         [value]="searchTerm()"
         (input)="onSearchChange($event)"
         class="input-pesquisa"
-    >
+    >   
     @if (searchTerm()) {
         <button class="btn-limpar-busca" (click)="limparBusca()">Limpar</button>
     }

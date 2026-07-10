@@ -23,6 +23,7 @@ export interface Produto {
 })
 export class RoupasComponent implements OnInit {
   @Input() filtro: string = 'todos';
+  @Input() busca: string = '';
 
   private carrinhoService = inject(CarrinhoService);
   private roupasService = inject(RoupasService);
@@ -85,6 +86,11 @@ export class RoupasComponent implements OnInit {
 
   mostrar(categoria: string): boolean {
     return this.filtro === 'todos' || this.filtro === categoria;
+  }
+
+  filtroBusca(titulo: string): boolean {
+    if (!this.busca || this.busca.trim() === '') return true;
+    return this.normalizarCategoria(titulo).includes(this.normalizarCategoria(this.busca));
   }
 
   produtosPorCategoria(categoria: string): Produto[] {

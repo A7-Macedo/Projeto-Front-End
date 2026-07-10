@@ -15,7 +15,7 @@
                 <span class="busca-icone">
                     🔎
                 </span>
-                <input class="busca-input" type="email" placeholder="Buscar Produtos..." />
+           <input class="busca-input" type="text" placeholder="Buscar Produtos..." (input)="pesquisar($event)" />
             </div>
 
             <!-- depois -->
@@ -36,7 +36,7 @@
             
 
             <div class="artigos-grid">
-  <app-roupas-component [filtro]="filtroAtivo()" />
+  <app-roupas-component [filtro]="filtroAtivo()" [busca]="busca()" />
 </div>
         </section>
 

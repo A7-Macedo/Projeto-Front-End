@@ -32,7 +32,7 @@ private produtos: Produto[] = [
       desconto: '22%',
       imagem: '/camisa.1.png',
       avaliacao: 4.5,
-      totalAvaliacoes: 0,
+      totalAvaliacoes: 
       badge: ''
     },
     {

@@ -4,7 +4,7 @@
 
 <div class="container-camisas" *ngIf="mostrar('camisas')">
 
-   <div class="slot1-camisa" [routerLink]="['/produto', 1]" style="cursor: pointer;">
+   <div class="slot1-camisa" *ngIf="filtroBusca('Midnight Summit')" [routerLink]="['/produto', 1]" style="cursor: pointer;">
       <img src="/camisa.1.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Midnight Summit</p>
@@ -15,7 +15,7 @@
       </div>
   </div>
 
-    <div class="slot2-camisa" [routerLink]="['/produto', 2]" style="cursor: pointer;">
+    <div class="slot2-camisa" *ngIf="filtroBusca('Signature Sand Élégance')" [routerLink]="['/produto', 2]" style="cursor: pointer;">
         <img src="/camisa.2.png" alt="" class="roupas">
         <h2></h2>
         <p class="titulo">Signature Sand Élégance</p>
@@ -26,7 +26,7 @@
         </div>
      </div>
     
-     <div class="slot3-camisa" [routerLink]="['/produto', 3]" style="cursor: pointer;">
+     <div class="slot3-camisa" *ngIf="filtroBusca('Ivory Prestige')" [routerLink]="['/produto', 3]" style="cursor: pointer;">
         <img src="/camisa.3.png" alt="" class="roupas">
         <h2></h2>
         <p class="titulo">Ivory Prestige</p>
@@ -37,7 +37,7 @@
       </div>
      </div>
 
-     <div class="slot4-camisa" [routerLink]="['/produto', 4]" style="cursor: pointer;">
+     <div class="slot4-camisa" *ngIf="filtroBusca('Midnight Eclipse')" [routerLink]="['/produto', 4]" style="cursor: pointer;">
         <img src="/camisa.4.png" alt="" class="roupas">
         <p class="titulo">Midnight Eclipse</p>
         <p class="descricao">Midnight Eclipse une modernidade e requinte.</p>
@@ -54,7 +54,7 @@
 
 <div class="container-calcas" *ngIf="mostrar('calcas')">
 
-    <div class="slot1-calca" [routerLink]="['/produto', 6]" style="cursor: pointer;">
+    <div class="slot1-calca" *ngIf="filtroBusca('Imperial Cocoa')" [routerLink]="['/produto', 6]" style="cursor: pointer;">
         <img src="/calças.1.png" alt="" class="roupas">
         <h2></h2>
         <p class="titulo">Imperial Cocoa</p>
@@ -67,7 +67,7 @@
 
 
     
-     <div class="slot3-calca" [routerLink]="['/produto', 8]" style="cursor: pointer;">
+     <div class="slot3-calca" *ngIf="filtroBusca('Golden Dune')" [routerLink]="['/produto', 8]" style="cursor: pointer;">
         <img src="/calças.3.png" alt="" class="roupas">
         <h2></h2>
         <p class="titulo">Golden Dune</p>
@@ -78,7 +78,7 @@
         </div>
      </div>
 
-     <div class="slot4-calca" [routerLink]="['/produto', 9]" style="cursor: pointer;">
+     <div class="slot4-calca" *ngIf="filtroBusca('Executive Noir')" [routerLink]="['/produto', 9]" style="cursor: pointer;">
         <img src="/calças.4.png" alt="" class="roupas">
         <h2></h2>
         <p class="titulo">Executive Noir</p>
@@ -89,7 +89,7 @@
         </div>
      </div>
 
-     <div class="slot5-calca" [routerLink]="['/produto', 10]" style="cursor: pointer;">
+     <div class="slot5-calca" *ngIf="filtroBusca('Ivory Heritage')" [routerLink]="['/produto', 10]" style="cursor: pointer;">
       <img src="/calças.5.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Ivory Heritage</p>
@@ -105,7 +105,7 @@
 
 <div class="container-jaquetas" *ngIf="mostrar('jaquetas')">
 
-  <div class="slot1-jaqueta" [routerLink]="['/produto', 11]" style="cursor: pointer;">
+  <div class="slot1-jaqueta" *ngIf="filtroBusca('Urban Legacy')" [routerLink]="['/produto', 11]" style="cursor: pointer;">
       <img src="/jaqueta.1.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Urban Legacy</p>
@@ -117,7 +117,7 @@
   </div>
 
   
-   <div class="slot3-jaqueta" [routerLink]="['/produto', 13]" style="cursor: pointer;">
+   <div class="slot3-jaqueta" *ngIf="filtroBusca('Alpine Ivory')" [routerLink]="['/produto', 13]" style="cursor: pointer;">
       <img src="/jaqueta.3.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Alpine Ivory</p>
@@ -128,7 +128,7 @@
       </div>
    </div>
 
-   <div class="slot4-jaqueta" [routerLink]="['/produto', 14]" style="cursor: pointer;">
+   <div class="slot4-jaqueta" *ngIf="filtroBusca('Silver Horizon')" [routerLink]="['/produto', 14]" style="cursor: pointer;">
       <img src="/jaqueta.4.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Silver Horizon</p>
@@ -139,7 +139,7 @@
       </div>
    </div>
 
-   <div class="slot5-jaqueta" [routerLink]="['/produto', 15]" style="cursor: pointer;">
+   <div class="slot5-jaqueta" *ngIf="filtroBusca('Pure Essence')" [routerLink]="['/produto', 15]" style="cursor: pointer;">
       <img src="/jaqueta.5.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Pure Essence</p>
@@ -154,7 +154,7 @@
 
 <div class="container-casacos" *ngIf="mostrar('casacos')">
 
-  <div class="slot1-casaco" [routerLink]="['/produto', 16]" style="cursor: pointer;">
+  <div class="slot1-casaco" *ngIf="filtroBusca('Vintage Oak')" [routerLink]="['/produto', 16]" style="cursor: pointer;">
       <img src="/casaco.1.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Vintage Oak</p>
@@ -165,7 +165,7 @@
       </div>
   </div>
 
-  <div class="slot2-casaco" [routerLink]="['/produto', 17]" style="cursor: pointer;">
+  <div class="slot2-casaco" *ngIf="filtroBusca('Graphite Elite')" [routerLink]="['/produto', 17]" style="cursor: pointer;">
       <img src="/casaco.2.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Graphite Elite</p>
@@ -176,7 +176,7 @@
       </div>
    </div>
   
-   <div class="slot3-casaco" [routerLink]="['/produto', 18]" style="cursor: pointer;">
+   <div class="slot3-casaco" *ngIf="filtroBusca('Royal Coast')" [routerLink]="['/produto', 18]" style="cursor: pointer;">
       <img src="/casaco.3.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Royal Coast</p>
@@ -187,7 +187,7 @@
       </div>
    </div>
 
-   <div class="slot4-casaco" [routerLink]="['/produto', 19]" style="cursor: pointer;">
+   <div class="slot4-casaco" *ngIf="filtroBusca('Sand Heritage')" [routerLink]="['/produto', 19]" style="cursor: pointer;">
       <img src="/casaco.4.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Sand Heritage</p>
@@ -204,7 +204,7 @@
 
 <div class="container-sapatos" *ngIf="mostrar('sapatos')">
 
-  <div class="slot1-sapato" [routerLink]="['/produto', 21]" style="cursor: pointer;">
+  <div class="slot1-sapato" *ngIf="filtroBusca('White Signature')" [routerLink]="['/produto', 21]" style="cursor: pointer;">
       <img src="/sapato.1.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">White Signature</p>
@@ -216,7 +216,7 @@
   </div>
 
   
-   <div class="slot3-sapato" [routerLink]="['/produto', 23]" style="cursor: pointer;">
+   <div class="slot3-sapato" *ngIf="filtroBusca('Desert Classic')" [routerLink]="['/produto', 23]" style="cursor: pointer;">
       <img src="/sapato.3.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Desert Classic</p> 
@@ -227,7 +227,7 @@
       </div>
    </div>
 
-   <div class="slot4-sapato" [routerLink]="['/produto', 24]" style="cursor: pointer;">
+   <div class="slot4-sapato" *ngIf="filtroBusca('Urban Steel')" [routerLink]="['/produto', 24]" style="cursor: pointer;">
       <img src="/sapato.4.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Urban Steel</p>
@@ -238,7 +238,7 @@
       </div>
    </div>
 
-   <div class="slot5-sapato" [routerLink]="['/produto', 25]" style="cursor: pointer;">
+   <div class="slot5-sapato" *ngIf="filtroBusca('Dual Prestige')" [routerLink]="['/produto', 25]" style="cursor: pointer;">
       <img src="/sapato.5.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Dual Prestige</p>
@@ -255,7 +255,7 @@
 <div class="container-tenis" *ngIf="mostrar('tenis')">
 
 
-  <div class="slot1-tenis" [routerLink]="['/produto', 26]" style="cursor: pointer;">
+  <div class="slot1-tenis" *ngIf="filtroBusca('Pure Comfort')" [routerLink]="['/produto', 26]" style="cursor: pointer;">
       <img src="/tenis.1.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Pure Comfort</p>
@@ -267,7 +267,7 @@
   </div>
 
   
-   <div class="slot3-tenis" [routerLink]="['/produto', 28]" style="cursor: pointer;">
+   <div class="slot3-tenis" *ngIf="filtroBusca('Sand Comfort')" [routerLink]="['/produto', 28]" style="cursor: pointer;">
       <img src="/tenis.3.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Sand Comfort</p>
@@ -278,7 +278,7 @@
       </div>
    </div>
 
-   <div class="slot4-tenis" [routerLink]="['/produto', 29]" style="cursor: pointer;">
+   <div class="slot4-tenis" *ngIf="filtroBusca('Steel Comfort')" [routerLink]="['/produto', 29]" style="cursor: pointer;">
       <img src="/tenis.4.png" alt="" class="roupas">
       <h2></h2>
       <p class="titulo">Steel Comfort</p>
@@ -289,7 +289,7 @@
       </div>
    </div>
 
-   <div class="slot5-tenis" [routerLink]="['/produto', 30]" style="cursor: pointer;">
+   <div class="slot5-tenis" *ngIf="filtroBusca('Contrast Comfort')" [routerLink]="['/produto', 30]" style="cursor: pointer;">
     <img src="/tenis.5.png" alt="" class="roupas">
     <h2></h2>
     <p class="titulo">Contrast Comfort</p>

@@ -1,209 +1,199 @@
 .container-caze {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
+    display: flex; /* alinha os cards de kit lado a lado */
+    justify-content: center; /* centraliza os cards horizontalmente */
+    gap: 30px; /* espaço entre os cards */
+    width: 100%; /* container ocupa toda a largura disponível */
     flex-wrap: nowrap; /* impede quebrar linha */
-    padding: 20px;
-}
-
-.container-caze a {
-    display: block;
-    text-decoration: none;;
-    
-}
-
-.kit-caze-camisa{
-    width: 410px;
+    padding: 20px; /* espaçamento interno do container */
+  }
+   
+  .container-caze a {
+    display: block; /* faz o link ocupar toda a área do card, não só o texto */
+    text-decoration: none; /* remove sublinhado do link */
+  }
+   
+  .kit-caze-camisa {
+    width: 410px; /* largura fixa do card */
     flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-
-}
-
-.kit-caze-calca{
-    width: 410px;
+    display: flex; /* organiza o conteúdo do card em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    align-items: center; /* centraliza os elementos horizontalmente */
+    background-color: var(--cor-3); /* fundo do card */
+    border: 2px solid var(--cor-5); /* borda de destaque do card */
+    border-radius: 16px; /* arredondamento das bordas do card */
+    padding: 0px; /* sem espaçamento interno no card (padding fica nos elementos internos) */
+    box-shadow: 0 4px 12px rgba(0,0,0,.15); /* sombra do card */
+    box-sizing: border-box; /* inclui padding e borda no cálculo do tamanho do card */
+  }
+   
+  .kit-caze-calca {
+    width: 410px; /* largura fixa do card */
     flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-
-}
-
-.kit-caze-jaqueta{
-    width: 410px;
+    display: flex; /* organiza o conteúdo do card em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    align-items: center; /* centraliza os elementos horizontalmente */
+    background-color: var(--cor-3); /* fundo do card */
+    border: 2px solid var(--cor-5); /* borda de destaque do card */
+    border-radius: 16px; /* arredondamento das bordas do card */
+    padding: 0px; /* sem espaçamento interno no card */
+    box-shadow: 0 4px 12px rgba(0,0,0,.15); /* sombra do card */
+    box-sizing: border-box; /* inclui padding e borda no cálculo do tamanho do card */
+  }
+   
+  .kit-caze-jaqueta {
+    width: 410px; /* largura fixa do card */
     flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-
-}
-
-.kit-caze-tenis{
-    width: 410px;
+    display: flex; /* organiza o conteúdo do card em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    align-items: center; /* centraliza os elementos horizontalmente */
+    background-color: var(--cor-3); /* fundo do card */
+    border: 2px solid var(--cor-5); /* borda de destaque do card */
+    border-radius: 16px; /* arredondamento das bordas do card */
+    padding: 0px; /* sem espaçamento interno no card */
+    box-shadow: 0 4px 12px rgba(0,0,0,.15); /* sombra do card */
+    box-sizing: border-box; /* inclui padding e borda no cálculo do tamanho do card */
+  }
+   
+  .kit-caze-tenis {
+    width: 410px; /* largura fixa do card */
     flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-
-}
-/* ============= PREÇO =========================== */
-.preco {
-    font-size: 30px;
-    font-weight: 600;
-    color: var(--cor-6);
-    margin-top: 1px;
-    font-family: var(--fonte-titulo);
+    display: flex; /* organiza o conteúdo do card em coluna */
+    flex-direction: column; /* empilha os elementos verticalmente */
+    align-items: center; /* centraliza os elementos horizontalmente */
+    background-color: var(--cor-3); /* fundo do card */
+    border: 2px solid var(--cor-5); /* borda de destaque do card */
+    border-radius: 16px; /* arredondamento das bordas do card */
+    padding: 0px; /* sem espaçamento interno no card */
+    box-shadow: 0 4px 12px rgba(0,0,0,.15); /* sombra do card */
+    box-sizing: border-box; /* inclui padding e borda no cálculo do tamanho do card */
+  }
+   
+  /* ============= PREÇO =========================== */
+  .preco {
+    font-size: 30px; /* tamanho do texto do preço */
+    font-weight: 600; /* peso (grossura) do preço */
+    color: var(--cor-6); /* cor do preço */
+    margin-top: 1px; /* pequeno espaço acima do preço */
+    font-family: var(--fonte-titulo); /* fonte usada no preço */
     align-self: flex-start; /* Alinha à esquerda do card */
-    margin-left: 2px;
-}
-
-.kit-caze-camisa img{
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5)
-
-}
-.kit-caze-tenis img{
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5)
-
-}
-.kit-caze-calca img{
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5)
-
-}
-.kit-caze-jaqueta img{
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5)
-
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-.kit-caze-jaqueta,
-.kit-caze-camisa,
-.kit-caze-tenis,
-.kit-caze-calca
- {
-    padding-bottom: 40px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--cor-5);
-}
-.container-caze {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-/* ================= TITULO ==========================*/
-
-.titulo{
-    font-size: 21px;
-    font-weight: 600;
-    color: var(--cor-6);
-    margin-top: 10px;
-    font-family: var(--fonte-corpo);
+    margin-left: 2px; /* pequeno ajuste de alinhamento à esquerda */
+  }
+   
+  .kit-caze-camisa img {
+    width: 100%; /* imagem ocupa toda a largura do card */
+    height: 400px; /* altura fixa da imagem */
+    object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
+    border-radius: 10px; /* arredondamento das bordas da imagem */
+    border: 0px solid var(--cor-5); /* borda sem espessura (sem efeito visual, já que é 0px) */
+  }
+  .kit-caze-tenis img {
+    width: 100%; /* imagem ocupa toda a largura do card */
+    height: 400px; /* altura fixa da imagem */
+    object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
+    border-radius: 10px; /* arredondamento das bordas da imagem */
+    border: 0px solid var(--cor-5); /* borda sem espessura (sem efeito visual, já que é 0px) */
+  }
+  .kit-caze-calca img {
+    width: 100%; /* imagem ocupa toda a largura do card */
+    height: 400px; /* altura fixa da imagem */
+    object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
+    border-radius: 10px; /* arredondamento das bordas da imagem */
+    border: 0px solid var(--cor-5); /* borda sem espessura (sem efeito visual, já que é 0px) */
+  }
+  .kit-caze-jaqueta img {
+    width: 100%; /* imagem ocupa toda a largura do card */
+    height: 400px; /* altura fixa da imagem */
+    object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
+    border-radius: 10px; /* arredondamento das bordas da imagem */
+    border: 0px solid var(--cor-5); /* borda sem espessura (sem efeito visual, já que é 0px) */
+  }
+   
+  img {
+    width: 100%; /* regra global: qualquer imagem ocupa toda a largura do container */
+    height: auto; /* mantém a proporção da imagem com base na largura */
+  }
+   
+  .kit-caze-jaqueta,
+  .kit-caze-camisa,
+  .kit-caze-tenis,
+  .kit-caze-calca {
+    padding-bottom: 40px; /* espaço interno na base do card */
+    margin-bottom: 20px; /* espaço abaixo do card */
+    border-bottom: 2px solid var(--cor-5); /* linha de destaque na base do card */
+  }
+   
+  .container-caze {
+    border-bottom: none; /* remove qualquer borda inferior herdada no container geral */
+    margin-bottom: 0; /* remove margem inferior do container geral */
+  }
+   
+  /* ================= TITULO ==========================*/
+   
+  .titulo {
+    font-size: 21px; /* tamanho do título do produto */
+    font-weight: 600; /* peso (grossura) do título */
+    color: var(--cor-6); /* cor do título */
+    margin-top: 10px; /* espaço acima do título */
+    font-family: var(--fonte-corpo); /* fonte usada no título */
     align-self: flex-start; /* Alinha à esquerda do card */
-    margin-left: 2px;
-}
-
-/*====================== DESCRIÇÃO ==========================*/
-
-.descricao{
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--cor-6);
-    margin-top: 10px;
-    font-family: var(--fonte-corpo);
+    margin-left: 2px; /* pequeno ajuste de alinhamento à esquerda */
+  }
+   
+  /*====================== DESCRIÇÃO ==========================*/
+   
+  .descricao {
+    font-size: 12px; /* tamanho do texto de descrição */
+    font-weight: 600; /* peso (grossura) da descrição */
+    color: var(--cor-6); /* cor da descrição */
+    margin-top: 10px; /* espaço acima da descrição */
+    font-family: var(--fonte-corpo); /* fonte usada na descrição */
     align-self: flex-start; /* Alinha à esquerda do card */
-    margin-left: 2px;
-}
-
-/* ============= FOOTER DO CARD (preço + botão) =========================== */
-.produto-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 12px 15px;
-    box-sizing: border-box;
-    margin-top: 10px;
-}
-
-
-.btn-add-carrinho {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background-color: var(--cor-5);
-    color: var(--cor-2);
-    border: none;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background-color .2s ease, transform .2s ease;
-}
-
-.btn-add-carrinho:hover {
-    background-color: var(--cor-6);
-    transform: scale(1.08);
-}
-
-.btn-add-carrinho:active {
-    transform: scale(0.95);
-}
-
-[class*="slot"] {
+    margin-left: 2px; /* pequeno ajuste de alinhamento à esquerda */
+  }
+   
+  /* ============= FOOTER DO CARD (preço + botão) =========================== */
+  .produto-footer {
+    display: flex; /* alinha preço e botão de adicionar em linha */
+    justify-content: space-between; /* separa preço de um lado e botão do outro */
+    align-items: center; /* centraliza os itens verticalmente */
+    width: 100%; /* footer ocupa toda a largura do card */
+    padding: 0 12px 15px; /* espaçamento interno: sem topo, com laterais e base */
+    box-sizing: border-box; /* inclui padding no cálculo da largura */
+    margin-top: 10px; /* espaço acima do footer (valor inicial, ajustado mais abaixo) */
+  }
+   
+  .btn-add-carrinho {
+    width: 38px; /* largura do botão circular de adicionar */
+    height: 38px; /* altura do botão circular de adicionar */
+    border-radius: 50%; /* deixa o botão circular */
+    background-color: var(--cor-5); /* fundo do botão */
+    color: var(--cor-2); /* cor do símbolo "+" dentro do botão */
+    border: none; /* remove borda padrão do botão */
+    font-size: 22px; /* tamanho do símbolo dentro do botão */
+    font-weight: 600; /* peso (grossura) do símbolo */
+    line-height: 1; /* evita espaçamento extra vertical no símbolo */
+    cursor: pointer; /* indica que o botão é clicável */
+    display: flex; /* centraliza o símbolo dentro do botão */
+    align-items: center; /* centraliza verticalmente */
+    justify-content: center; /* centraliza horizontalmente */
+    flex-shrink: 0; /* impede que o botão encolha dentro do footer */
+    transition: background-color .2s ease, transform .2s ease; /* suaviza hover e clique */
+  }
+   
+  .btn-add-carrinho:hover {
+    background-color: var(--cor-6); /* cor de fundo do botão ao passar o mouse */
+    transform: scale(1.08); /* aumenta levemente o botão ao passar o mouse */
+  }
+   
+  .btn-add-carrinho:active {
+    transform: scale(0.95); /* efeito de "clique" ao pressionar o botão */
+  }
+   
+  [class*="slot"] {
     min-height: 400px; /* ajuste esse valor conforme a descrição mais longa */
-}
-
-/* Empurra o footer (preço + botão) para o final do card */
-.produto-footer {
-    margin-top: auto;
-}
-
+  }
+   
+  /* Empurra o footer (preço + botão) para o final do card */
+  .produto-footer {
+    margin-top: auto; /* ATENÇÃO: sobrescreve o "margin-top: 10px" definido acima; empurra o footer para o fim do card flex */
+  }

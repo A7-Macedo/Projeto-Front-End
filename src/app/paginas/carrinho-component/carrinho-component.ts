@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { CarrinhoService, ItemCarrinho } from '../../../app/services/carrinho'; // mesmo caminho usado no produto
+import { CarrinhoService, ItemCarrinho } from '../../../app/core/services/carrinho'; // mesmo caminho usado no produto
 
 @Component({
   selector: 'app-carrinho-component',

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../core/services/auth.service';
-import { CarrinhoService } from '../../app/services/carrinho'; // ajuste o caminho conforme sua pasta real
+import { CarrinhoService } from '../../app/core/services/carrinho'; // ajuste o caminho conforme sua pasta real
 
 @Component({
   selector: 'app-navbar-component',

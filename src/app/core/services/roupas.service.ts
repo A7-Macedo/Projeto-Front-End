@@ -41,8 +41,4 @@ export class RoupasService {
     return this.http.delete(`${this.apiUrl}/${id}`)
   }
 
-
-
-
-
 }

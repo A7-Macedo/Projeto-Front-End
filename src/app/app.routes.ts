@@ -6,7 +6,7 @@ import  { CarrinhoComponent } from './paginas/carrinho-component/carrinho-compon
 import { LoginComponent } from './paginas/auth/login-component/login-component';
 import { authGuard } from './core/guards/auth-guard';
 import { DashboardComponent } from './paginas/admin/dashboard.component/dashboard.component';
-import { RoupasFormComponent } from './roupas-component/roupas-form.component/roupas-form.component';
+import { RoupasFormComponent } from './paginas/admin/roupas-form.component/roupas-form.component';
 import { EsqueceuSenhaComponent } from './paginas/esqueceusenha.component/esqueceusenha.component';
 import { SobreComponent } from './paginas/sobre.component/sobre.component';
 import { CategoriaForm } from './paginas/admin/categoria-form/categoria-form';

@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { CarrinhoService } from '../../services/carrinho';
+import { CarrinhoService } from '../../../app/core/services/carrinho';
 import { RouterLink } from '@angular/router';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 
 
 @Component({
   selector: 'app-kits.component',
-  imports: [RouterLink],
+  imports: [CarouselModule],
   templateUrl: './kits.component.html',
   styleUrl: './kits.component.css',
 })

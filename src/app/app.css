@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-outlet {
+    display: none;
+}
+
+/* Seleciona o componente que o router-outlet renderiza */
+.main-outlet ~ * {
+    flex-grow: 1;
+    /* opcional, mas ajuda a evitar overflow */
+    min-height: 0;
+    overflow: auto;
+}
+
+:host ::ng-deep .main-outlet ~ * {
+    flex-grow: 2200;
+}

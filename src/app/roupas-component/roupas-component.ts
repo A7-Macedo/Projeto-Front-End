@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, signal } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { CommonModule } from '@angular/common';
-import { CarrinhoService } from '../../app/services/carrinho';
+import { CarrinhoService } from '../../app/core/services/carrinho';
 import { RoupasService } from '../core/services/roupas.service';
 import { CategoriesService } from '../core/services/categories.service';
 
@@ -31,6 +31,10 @@ export class RoupasComponent implements OnInit {
 
   produtos: Produto[] = [];
   private categoriasMap = new Map<number, string>();
+
+  mostrarToast = signal<boolean>( false);
+  private toastTimer: any;
+
 
   ngOnInit(): void {
     // Primeiro busca as categorias pra saber o nome de cada categoryId
@@ -97,7 +101,8 @@ export class RoupasComponent implements OnInit {
     return this.produtos.filter(p => p.categoria === categoria);
   }
 
- adicionarAoCarrinho(id: number, titulo: string, preco: number, imagem: string): void {
+  adicionarAoCarrinho(id: number, titulo: string, preco: number, imagem: string): void {
+
     this.carrinhoService.adicionar({
       id,
       nome: titulo,
@@ -106,5 +111,15 @@ export class RoupasComponent implements OnInit {
       original: preco,
       imagem,
     });
+
+    this.mostrarToast.set(true);
+
+    setTimeout(() => {
+      this.mostrarToast.set(false);
+
+    }, 1500);
+
+    console.log(this.mostrarToast())
   }
 }
+

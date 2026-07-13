@@ -20,7 +20,7 @@
                 <span class="carrinho">
                   <img src="/lumière9.9.png" routerLink="/carrinho">
                   @if ((totalItens$ | async); as totalItens) {
-                    @if (totalItens > 0) {
+                    @if (totalItens > 0)  {
                       <span class="carrinho-badge">{{ totalItens }}</span>
                     }
                   }

@@ -113,14 +113,6 @@
     height: auto; /* mantém a proporção da imagem com base na largura */
   }
    
-  .kit-caze-jaqueta,
-  .kit-caze-camisa,
-  .kit-caze-tenis,
-  .kit-caze-calca {
-    padding-bottom: 40px; /* espaço interno na base do card */
-    margin-bottom: 20px; /* espaço abaixo do card */
-    border-bottom: 2px solid var(--cor-5); /* linha de destaque na base do card */
-  }
    
   .container-caze {
     border-bottom: none; /* remove qualquer borda inferior herdada no container geral */
@@ -197,3 +189,55 @@
   .produto-footer {
     margin-top: auto; /* ATENÇÃO: sobrescreve o "margin-top: 10px" definido acima; empurra o footer para o fim do card flex */
   }
+
+  .carousel-caze {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto 0 auto; /* espaço entre os produtos e o carrossel */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-caze .carousel-inner img {
+    width: 100%;
+    height: 400px; /* ajuste a altura como quiser */
+    object-fit: cover; /* mantém proporção sem distorcer */
+}
+
+/* opcional: deixar as setas mais visíveis */
+.carousel-caze .carousel-control-prev-icon,
+.carousel-caze .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.carousel-caze {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-caze .carousel-inner {
+    width: 100%;
+}
+
+.carousel-caze .carousel-item img {
+    width: 100%;
+    height: 600px; /* ajuste essa altura como preferir */
+    object-fit: cover; /* corta a imagem mantendo proporção, sem esticar */
+    object-position: center; /* prioriza mostrar a parte de cima da foto (rosto) */
+    display: block;
+}
+
+/* setas de navegação */
+.carousel-caze .carousel-control-prev-icon,
+.carousel-caze .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 20px;
+}

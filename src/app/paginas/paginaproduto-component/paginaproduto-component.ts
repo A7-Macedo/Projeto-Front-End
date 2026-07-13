@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CarrinhoService } from '../../../app/services/carrinho';
-import { ProdutoService, Produto } from '../../../app/services/produtos.service';
+import { CarrinhoService } from '../../../app/core/services/carrinho';
+import { ProdutoService, Produto } from '../../../app/core/services/produtos.service';
 
 @Component({
   selector: 'app-paginaproduto-component',

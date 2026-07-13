@@ -6,8 +6,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RoupasService } from '../../core/services/roupas.service';
-import { CategoriesService } from '../../core/services/categories.service';
+import { RoupasService } from '../../../core/services/roupas.service';
+import { CategoriesService } from '../../../core/services/categories.service';
 import { signalGetFn } from '@angular/core/primitives/signals';
 import { ActivatedRoute, Router } from '@angular/router';
 

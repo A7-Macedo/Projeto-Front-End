@@ -1,87 +1,214 @@
-.quadro-edicao {
-  max-width: 700px; /* largura máxima do quadro de edição */
-  margin: 40px auto; /* centraliza horizontalmente e adiciona espaço acima/abaixo */
-  padding: var(--espcaco-xl); /* espaçamento interno do quadro */
-  background-color: var(--cor-2); /* fundo do quadro */
-  border: 1px solid var(--cor-3); /* borda sutil ao redor do quadro */
-  border-radius: var(--raio); /* arredondamento das bordas do quadro */
-  box-shadow: var(--sombra-md); /* sombra do quadro */
+/* ============================================================
+   Editar Roupa — estilos construídos sobre as variáveis de base
+   ============================================================ */
+
+   .pagina-cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: var(--espcaco-xl) var(--espcaco-md);
+    background-color: var(--cor-fundo);
+    font-family: var(--fonte-corpo);
+    box-sizing: border-box;
+  }
+  
+  .pagina-cadastro *,
+  .pagina-cadastro *::before,
+  .pagina-cadastro *::after {
+    box-sizing: border-box;
+  }
+  
+  /* ---------------- Card do formulário ---------------- */
+  
+.form-roupa {
+  width: 100%;
+  max-width: 520px;
+  background-color: var(--cor-2);
+  border: 1px solid var(--cor-3);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-md);
+  padding: var(--espcaco-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espcaco-lg);
+  position: relative; /* necessário para posicionar o botão secreto */
 }
- 
-.barra-busca {
-  display: flex; /* alinha o campo de busca e os botões em linha */
-  gap: 10px; /* espaço entre o campo e os botões */
-  margin-bottom: 20px; /* espaço abaixo da barra de busca */
-}
- 
-.input-busca {
-  flex: 1; /* faz o campo ocupar todo o espaço disponível na barra */
-  padding: 10px; /* espaçamento interno do campo */
-  border: 1px solid var(--cor-3); /* borda padrão do campo */
-  border-radius: var(--raio); /* arredondamento das bordas do campo */
-}
- 
-.btn-buscar, .btn-limpar, .btn-salvar {
-  display: inline-flex; /* alinha ícone/texto do botão em linha */
-  align-items: center; /* centraliza o conteúdo verticalmente */
-  justify-content: center; /* centraliza o conteúdo horizontalmente */
-  margin: 0; /* remove margem externa do botão */
-  padding: 8px 16px; /* espaçamento interno do botão */
-  background: linear-gradient(135deg, var(--cor-5), var(--cor-6)); /* gradiente de fundo do botão */
-  color: var(--cor-2); /* cor do texto do botão */
-  text-decoration: none; /* remove sublinhado, caso seja um link */
-  font-family: 'Bebas Neue', sans-serif; /* fonte do texto do botão */
-  font-size: 14px; /* tamanho do texto do botão */
-  letter-spacing: 0.8px; /* espaçamento entre as letras do texto */
-  border: 2px solid var(--cor-4); /* borda de destaque do botão */
-  border-radius: var(--raio); /* arredondamento das bordas do botão */
-  cursor: pointer; /* indica que o botão é clicável */
-  transition: all .3s ease; /* suaviza qualquer mudança visual no botão */
-  box-shadow: 0 6px 15px rgba(0,0,0,.18); /* sombra do botão */
-}
- 
-.btn-buscar:hover, .btn-limpar:hover, .btn-salvar:hover {
-  background: linear-gradient(135deg, var(--cor-6), var(--cor-7)); /* gradiente mais escuro no hover */
-  transform: translateY(-3px); /* levanta levemente o botão ao passar o mouse */
-  box-shadow: 0 10px 22px rgba(0,0,0,.28); /* aumenta a sombra no hover */
-  color: var(--cor-2); /* mantém a cor do texto no hover */
-}
- 
-.btn-buscar:active, .btn-limpar:active, .btn-salvar:active {
-  transform: scale(.97); /* efeito de "clique" ao pressionar o botão */
-}
- 
-.btn-buscar:focus, .btn-limpar:focus, .btn-salvar:focus {
-  outline: none; /* remove o contorno padrão do navegador ao focar */
-  box-shadow: 0 0 0 4px rgba(203, 159, 125, .35); /* halo de destaque ao redor do botão focado */
-}
- 
-.mensagem-erro {
-  color: #d9534f; /* cor vermelha para indicar mensagem de erro */
-}
- 
-.formulario-edicao {
-  display: flex; /* alinha imagem e campos lado a lado */
-  gap: 20px; /* espaço entre a imagem e os campos */
-  flex-wrap: wrap; /* permite quebrar em telas menores */
-}
- 
-.imagem-produto {
-  width: 150px; /* largura da imagem do produto */
-  height: 150px; /* altura da imagem do produto */
-  object-fit: cover; /* ajusta a imagem sem distorcer, cortando o excesso */
-  border-radius: var(--raio); /* arredondamento das bordas da imagem */
-}
- 
-.campos {
-  flex: 1; /* faz a área de campos ocupar o espaço restante */
-  display: flex; /* organiza os campos em coluna */
-  flex-direction: column; /* empilha os campos verticalmente */
-  gap: 10px; /* espaço entre os campos */
-}
- 
-.campos input, .campos textarea {
-  padding: 8px; /* espaçamento interno dos campos */
-  border: 1px solid var(--cor-3); /* borda padrão dos campos */
-  border-radius: var(--raio); /* arredondamento das bordas dos campos */
+  
+  .form-roupa h1 {
+    font-family: var(--fonte-titulo);
+    color: var(--cor-8);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 var(--espcaco-sm) 0;
+    text-align: center;
+  }
+  
+  /* ---------------- Labels e campos ---------------- */
+  
+  .form-roupa label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espcaco-xs);
+    font-size: 0.9rem;
+    color: var(--cor-7);
+    font-weight: 500;
+  }
+  
+  .form-roupa form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espcaco-lg);
+  }
+  
+  .form-roupa input[type="text"],
+  .form-roupa input[type="number"],
+  .form-roupa input[type="file"],
+  .form-roupa select {
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    color: var(--cor-8);
+    background-color: var(--cor-2);
+    border: 1px solid var(--cor-4);
+    border-radius: var(--raio-sm);
+    padding: var(--espcaco-sm) var(--espcaco-md);
+    outline: none;
+    transition: border-color var(--transicao), box-shadow var(--transicao);
+  }
+  
+  .form-roupa input[type="text"]:focus,
+  .form-roupa input[type="number"]:focus,
+  .form-roupa select:focus {
+    border-color: var(--cor-5);
+    box-shadow: 0 0 0 3px rgba(165, 63, 43, 0.15);
+  }
+  
+  .form-roupa input::placeholder {
+    color: var(--cor-4);
+  }
+  
+  .form-roupa select {
+    appearance: none;
+    background-image: linear-gradient(45deg, transparent 50%, var(--cor-7) 50%),
+      linear-gradient(135deg, var(--cor-7) 50%, transparent 50%);
+    background-position: calc(100% - 18px) center, calc(100% - 12px) center;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  
+  /* ---------------- Barra de pesquisa ---------------- */
+  
+  .busca-container {
+    display: flex;
+    gap: var(--espcaco-sm);
+  }
+  
+  .busca-container input[type="text"] {
+    flex: 1;
+  }
+  
+  .busca-container button {
+    flex-shrink: 0;
+  }
+  
+  .erro {
+    color: var(--cor-5);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  /* ---------------- Upload de imagem ---------------- */
+  
+  .input-arquivo {
+    gap: var(--espcaco-sm);
+  }
+  
+  .input-arquivo small {
+    color: var(--cor-4);
+    font-size: 0.78rem;
+    font-weight: 400;
+  }
+  
+  .preview-imagem {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: var(--raio-sm);
+    border: 1px solid var(--cor-3);
+    box-shadow: var(--sombra-sm);
+  }
+  
+  .form-roupa input[type="file"] {
+    padding: var(--espcaco-sm);
+    cursor: pointer;
+  }
+  
+  /* ---------------- Botões ---------------- */
+  
+  .busca-container button,
+  .form-roupa form button[type="submit"] {
+    font-family: var(--fonte-corpo);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--cor-2);
+    background-color: var(--cor-5);
+    border: none;
+    border-radius: var(--raio-pill);
+    padding: var(--espcaco-sm) var(--espcaco-lg);
+    cursor: pointer;
+    transition: background-color var(--transicao), transform var(--transicao), box-shadow var(--transicao);
+  }
+  
+  .busca-container button:hover,
+  .form-roupa form button[type="submit"]:hover {
+    background-color: var(--cor-6);
+    box-shadow: var(--sombra-sm);
+  }
+  
+  .busca-container button:active,
+  .form-roupa form button[type="submit"]:active {
+    transform: scale(0.98);
+  }
+  
+  .busca-container button:disabled {
+    background-color: var(--cor-4);
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+  }
+  
+  .form-roupa form button[type="submit"] {
+    align-self: flex-start;
+    margin-top: var(--espcaco-sm);
+  }
+  
+  /* ---------------- Responsivo ---------------- */
+  
+  @media (max-width: 480px) {
+    .form-roupa {
+      padding: var(--espcaco-lg);
+    }
+  
+    .busca-container {
+      flex-direction: column;
+    }
+  
+    .form-roupa form button[type="submit"] {
+      align-self: stretch;
+    }
+  }
+
+/* ---------------- Botão secreto ---------------- */
+
+.segredo-caze {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  display: block;
+  opacity: 0;
+  cursor: default;
+  z-index: 10;
 }

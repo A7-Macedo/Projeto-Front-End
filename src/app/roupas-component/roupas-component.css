@@ -1,5 +1,3 @@
-
-
 /*================ TOAST =====================================================*/
 
 .toast {
@@ -29,388 +27,81 @@
     }
 }
 
-/* ====================== CAMISAs ========================================== */
-
-
-
-.container-camisas {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    flex-wrap: nowrap; /* impede quebrar linha */
-    padding: 20px;
-}
-
-.container-camisas a {
-    display: block;
-    text-decoration: none;;
-    
-}
-
-.slot1-camisa,
-.slot2-camisa,
-.slot3-camisa,
-.slot4-camisa,
-.slot5-camisa {
-    width: 410px;
-    flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-}
-
-.slot1-camisa img,
-.slot2-camisa img,
-.slot3-camisa img,
-.slot4-camisa img,
-.slot5-camisa img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5);
-    
-}
-
-.slot1-camisa{
-    font-family: var(--fonte-titulo);
-    
-}
-.slot2-camisa{
-    font-family: var(--fonte-titulo);
-}
-
-
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-
-
-/* ====================== CALÇAS ========================================== */
-
-
-
-.container-calcas {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    flex-wrap: nowrap; /* impede quebrar linha */
-    padding: 20px;
-}
-
-.container-calca a {
-    display: block;
-    text-decoration: none;
-    
-}
-
-.slot1-calca,
-.slot2-calca,
-.slot3-calca,
-.slot4-calca,
-.slot5-calca {
-    width: 410px;
-    flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-}
-
-.slot1-calca img,
-.slot2-calca  img,
-.slot3-calca  img,
-.slot4-calca  img,
-.slot5-calca  img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5);
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-
-/* ====================== JAQUETAS ========================================== */
-
-
-
-.container-jaquetas {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    flex-wrap: nowrap; /* impede quebrar linha */
-    padding: 20px;
-}
-
-.card-jaqueta {
-    width: 300px;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-}
-
-.card-jaqueta img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 0px;
-    border: 0px solid var(--cor-5);
-}
-
-
-.container-jaqueta a {
-    display: block;
-    text-decoration: none;
-    
-}
-
-.slot1-jaqueta,
-.slot2-jaqueta,
-.slot3-jaqueta,
-.slot4-jaqueta,
-.slot5-jaqueta {
-    width: 410px;
-    flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-}
-
-.slot1-jaqueta img,
-.slot2-jaqueta  img,
-.slot3-jaqueta  img,
-.slot4-jaqueta  img,
-.slot5-jaqueta  img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5);
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-/* ====================== CASACOS ========================================== */
-
-
-
-.container-casacos {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    flex-wrap: nowrap; /* impede quebrar linha */
-    padding: 20px;
-}
-
-.container-casaco a {
-    display: block;
-    text-decoration: none;
-    
-}
-
-.slot1-casaco,
-.slot2-casaco,
-.slot3-casaco,
-.slot4-casaco,
-.slot5-casaco {
-    width: 410px;
-    flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-}
-
-.slot1-casaco  img,
-.slot2-casaco  img,
-.slot3-casaco  img,
-.slot4-casaco  img,
-.slot5-casaco  img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5);
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-/* ====================== SAPATOS ========================================== */
-
-
-
-.container-sapatos {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    flex-wrap: nowrap; /* impede quebrar linha */
-    padding: 20px;
-}
-
-.container-sapato a {
-    display: block;
-    text-decoration: none;
-    
-}
-
-.slot1-sapato,
-.slot2-sapato,
-.slot3-sapato,
-.slot4-sapato,
-.slot5-sapato {
-    width: 410px;
-    flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-}
-
-.slot1-sapato  img,
-.slot2-sapato  img,
-.slot3-sapato  img,
-.slot4-sapato  img,
-.slot5-sapato  img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5);
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-
-/* ====================== TENIS ========================================== */
-
-
-
-.container-tenis {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    width: 100%;
-    flex-wrap: nowrap; /* impede quebrar linha */
-    padding: 20px;
-}
-
-
-.container-tenis a {
-    display: block;
-    text-decoration: none;
-    
-}
-
-.slot1-tenis,
-.slot2-tenis,
-.slot3-tenis,
-.slot4-tenis,
-.slot5-tenis {
-    width: 410px;
-    flex-shrink: 0; /* impede o card de encolher */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--cor-3);
-    border: 2px solid var(--cor-5);
-    border-radius: 16px;
-    padding: 0px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    box-sizing: border-box;
-}
-
-.slot1-tenis  img,
-.slot2-tenis  img,
-.slot3-tenis  img,
-.slot4-tenis  img,
-.slot5-tenis  img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 0px solid var(--cor-5);
-}
-
-img {
-    width: 100%;
-    height: auto;
-}
-
-
-
-/* ============= LINHAS =========================== */
+/* ====================== CONTAINERS (uma regra pra todas as categorias) ========================================== */
 
 .container-camisas,
 .container-calcas,
 .container-jaquetas,
-.container-tenis,
+.container-casacos,
 .container-sapatos,
-.container-casacos
- {
+.container-tenis {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    justify-items: center;
+    gap: 30px;
+    width: 100%;
+    padding: 20px;
     padding-bottom: 40px;
     margin-bottom: 20px;
     border-bottom: 2px solid var(--cor-5);
+    box-sizing: border-box;
 }
+
 .container-tenis {
     border-bottom: none;
     margin-bottom: 0;
 }
+
+/* ====================== CARDS DE PRODUTO (uma regra pra todas as categorias) ========================================== */
+
+[class^="slot-"] {
+    width: 100%;
+    max-width: 300px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-3);
+    border: 2px solid var(--cor-5);
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-sizing: border-box;
+    overflow: hidden;
+    text-decoration: none;
+    font-family: var(--fonte-titulo);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+[class^="slot-"]:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+[class^="slot-"] img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    transition: transform 0.35s ease;
+}
+
+[class^="slot-"]:hover img {
+    transform: scale(1.08);
+}
+
+/* ============= ESTADO VAZIO (sem produtos na categoria/busca) =========================== */
+
+.sem-resultados {
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--cor-6);
+    font-family: var(--fonte-corpo);
+}
+
 /* ============= PREÇO =========================== */
 .preco {
     font-size: 30px;
@@ -418,7 +109,7 @@ img {
     color: var(--cor-6);
     margin-top: 1px;
     font-family: var(--fonte-titulo);
-    align-self: flex-start; /* Alinha à esquerda do card */
+    align-self: flex-start;
     margin-left: 2px;
 }
 
@@ -430,8 +121,8 @@ img {
     color: var(--cor-6);
     margin-top: 10px;
     font-family: var(--fonte-corpo);
-    align-self: flex-start; /* Alinha à esquerda do card */
-    margin-left: 2px;
+    align-self: flex-start;
+    margin-left: 12px;
 }
 
 /*====================== DESCRIÇÃO ==========================*/
@@ -442,8 +133,8 @@ img {
     color: var(--cor-6);
     margin-top: 10px;
     font-family: var(--fonte-corpo);
-    align-self: flex-start; /* Alinha à esquerda do card */
-    margin-left: 2px;
+    align-self: flex-start;
+    margin-left: 12px;
 }
 
 /* ============= FOOTER DO CARD (preço + botão) =========================== */
@@ -454,9 +145,8 @@ img {
     width: 100%;
     padding: 0 12px 15px;
     box-sizing: border-box;
-    margin-top: 10px;
+    margin-top: auto; /* empurra o footer pro final do card */
 }
-
 
 .btn-add-carrinho {
     width: 38px;
@@ -483,53 +173,4 @@ img {
 
 .btn-add-carrinho:active {
     transform: scale(0.95);
-}
-
-[class*="slot"] {
-    min-height: 400px; /* ajuste esse valor conforme a descrição mais longa */
-}
-
-/* Empurra o footer (preço + botão) para o final do card */
-.produto-footer {
-    margin-top: auto;
-}
-
-/* ============= EFEITO HOVER NOS CARDS (versão explícita) =========================== */
-
-.slot1-camisa, .slot2-camisa, .slot3-camisa, .slot4-camisa, .slot5-camisa,
-.slot1-calca, .slot2-calca, .slot3-calca, .slot4-calca, .slot5-calca,
-.slot1-jaqueta, .slot2-jaqueta, .slot3-jaqueta, .slot4-jaqueta, .slot5-jaqueta,
-.slot1-casaco, .slot2-casaco, .slot3-casaco, .slot4-casaco, .slot5-casaco,
-.slot1-sapato, .slot2-sapato, .slot3-sapato, .slot4-sapato, .slot5-sapato,
-.slot1-tenis, .slot2-tenis, .slot3-tenis, .slot4-tenis, .slot5-tenis {
-    overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.slot1-camisa:hover, .slot2-camisa:hover, .slot3-camisa:hover, .slot4-camisa:hover, .slot5-camisa:hover,
-.slot1-calca:hover, .slot2-calca:hover, .slot3-calca:hover, .slot4-calca:hover, .slot5-calca:hover,
-.slot1-jaqueta:hover, .slot2-jaqueta:hover, .slot3-jaqueta:hover, .slot4-jaqueta:hover, .slot5-jaqueta:hover,
-.slot1-casaco:hover, .slot2-casaco:hover, .slot3-casaco:hover, .slot4-casaco:hover, .slot5-casaco:hover,
-.slot1-sapato:hover, .slot2-sapato:hover, .slot3-sapato:hover, .slot4-sapato:hover, .slot5-sapato:hover,
-.slot1-tenis:hover, .slot2-tenis:hover, .slot3-tenis:hover, .slot4-tenis:hover, .slot5-tenis:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
-}
-
-.slot1-camisa img, .slot2-camisa img, .slot3-camisa img, .slot4-camisa img, .slot5-camisa img,
-.slot1-calca img, .slot2-calca img, .slot3-calca img, .slot4-calca img, .slot5-calca img,
-.slot1-jaqueta img, .slot2-jaqueta img, .slot3-jaqueta img, .slot4-jaqueta img, .slot5-jaqueta img,
-.slot1-casaco img, .slot2-casaco img, .slot3-casaco img, .slot4-casaco img, .slot5-casaco img,
-.slot1-sapato img, .slot2-sapato img, .slot3-sapato img, .slot4-sapato img, .slot5-sapato img,
-.slot1-tenis img, .slot2-tenis img, .slot3-tenis img, .slot4-tenis img, .slot5-tenis img {
-    transition: transform 0.35s ease;
-}
-
-.slot1-camisa:hover img, .slot2-camisa:hover img, .slot3-camisa:hover img, .slot4-camisa:hover img, .slot5-camisa:hover img,
-.slot1-calca:hover img, .slot2-calca:hover img, .slot3-calca:hover img, .slot4-calca:hover img, .slot5-calca:hover img,
-.slot1-jaqueta:hover img, .slot2-jaqueta:hover img, .slot3-jaqueta:hover img, .slot4-jaqueta:hover img, .slot5-jaqueta:hover img,
-.slot1-casaco:hover img, .slot2-casaco:hover img, .slot3-casaco:hover img, .slot4-casaco:hover img, .slot5-casaco:hover img,
-.slot1-sapato:hover img, .slot2-sapato:hover img, .slot3-sapato:hover img, .slot4-sapato:hover img, .slot5-sapato:hover img,
-.slot1-tenis:hover img, .slot2-tenis:hover img, .slot3-tenis:hover img, .slot4-tenis:hover img, .slot5-tenis:hover img {
-    transform: scale(1.08);
 }

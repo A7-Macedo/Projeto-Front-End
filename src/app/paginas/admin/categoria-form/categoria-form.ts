@@ -128,7 +128,7 @@ export class CategoriaForm implements OnInit {
 
     this.categorieForm.patchValue({
       name: categoria.name,
-      description: categoria.description
+      description: categoria.description  
     });
 
   }

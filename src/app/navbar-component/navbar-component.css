@@ -29,6 +29,8 @@
   .nav-lista {
     display: flex; /* alinha os links do menu em linha */
     gap: 26px; /* espaço entre os links */
+   padding: 0;
+   margin: 0;
   }
    
   .nav-link {

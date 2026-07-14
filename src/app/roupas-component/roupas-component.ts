@@ -29,12 +29,26 @@ export class RoupasComponent implements OnInit {
   private roupasService = inject(RoupasService);
   private categoriesService = inject(CategoriesService);
 
-  produtos: Produto[] = [];
+  produtos = signal<Produto[]>([]);
   private categoriasMap = new Map<number, string>();
 
-  mostrarToast = signal<boolean>( false);
-  private toastTimer: any;
+  readonly categorias = ['camisas', 'calcas', 'jaquetas', 'casacos', 'sapatos', 'tenis'];
 
+  private readonly slotClassMap: Record<string, string> = {
+    camisas: 'camisa',
+    calcas: 'calca',
+    jaquetas: 'jaqueta',
+    casacos: 'casaco',
+    sapatos: 'sapato',
+    tenis: 'tenis',
+  };
+
+  slotClass(categoria: string): string {
+    return this.slotClassMap[categoria] ?? categoria;
+  }
+
+  mostrarToast = signal<boolean>(false);
+  private toastTimer: any;
 
   ngOnInit(): void {
     // Primeiro busca as categorias pra saber o nome de cada categoryId
@@ -57,7 +71,7 @@ export class RoupasComponent implements OnInit {
       next: (res) => {
         const contadorPorCategoria = new Map<string, number>();
 
-        this.produtos = (res.data ?? []).map((item: any) => {
+        const lista = (res.data ?? []).map((item: any) => {
           const categoria = this.categoriasMap.get(item.categoryId) ?? 'outros';
           const slotAtual = (contadorPorCategoria.get(categoria) ?? 0) + 1;
           contadorPorCategoria.set(categoria, slotAtual);
@@ -68,10 +82,13 @@ export class RoupasComponent implements OnInit {
             slot: slotAtual,
             titulo: item.name,
             descricao: item.description,
-            preco: item.price,
+            preco: Number(item.price),
             imagem: item.image_url,
           } as Produto;
         });
+
+        console.log('Produtos carregados da API:', lista); // <- confira no console quantos vêm por categoria
+        this.produtos.set(lista);
       },
       error: (err) => {
         console.error('Erro ao carregar produtos:', err);
@@ -98,7 +115,12 @@ export class RoupasComponent implements OnInit {
   }
 
   produtosPorCategoria(categoria: string): Produto[] {
-    return this.produtos.filter(p => p.categoria === categoria);
+    return this.produtos().filter(p => p.categoria === categoria);
+  }
+
+  produtosPorCategoriaFiltrado(categoria: string): Produto[] {
+    return this.produtosPorCategoria(categoria)
+      .filter(p => this.filtroBusca(p.titulo));
   }
 
   adicionarAoCarrinho(id: number, titulo: string, preco: number, imagem: string): void {
@@ -116,10 +138,8 @@ export class RoupasComponent implements OnInit {
 
     setTimeout(() => {
       this.mostrarToast.set(false);
-
     }, 1500);
 
-    console.log(this.mostrarToast())
+    console.log(this.mostrarToast());
   }
 }
-

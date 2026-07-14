@@ -18,20 +18,33 @@ export class DashboardComponent implements OnInit {
   isLoading = signal(false)
   isDeleting = signal(false)
 
-  // Termo de busca digitado pelo usuário
   searchTerm = signal<string>('')
 
-  // Lista filtrada: se o campo de busca estiver vazio, mostra tudo
+  // categoria atualmente selecionada no filtro ('todas' = sem filtro)
+  categoriaSelecionada = signal<string>('todas')
+
+  // extrai as categorias únicas a partir das roupas carregadas
+  categorias = computed(() => {
+    const todasCategorias = this.roupas().map(item => item.categoryId)
+    return Array.from(new Set(todasCategorias))
+  })
+
+  // aplica busca por ID + filtro de categoria juntos
   roupasFiltradas = computed(() => {
     const termo = this.searchTerm().trim()
+    const categoria = this.categoriaSelecionada()
 
-    if (!termo) {
-      return this.roupas()
+    let resultado = this.roupas()
+
+    if (categoria !== 'todas') {
+      resultado = resultado.filter(item => item.categoryId === categoria)
     }
 
-    return this.roupas().filter(item => 
-      String(item.id) === termo
-    )
+    if (termo) {
+      resultado = resultado.filter(item => String(item.id) === termo)
+    }
+
+    return resultado
   })
 
   ngOnInit(): void {
@@ -62,15 +75,28 @@ export class DashboardComponent implements OnInit {
     this.searchTerm.set('')
   }
 
+  selecionarCategoria(categoria: string): void {
+    this.categoriaSelecionada.set(categoria)
+  }
+
   abrirModalRoupa(): void {
     this.roupasService.abrirModal();
   }
 
+  // ✅ CORRIGIDO: rota agora bate com app.routes.ts ('/admin/editar')
   editarRoupa(id: any): void {
-    this.router.navigate(['/admin/roupas/edit'], { queryParams: { id } });
+    this.router.navigate(['/admin/editar'], { queryParams: { id } });
   }
 
   deletarRoupas(id: any) {
+    if (!id) {
+      console.error('ID inválido para deleção:', id);
+      return;
+    }
+
+    const confirmar = confirm(`Tem certeza que deseja deletar o produto ID ${id}?`);
+    if (!confirmar) return;
+
     this.isDeleting.set(true)
     this.roupasService.deleta(id).subscribe({
       next: () => {
@@ -79,7 +105,9 @@ export class DashboardComponent implements OnInit {
         this.loadRoupas()
       },
       error: (err) => {
-        alert(err.error.error);
+        console.error('Erro ao deletar:', err); // ✅ log completo do erro no console
+        const mensagem = err?.error?.error || err?.message || 'Erro desconhecido ao deletar';
+        alert(mensagem);
         this.isDeleting.set(false)
       }
     })

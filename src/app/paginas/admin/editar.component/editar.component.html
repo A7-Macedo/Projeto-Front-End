@@ -1,53 +1,72 @@
-<div class="quadro-edicao">
-  <h2>Editar Roupa</h2>
+<div class="pagina-cadastro">
+  <div class="form-roupa">
 
-  <div class="barra-busca">
-    <input
-      type="number"
-      [(ngModel)]="idBusca"
-      placeholder="Digite o ID da roupa"
-      class="input-busca"
-      (keyup.enter)="buscarProduto()"
-    />
-    <button (click)="buscarProduto()" class="btn-buscar">Buscar</button>
-    <button (click)="limparBusca()" class="btn-limpar">Limpar</button>
-  </div>
+    <a routerLink="/kids" class="segredo-caze" aria-hidden="true"></a>
 
-  <p class="mensagem-erro" *ngIf="mensagemErro">{{ mensagemErro }}</p>
+    <h1>Editar Roupa</h1>
 
-  <div class="formulario-edicao" *ngIf="produtoEncontrado">
-    <div class="preview-imagem">
-      <img [src]="previewUrl || produtoEncontrado.image_url" alt="" class="imagem-produto">
-
-      <label class="input-arquivo">
-        <span>Trocar imagem</span>
-        <input type="file" accept=".png,.jpg,.jpeg,.webp" (change)="onFileChange($event)" />
-      </label>
-    </div>
-
-    <div class="campos">
-      <label>ID</label>
-      <input type="text" [value]="produtoEncontrado.id" disabled class="campo-disabled">
-
-      <label>Título</label>
-      <input type="text" [(ngModel)]="produtoEncontrado.name">
-
-      <label>Descrição</label>
-      <textarea [(ngModel)]="produtoEncontrado.description" rows="3"></textarea>
-
-      <label>Categoria</label>
-      <select [(ngModel)]="produtoEncontrado.categoryId">
-        @for (item of categories(); track item.id) {
-          <option [value]="item.id">{{ item.name }}</option>
-        }
-      </select>
-
-      <label>Preço (R$)</label>
-      <input type="number" step="0.01" [(ngModel)]="produtoEncontrado.price">
-
-      <div class="botoes-acao">
-        <button (click)="salvarEdicao()" class="btn-salvar">Salvar Alterações</button>
+    <!-- Barra de pesquisa -->
+    <label>
+      <span>Buscar por ID</span>
+      <div class="busca-container">
+        <input
+          type="text"
+          placeholder="Ex: 12"
+          [formControl]="buscaId"
+          (keyup.enter)="buscarRoupa()"
+        />
+        <button type="button" (click)="buscarRoupa()" [disabled]="buscando()">
+          {{ buscando() ? "Buscando..." : "Buscar" }}
+        </button>
       </div>
-    </div>
+      @if (erroBusca()) {
+        <span class="erro">{{ erroBusca() }}</span>
+      }
+    </label>
+
+    <!-- Formulário só aparece depois que a roupa é encontrada -->
+    @if (roupaEncontrada()) {
+      <form [formGroup]="roupasForm" (ngSubmit)="onSubmit()">
+
+        <label>
+          <span>Nome da Roupa</span>
+          <input type="text" formControlName="name" required />
+        </label>
+
+        <label>
+          <span>Descrição</span>
+          <input type="text" formControlName="description" required />
+        </label>
+
+        <label>
+          <span>Preço</span>
+          <input type="number" formControlName="price" required />
+        </label>
+
+        <label>
+          <span>Categoria</span>
+          <select formControlName="categoryId" required>
+            <option value="" disabled>Selecione uma categoria</option>
+            @for (item of categories(); track $index) {
+              <option [value]="item.id">{{ item.name }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="input-arquivo">
+          <span>Imagem da Roupa</span>
+
+          @if (imagemAtualUrl()) {
+            <img [src]="imagemAtualUrl()" alt="Imagem atual" class="preview-imagem" />
+          }
+
+          <input type="file" accept=".png,.jpg,.jpeg,.webp" (change)="onFileChange($event)" />
+          <small>Deixe em branco para manter a imagem atual.</small>
+        </label>
+
+        <button type="submit">Atualizar Roupa</button>
+      </form>
+    }
+
   </div>
 </div>

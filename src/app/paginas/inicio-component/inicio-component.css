@@ -167,9 +167,15 @@
    
   .artigos-grid {
     display: grid; /* organiza os cards de artigo em grade */
-    grid-template-columns: repeat(3, 1fr); /* cria 3 colunas de largura igual */
+    grid-template-columns: repeat(3, 1fr); /* mantém as 3 colunas, usadas por outros elementos que porventura entrem aqui */
     gap: 24px; /* espaço entre os cards */
   }
+  
+  .artigos-grid > app-roupas-component {
+    grid-column: 1 / -1; /* faz o componente ocupar a largura inteira do grid, em vez de ficar preso em 1 das 3 colunas */
+    width: 100%;
+  }
+  
    
   /*============== Card Artigos ==========================================================================*/
    

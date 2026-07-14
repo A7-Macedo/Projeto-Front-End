@@ -2,27 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-
-@Injectable({
-  providedIn: 'root',
-})
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' }) // ✅ removido decorator duplicado
 export class RoupasService {
-    private modalAberto$ = new BehaviorSubject<boolean>(false);
-     modalAberto = this.modalAberto$.asObservable();
+  private modalAberto$ = new BehaviorSubject<boolean>(false);
+  modalAberto = this.modalAberto$.asObservable();
   private readonly http = inject(HttpClient)
   private readonly apiUrl = 'https://api-senai-angular.vercel.app/api/lumiere/products'
 
-   abrirModal(): void {
+  abrirModal(): void {
     this.modalAberto$.next(true);
   }
 
-    fecharModal(): void {
+  fecharModal(): void {
     this.modalAberto$.next(false);
   }
-  
+
   getAll(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`)
+    return this.http.get(`${this.apiUrl}?perPage=100`)
   }
 
   cadastro(formData: FormData): Observable<any> {
@@ -40,5 +36,4 @@ export class RoupasService {
   deleta(id: any): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`)
   }
-
 }

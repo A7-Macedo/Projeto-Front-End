@@ -4,7 +4,7 @@
         <a class="btn-cadastrar" routerLink="/admin/cadastrar" style="cursor: pointer;">
             Cadastrar novo produto
         </a>
-         <a class="btn-cadastrar" routerLink="/admin/roupas/edit" style="cursor: pointer;">
+         <a class="btn-cadastrar" routerLink="/admin/editar" style="cursor: pointer;">
             Editar Produto Já Existente
         </a>
         <a class="btn-cadastrar" routerLink="/admin/categories" style="cursor: pointer;">
@@ -26,6 +26,25 @@
     >   
     @if (searchTerm()) {
         <button class="btn-limpar-busca" (click)="limparBusca()">Limpar</button>
+    }
+</div>
+
+<!-- Filtro de categorias -->
+<div class="filtro-categorias">
+    <button
+        class="chip-categoria"
+        [class.chip-categoria-ativa]="categoriaSelecionada() === 'todas'"
+        (click)="selecionarCategoria('todas')">
+        Todas
+    </button>
+
+    @for (categoria of categorias(); track categoria) {
+        <button
+            class="chip-categoria"
+            [class.chip-categoria-ativa]="categoriaSelecionada() === categoria"
+            (click)="selecionarCategoria(categoria)">
+            {{ categoria }}
+        </button>
     }
 </div>
 

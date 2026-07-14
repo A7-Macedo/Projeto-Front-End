@@ -11,7 +11,7 @@ import { EsqueceuSenhaComponent } from './paginas/esqueceusenha.component/esquec
 import { SobreComponent } from './paginas/sobre.component/sobre.component';
 import { CategoriaForm } from './paginas/admin/categoria-form/categoria-form';
 import { KitsComponent } from './paginas/kits.component/kits.component';
-import { EditarRoupaComponent } from './paginas/admin/editar.component/editar.component';
+import { RoupasEditarComponent } from './paginas/admin/editar.component/editar.component';
 
 
 export const routes: Routes = [
@@ -28,8 +28,8 @@ export const routes: Routes = [
         {path: 'dashboard', component: DashboardComponent},
         {path: 'cadastrar', component: RoupasFormComponent},
         {path: "categories", component: CategoriaForm},
-        {path: 'editar/:id', component: RoupasFormComponent},
-        {path: "roupas/edit", component: EditarRoupaComponent }
+        {path: 'cadastrar/:id', component: RoupasFormComponent},
+        {path: "editar", component: RoupasEditarComponent }
      
     ]},
     

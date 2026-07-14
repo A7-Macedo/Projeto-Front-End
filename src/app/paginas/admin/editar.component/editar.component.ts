@@ -1,81 +1,103 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { RoupasService } from '../../../core/services/roupas.service';
 import { CategoriesService } from '../../../core/services/categories.service';
 
-interface ProdutoEdicao {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  categoryId: number;
-  image_url: string;
-}
-
 @Component({
-  selector: 'app-editar-roupa',
+  selector: 'app-roupas-editar',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './editar.component.html',
   styleUrl: './editar.component.css',
 })
-export class EditarRoupaComponent implements OnInit {
-  private route = inject(ActivatedRoute);
-  private roupasService = inject(RoupasService);
+export class RoupasEditarComponent implements OnInit {
+  roupasService = inject(RoupasService);
   private categoriesService = inject(CategoriesService);
-
-  idBusca: number | null = null;
-  produtoEncontrado: ProdutoEdicao | null = null;
-  mensagemErro = '';
+  private route = inject(ActivatedRoute); 
   categories = signal<any[]>([]);
 
+  // controle da busca
+  buscaId = new FormControl('', Validators.required);
+  roupaEncontrada = signal(false);
+  buscando = signal(false);
+  erroBusca = signal<string | null>(null);
+
+  // imagem
   imagemSelecionada: File | null = null;
-  previewUrl: string | null = null;
+  imagemAtualUrl = signal<string | null>(null);
+
+  id: any = null;
+
+  roupasForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    price: new FormControl<number | null>(null, Validators.required),
+    categoryId: new FormControl<number | null>(null, Validators.required),
+  });
+
+  constructor() {
+    this.getCategories();
+  }
+
 
   ngOnInit(): void {
-    this.getCategories();
-    this.route.queryParams.subscribe((params) => {
-      const idParam = params['id'];
+    this.route.queryParamMap.subscribe((params) => {
+      const idParam = params.get('id');
       if (idParam) {
-        this.idBusca = Number(idParam);
-        this.buscarProduto();
+        this.buscaId.setValue(idParam);
+        this.buscarRoupa();
       }
     });
   }
 
-  getCategories(): void {
-    this.categoriesService.get().subscribe({
-      next: (res) => this.categories.set(res.data),
-      error: (err) => console.error('Erro ao buscar categorias:', err),
+  getCategories() {
+    this.categoriesService.get().subscribe((res) => {
+      this.categories.set(res.data);
     });
   }
 
-  buscarProduto(): void {
-    this.mensagemErro = '';
-    this.produtoEncontrado = null;
-    this.imagemSelecionada = null;
-    this.previewUrl = null;
-
-    if (this.idBusca === null) {
-      this.mensagemErro = 'Digite um ID para buscar.';
+  buscarRoupa(): void {
+    if (this.buscaId.invalid || !this.buscaId.value) {
+      this.buscaId.markAsTouched();
       return;
     }
 
-    this.roupasService.getById(this.idBusca).subscribe({
+    this.buscando.set(true);
+    this.erroBusca.set(null);
+    this.roupaEncontrada.set(false);
+
+    const idBuscado = this.buscaId.value;
+
+    this.roupasService.getById(idBuscado).subscribe({
       next: (res) => {
-        this.produtoEncontrado = {
-          id: res.id,
-          name: res.name,
-          description: res.description,
-          price: res.price,
-          categoryId: res.categoryId,
-          image_url: res.image_url,
-        };
+        const roupa = res.data ?? res;
+
+        this.id = roupa.id ?? idBuscado;
+
+        this.roupasForm.patchValue({
+          name: roupa.name,
+          description: roupa.description,
+          price: roupa.price,
+          categoryId: roupa.categoryId,
+        });
+
+        this.imagemAtualUrl.set(roupa.image ?? null);
+        this.imagemSelecionada = null;
+
+        this.roupaEncontrada.set(true);
+        this.buscando.set(false);
       },
-      error: () => {
-        this.mensagemErro = `Nenhuma roupa encontrada com o ID ${this.idBusca}.`;
+      error: (err) => {
+        this.buscando.set(false);
+        this.roupaEncontrada.set(false);
+        this.erroBusca.set(err.error?.error ?? 'Roupa não encontrada.');
       },
     });
   }
@@ -84,47 +106,36 @@ export class EditarRoupaComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.imagemSelecionada = input.files[0];
-
-      // libera a URL de preview anterior, se existir, pra não vazar memória
-      if (this.previewUrl) {
-        URL.revokeObjectURL(this.previewUrl);
-      }
-      this.previewUrl = URL.createObjectURL(this.imagemSelecionada);
+      this.imagemAtualUrl.set(URL.createObjectURL(this.imagemSelecionada));
     }
   }
 
-  salvarEdicao(): void {
-    if (!this.produtoEncontrado) return;
+  onSubmit(): void {
+    if (this.roupasForm.invalid) {
+      this.roupasForm.markAllAsTouched();
+      alert('Preencha todos os campos.');
+      return;
+    }
 
+    const values = this.roupasForm.getRawValue();
     const formData = new FormData();
-    formData.append('name', this.produtoEncontrado.name);
-    formData.append('description', this.produtoEncontrado.description);
-    formData.append('price', String(this.produtoEncontrado.price));
-    formData.append('categoryId', String(this.produtoEncontrado.categoryId));
 
-    // só anexa a imagem se o usuário trocou; senão o backend mantém a atual
+    formData.append('name', values.name ?? '');
+    formData.append('description', values.description ?? '');
+    formData.append('price', String(values.price));
+    formData.append('categoryId', String(values.categoryId));
+
     if (this.imagemSelecionada) {
       formData.append('image', this.imagemSelecionada);
     }
 
-    this.roupasService.atualiza(formData, this.produtoEncontrado.id).subscribe({
+    this.roupasService.atualiza(formData, this.id).subscribe({
       next: () => {
-        alert('Roupa atualizada com sucesso!');
+        alert('Atualizado com sucesso!');
       },
       error: (err) => {
-        alert(err.error?.error ?? 'Erro ao atualizar a roupa.');
+        alert(err.error?.error ?? 'Erro ao atualizar.');
       },
     });
-  }
-
-  limparBusca(): void {
-    this.idBusca = null;
-    this.produtoEncontrado = null;
-    this.mensagemErro = '';
-    this.imagemSelecionada = null;
-    if (this.previewUrl) {
-      URL.revokeObjectURL(this.previewUrl);
-    }
-    this.previewUrl = null;
   }
 }

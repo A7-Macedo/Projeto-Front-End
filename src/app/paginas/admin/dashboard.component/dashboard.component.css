@@ -307,3 +307,44 @@
     color: white;
     cursor: pointer;
 }
+
+/* ===== FILTRO DE CATEGORIAS ===== */
+.filtro-categorias {
+  display: flex; /* alinha os chips de categoria em linha */
+  align-items: center; /* centraliza os chips verticalmente */
+  justify-content: center; /* centraliza o grupo de chips na página */
+  flex-wrap: wrap; /* permite quebrar os chips em telas menores */
+  gap: var(--espcaco-sm); /* espaço entre os chips */
+  margin: 0 0 var(--espcaco-lg); /* espaço abaixo do bloco, antes do divisor */
+  padding: 0 20px; /* alinhado ao padding lateral da barra de pesquisa */
+}
+
+.chip-categoria {
+  padding: 8px 20px; /* espaçamento interno do chip */
+  border-radius: var(--raio-pill); /* formato pílula, igual ao btn-cadastrar */
+  border: 1.5px solid var(--cor-4); /* borda neutra da paleta */
+  background-color: var(--cor-2); /* fundo claro, igual ao dos cards */
+  color: var(--cor-7); /* cor de texto secundária */
+  font-family: var(--fonte-corpo); /* mesma fonte usada em textos/botões */
+  font-size: 13px; /* tamanho compacto, discreto */
+  font-weight: 600; /* leve destaque no texto */
+  letter-spacing: 0.3px; /* espaçamento entre letras */
+  cursor: pointer; /* indica que o chip é clicável */
+  transition: all .25s ease; /* suaviza hover e troca de estado ativo */
+  box-shadow: 0 2px 6px rgba(0,0,0,.08); /* sombra leve, igual ao padrão dos botões */
+}
+
+.chip-categoria:hover {
+  border-color: var(--cor-5); /* borda destaca na cor de ação ao passar o mouse */
+  color: var(--cor-5); /* texto acompanha a cor de ação */
+  transform: translateY(-2px); /* levanta levemente, igual aos outros botões */
+}
+
+.chip-categoria-ativa,
+.chip-categoria-ativa:hover {
+  background: linear-gradient(135deg, var(--cor-5), var(--cor-6)); /* mesmo gradiente do btn-cadastrar */
+  border-color: var(--cor-6); /* borda escura combinando com o gradiente */
+  color: var(--cor-2); /* texto claro sobre o fundo escuro */
+  box-shadow: 0 4px 12px rgba(0,0,0,.18); /* sombra um pouco mais forte no estado ativo */
+  transform: none; /* remove o efeito de levantar no estado ativo, já está destacado */
+}

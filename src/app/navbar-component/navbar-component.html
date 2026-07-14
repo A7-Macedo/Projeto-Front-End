@@ -12,7 +12,7 @@
                     }
                 </ul>
                  @if (authService.isLoggedIn()) {
-                  <button type="button" class="btn-sair" (click)="authService.logout()">Sair</button>
+                  <button type="button" class="btn-sair" (click)="authService.logout()">Sair</button> 
                 } @else {
                   <a routerLink="/login" class="btn-sair">Login</a>
                 }

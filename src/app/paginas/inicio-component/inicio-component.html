@@ -1,5 +1,4 @@
-
-        <section class="artigos-banner">
+<section class="artigos-banner">
            
             <h1 class="artigos-banner-titulo">
                 
@@ -36,12 +35,15 @@
             
 
             <div class="artigos-grid">
-  <app-roupas-component [filtro]="filtroAtivo()" [busca]="busca()" />
+<app-roupas-component
+  [filtro]="filtroAtivo()"
+  [busca]="busca()"
+  [paginado]="true"
+  [qtdInicial]="4"
+  (verCategoria)="selecionarFiltro($event)" />
 </div>
         </section>
 
 
 
     <footer></footer>
-
-

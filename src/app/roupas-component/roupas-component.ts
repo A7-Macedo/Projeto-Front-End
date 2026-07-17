@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, inject, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, inject, signal } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { CarrinhoService } from '../../app/core/services/carrinho';
 import { RoupasService } from '../core/services/roupas.service';
 import { CategoriesService } from '../core/services/categories.service';
+import { ToastService } from '../core/services/toast.service';
 
 export interface Produto {
   id: number;
@@ -21,18 +22,39 @@ export interface Produto {
   templateUrl: './roupas-component.html',
   styleUrl: './roupas-component.css',
 })
-export class RoupasComponent implements OnInit {
+export class RoupasComponent implements OnInit, OnChanges {
+
   @Input() filtro: string = 'todos';
   @Input() busca: string = '';
+
+  // Limite fixo (mostra sempre só essa quantidade, sem botão "ver mais")
+  @Input() limite: number | null = null;
+
+  // Ativa o modo paginado: mostra uma quantidade inicial por categoria.
+  // O "ver mais" agora não expande a lista, ele redireciona/filtra pela categoria.
+  @Input() paginado: boolean = false;
+  @Input() qtdInicial: number = 4;
+
+  // Emite o nome da categoria quando o usuário clica em "Ver mais",
+  // pra quem estiver usando o componente (ex: InicioComponent) trocar o filtro ativo.
+  @Output() verCategoria = new EventEmitter<string>();
 
   private carrinhoService = inject(CarrinhoService);
   private roupasService = inject(RoupasService);
   private categoriesService = inject(CategoriesService);
+  private toastService = inject(ToastService);
 
   produtos = signal<Produto[]>([]);
   private categoriasMap = new Map<number, string>();
 
-  readonly categorias = ['camisas', 'calcas', 'jaquetas', 'casacos', 'sapatos', 'tenis'];
+  readonly categorias = [
+    'camisas',
+    'calcas',
+    'jaquetas',
+    'casacos',
+    'sapatos',
+    'tenis'
+  ];
 
   private readonly slotClassMap: Record<string, string> = {
     camisas: 'camisa',
@@ -47,33 +69,41 @@ export class RoupasComponent implements OnInit {
     return this.slotClassMap[categoria] ?? categoria;
   }
 
-  mostrarToast = signal<boolean>(false);
-  private toastTimer: any;
-
   ngOnInit(): void {
-    // Primeiro busca as categorias pra saber o nome de cada categoryId
     this.categoriesService.get().subscribe({
       next: (resCat) => {
+
         (resCat.data ?? []).forEach((cat: any) => {
           this.categoriasMap.set(cat.id, this.normalizarCategoria(cat.name));
         });
+
         this.carregarProdutos();
+
       },
       error: () => {
-        // mesmo se falhar, tenta carregar os produtos com categoria "outros"
         this.carregarProdutos();
       }
     });
   }
 
+  ngOnChanges(): void {
+    // sem lista expandida pra resetar, já que "ver mais" não incrementa mais nada.
+  }
+
   private carregarProdutos(): void {
+
     this.roupasService.getAll().subscribe({
+
       next: (res) => {
+
         const contadorPorCategoria = new Map<string, number>();
 
-        const lista = (res.data ?? []).map((item: any) => {
+        let lista = (res.data ?? []).map((item: any) => {
+
           const categoria = this.categoriasMap.get(item.categoryId) ?? 'outros';
+
           const slotAtual = (contadorPorCategoria.get(categoria) ?? 0) + 1;
+
           contadorPorCategoria.set(categoria, slotAtual);
 
           return {
@@ -85,18 +115,21 @@ export class RoupasComponent implements OnInit {
             preco: Number(item.price),
             imagem: item.image_url,
           } as Produto;
+
         });
 
-        console.log('Produtos carregados da API:', lista); // <- confira no console quantos vêm por categoria
         this.produtos.set(lista);
+
       },
+
       error: (err) => {
         console.error('Erro ao carregar produtos:', err);
       }
+
     });
+
   }
 
-  // Remove acentos e deixa minúsculo pra bater com os filtros (camisas, calcas, etc)
   private normalizarCategoria(nome: string): string {
     return nome
       .normalize('NFD')
@@ -110,20 +143,72 @@ export class RoupasComponent implements OnInit {
   }
 
   filtroBusca(titulo: string): boolean {
-    if (!this.busca || this.busca.trim() === '') return true;
-    return this.normalizarCategoria(titulo).includes(this.normalizarCategoria(this.busca));
+    if (!this.busca || this.busca.trim() === '') {
+      return true;
+    }
+
+    return this.normalizarCategoria(titulo)
+      .includes(this.normalizarCategoria(this.busca));
   }
 
   produtosPorCategoria(categoria: string): Produto[] {
     return this.produtos().filter(p => p.categoria === categoria);
   }
 
-  produtosPorCategoriaFiltrado(categoria: string): Produto[] {
+  // Todos os produtos da categoria já filtrados pela busca (sem cortar pelo limite)
+  private produtosCategoriaFiltradosCompletos(categoria: string): Produto[] {
     return this.produtosPorCategoria(categoria)
       .filter(p => this.filtroBusca(p.titulo));
   }
 
-  adicionarAoCarrinho(id: number, titulo: string, preco: number, imagem: string): void {
+  produtosPorCategoriaFiltrado(categoria: string): Produto[] {
+
+    let lista = this.produtosCategoriaFiltradosCompletos(categoria);
+
+    // Se o usuário já está "dentro" dessa categoria (filtro === categoria, ex: clicou em
+    // "Ver mais" ou no botão de filtro), mostra a lista completa, sem cortar em qtdInicial.
+    // Isso corrige o problema de roupas recém-cadastradas não aparecerem: antes o corte
+    // acontecia mesmo depois de entrar na categoria.
+    const verTudoDestaCategoria = this.filtro === categoria;
+
+    if (verTudoDestaCategoria) {
+      return lista;
+    }
+
+    if (this.paginado) {
+      lista = lista.slice(0, this.qtdInicial);
+    } else if (this.limite !== null) {
+      lista = lista.slice(0, this.limite);
+    }
+
+    return lista;
+  }
+
+  // "Ver mais" sempre aparece (exceto quando o usuário já está dentro dessa categoria específica)
+  temMaisProdutos(categoria: string): boolean {
+    if (!this.paginado) return false;
+    if (this.filtro === categoria) return false;
+    return true;
+  }
+
+  // Ao clicar em "Ver mais", não expande a lista: emite a categoria pra quem
+  // estiver usando o componente decidir o que fazer (ex: trocar o filtro ativo)
+  irParaCategoria(categoria: string): void {
+    this.verCategoria.emit(categoria);
+  }
+
+  nenhumProdutoEncontrado(): boolean {
+    return this.categorias.every(
+      (cat) => !this.mostrar(cat) || this.produtosPorCategoriaFiltrado(cat).length === 0
+    );
+  }
+
+  adicionarAoCarrinho(
+    id: number,
+    titulo: string,
+    preco: number,
+    imagem: string
+  ): void {
 
     this.carrinhoService.adicionar({
       id,
@@ -134,12 +219,7 @@ export class RoupasComponent implements OnInit {
       imagem,
     });
 
-    this.mostrarToast.set(true);
-
-    setTimeout(() => {
-      this.mostrarToast.set(false);
-    }, 1500);
-
-    console.log(this.mostrarToast());
+    this.toastService.success('Produto adicionado ao carrinho!');
   }
+
 }

@@ -1,4 +1,4 @@
-<ng-container *ngFor="let cat of categorias">
+<ng-container *ngFor="let cat of categorias; let last = last">
 
   <div class="container-{{ cat }}" *ngIf="mostrar(cat)">
 
@@ -17,19 +17,27 @@
           class="btn-add-carrinho"
           aria-label="Adicionar ao carrinho"
           (click)="$event.stopPropagation(); adicionarAoCarrinho(produto.id, produto.titulo, produto.preco, produto.imagem)">
-          +
+          <span>+</span>
         </button>
       </div>
     </div>
 
-    <p class="sem-resultados" *ngIf="produtosPorCategoriaFiltrado(cat).length === 0">
-      Nenhum produto encontrado nesta categoria.
-    </p>
-
   </div>
+
+  <!-- Ver mais dessa categoria: leva o usuário pra visão filtrada só dessa categoria -->
+  <button
+    class="btn-ver-mais"
+    *ngIf="mostrar(cat) && temMaisProdutos(cat)"
+    (click)="irParaCategoria(cat)">
+    Ver mais ▼
+  </button>
+
+  <!-- Linha separando uma categoria da outra: só na visão "todos" (senão fica só 1
+       categoria na tela e não há sentido em linha) e nunca depois da última categoria -->
+  <hr class="separador-categoria" *ngIf="filtro === 'todos' && !last">
 
 </ng-container>
 
-<div class="toast" *ngIf="mostrarToast()">
-  ✅ Produto adicionado ao carrinho!
-</div>
+<p class="sem-resultados" *ngIf="nenhumProdutoEncontrado()">
+  Nenhum produto encontrado.
+</p>

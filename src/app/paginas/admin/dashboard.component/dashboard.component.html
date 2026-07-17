@@ -38,12 +38,12 @@
         Todas
     </button>
 
-    @for (categoria of categorias(); track categoria) {
+    @for (categoria of categorias(); track categoria.id) {
         <button
             class="chip-categoria"
-            [class.chip-categoria-ativa]="categoriaSelecionada() === categoria"
-            (click)="selecionarCategoria(categoria)">
-            {{ categoria }}
+            [class.chip-categoria-ativa]="categoriaSelecionada() === categoria.id"
+            (click)="selecionarCategoria(categoria.id)">
+            {{ categoria.name }}
         </button>
     }
 </div>
@@ -63,7 +63,7 @@
             <li>Nome: {{item.name}}</li>
             <li>Descrição: {{item.description}}</li>
             <li>Preco: {{item.price}}</li>
-            <li>Categoria: {{item.categoryId}}</li>
+            <li>Categoria: {{ getCategoryName(item.categoryId) }}</li>
             <li>Ações: 
                 <button class="btn-editar" (click)="editarRoupa(item.id)">Editar</button> 
                 &nbsp; 

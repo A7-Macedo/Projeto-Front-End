@@ -35,7 +35,6 @@ export class CategoriaForm implements OnInit {
   loadCategories() {
     this.categorieService.get().subscribe({
       next: (res) => {
-        console.log(res);
         this.categorias.set(res.data);
       },
       error: (err) => {
@@ -63,9 +62,7 @@ export class CategoriaForm implements OnInit {
     if (!this.categoriaEditando) {
 
       this.categorieService.post(formData).subscribe({
-        next: (res) => {
-          console.log(res);
-
+        next: () => {
           alert('Categoria cadastrada com sucesso!');
 
           this.categorieForm.reset({
@@ -128,14 +125,14 @@ export class CategoriaForm implements OnInit {
 
     this.categorieForm.patchValue({
       name: categoria.name,
-      description: categoria.description  
+      description: categoria.description
     });
 
   }
 
   deleteCategory(categoria: any) {
 
-    if (!confirm(`Deseja excluir "${categoria.name}, ${categoria}"?`)) {
+    if (!confirm(`Deseja excluir "${categoria.name}"?`)) {
       return;
     }
 

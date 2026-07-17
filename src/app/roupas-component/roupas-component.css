@@ -1,3 +1,13 @@
+/*================ HOST DO COMPONENTE ===========================================*/
+/* Por padrão, elementos customizados (app-roupas-component) são "display: inline",
+   e por isso "width: 100%" aplicado nele de fora não funciona. Isso fazia o
+   componente inteiro encolher para o tamanho do conteúdo, sobrando espaço em
+   branco do lado direito do grid pai. Forçando "block" aqui, resolve na raiz. */
+:host {
+    display: block;
+    width: 100%;
+}
+
 /*================ TOAST =====================================================*/
 
 .toast {
@@ -28,6 +38,10 @@
 }
 
 /* ====================== CONTAINERS (uma regra pra todas as categorias) ========================================== */
+/* Grid fixo de 4 colunas: sempre 4 produtos por fileira, centralizados dentro
+   da célula (justify-items: center). O "Ver mais" não faz mais parte desse
+   grid (é um link separado, abaixo), então não tem mais o problema de sobrar
+   ou faltar espaço na fileira por causa dele. */
 
 .container-camisas,
 .container-calcas,
@@ -36,15 +50,10 @@
 .container-sapatos,
 .container-tenis {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    justify-items: center;
+    grid-template-columns: repeat(4, 1fr); /* sempre 4 colunas fixas (site é só PC) */
     gap: 30px;
-    width: 100%;
-    padding: 20px;
-    padding-bottom: 40px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--cor-5);
-    box-sizing: border-box;
+    padding: 20px 10px;
+    justify-items: center; /* centraliza cada card dentro da célula do grid */
 }
 
 .container-tenis {
@@ -56,7 +65,7 @@
 
 [class^="slot-"] {
     width: 100%;
-    max-width: 300px;
+    max-width: 420px;
     min-height: 400px;
     display: flex;
     flex-direction: column;
@@ -151,20 +160,30 @@
 .btn-add-carrinho {
     width: 38px;
     height: 38px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+    margin: 0;
+
+    border: none;
     border-radius: 50%;
+
     background-color: var(--cor-5);
     color: var(--cor-2);
-    border: none;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1;
+
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 0;
+
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-shrink: 0;
+
     transition: background-color .2s ease, transform .2s ease;
 }
+
 
 .btn-add-carrinho:hover {
     background-color: var(--cor-6);
@@ -173,4 +192,47 @@
 
 .btn-add-carrinho:active {
     transform: scale(0.95);
+}
+
+.btn-add-carrinho span {
+    position: relative;
+    top: -2px; /* ajuste entre -1px e -3px */
+}
+
+/* ============= BOTÃO VER MAIS (link abaixo da fileira, leva pra categoria) =========================== */
+.btn-ver-mais {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: none;
+    border: none;
+
+    margin-top: 4px;
+    margin-bottom: 30px;
+    padding: 6px 0;
+
+    color: var(--cor-6);
+    font-family: var(--fonte-titulo);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+.btn-ver-mais:hover {
+    opacity: 0.7;
+}
+
+/* ============= LINHA DIVISÓRIA ENTRE CATEGORIAS =========================== */
+.separador-categoria {
+    width: 100%;
+    max-width: none;
+    margin: 10px auto 40px;
+    border: none;
+    border-top: 2px solid var(--cor-5);
+    opacity: 1
+
 }

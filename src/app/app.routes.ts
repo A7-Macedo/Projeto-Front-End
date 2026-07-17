@@ -10,7 +10,6 @@ import { RoupasFormComponent } from './paginas/admin/roupas-form.component/roupa
 import { EsqueceuSenhaComponent } from './paginas/esqueceusenha.component/esqueceusenha.component';
 import { SobreComponent } from './paginas/sobre.component/sobre.component';
 import { CategoriaForm } from './paginas/admin/categoria-form/categoria-form';
-import { KitsComponent } from './paginas/kits.component/kits.component';
 import { RoupasEditarComponent } from './paginas/admin/editar.component/editar.component';
 
 
@@ -23,7 +22,6 @@ export const routes: Routes = [
     {path: 'carrinho', component: CarrinhoComponent},
     {path: 'sobre', component: SobreComponent},
     {path: 'esqueceusenha', component: EsqueceuSenhaComponent},
-    {path: 'kids', component: KitsComponent},
     {path: 'admin', canActivate: [authGuard], children:[
         {path: 'dashboard', component: DashboardComponent},
         {path: 'cadastrar', component: RoupasFormComponent},

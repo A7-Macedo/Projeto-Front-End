@@ -176,3 +176,23 @@
   .login-btn-submit:hover {
     color: var(--cor-2); /* cor do texto do botão ao passar o mouse */
   }
+
+  .login-btn-submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.spinner{
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

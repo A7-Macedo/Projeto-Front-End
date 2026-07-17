@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'app-login-component',
@@ -13,6 +14,7 @@ export class LoginComponent {
 
   private authService = inject(AuthService);
   private router = inject(Router);
+  private toast = inject(ToastService);
 
   enviando = signal(false)
 
@@ -27,12 +29,12 @@ export class LoginComponent {
 
     this.authService.login(email!, password!).subscribe({
       next: () => {
-        alert("Login realizado com sucesso!");
+        this.toast.success("Login realizado com sucesso!");
         this.router.navigate(['/admin/dashboard']);
         this.enviando.set(false)
       },
       error: (err) => {
-        alert(err.error.error);
+        this.toast.error(err.error.error);
         this.enviando.set(false)
       }
     });

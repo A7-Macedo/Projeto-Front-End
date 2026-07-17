@@ -1,5 +1,6 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { RoupasService } from '../../../core/services/roupas.service';
+import { CategoriesService } from '../../../core/services/categories.service';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -12,21 +13,34 @@ import { Router, RouterLink } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   roupasService = inject(RoupasService);
+  private categoriesService = inject(CategoriesService);
   private router = inject(Router);
 
   roupas = signal<any[]>([])
+  categoriesList = signal<any[]>([]) // lista completa de categorias vinda da API
   isLoading = signal(false)
   isDeleting = signal(false)
 
   searchTerm = signal<string>('')
 
   // categoria atualmente selecionada no filtro ('todas' = sem filtro)
-  categoriaSelecionada = signal<string>('todas')
+  categoriaSelecionada = signal<string | number>('todas')
 
-  // extrai as categorias únicas a partir das roupas carregadas
+  // mapa rápido id -> nome da categoria
+  categoriesMap = computed(() => {
+    const map = new Map<number, string>();
+    this.categoriesList().forEach(cat => map.set(cat.id, cat.name));
+    return map;
+  })
+
+  // extrai as categorias únicas (id + nome) a partir das roupas carregadas
   categorias = computed(() => {
-    const todasCategorias = this.roupas().map(item => item.categoryId)
-    return Array.from(new Set(todasCategorias))
+    const idsUnicos = Array.from(new Set(this.roupas().map(item => item.categoryId)))
+    const map = this.categoriesMap();
+    return idsUnicos.map(id => ({
+      id,
+      name: map.get(id) ?? `Categoria ${id}`
+    }));
   })
 
   // aplica busca por ID + filtro de categoria juntos
@@ -48,14 +62,26 @@ export class DashboardComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    this.loadCategories()
     this.loadRoupas()
+  }
+
+  loadCategories() {
+    this.categoriesService.get().subscribe({
+      next: (res) => this.categoriesList.set(res.data),
+      error: (err) => console.error(err)
+    })
+  }
+
+  // usado no template do card para exibir o nome em vez do id
+  getCategoryName(categoryId: number): string {
+    return this.categoriesMap().get(categoryId) ?? 'Sem categoria';
   }
 
   loadRoupas() {
     this.isLoading.set(true)
     this.roupasService.getAll().subscribe({
       next: (res) => {
-        console.log(res)
         this.roupas.set(res.data)
         this.isLoading.set(false)
       },
@@ -75,15 +101,14 @@ export class DashboardComponent implements OnInit {
     this.searchTerm.set('')
   }
 
-  selecionarCategoria(categoria: string): void {
-    this.categoriaSelecionada.set(categoria)
+  selecionarCategoria(categoriaId: string | number): void {
+    this.categoriaSelecionada.set(categoriaId)
   }
 
   abrirModalRoupa(): void {
     this.roupasService.abrirModal();
   }
 
-  // ✅ CORRIGIDO: rota agora bate com app.routes.ts ('/admin/editar')
   editarRoupa(id: any): void {
     this.router.navigate(['/admin/editar'], { queryParams: { id } });
   }
@@ -105,7 +130,7 @@ export class DashboardComponent implements OnInit {
         this.loadRoupas()
       },
       error: (err) => {
-        console.error('Erro ao deletar:', err); // ✅ log completo do erro no console
+        console.error('Erro ao deletar:', err);
         const mensagem = err?.error?.error || err?.message || 'Erro desconhecido ao deletar';
         alert(mensagem);
         this.isDeleting.set(false)

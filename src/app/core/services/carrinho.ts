@@ -82,8 +82,9 @@ export class CarrinhoService {
     this.salvar();
   }
 
-  remover(id: number): void {
-    this.itens = this.itens.filter(i => i.id !== id);
+  // agora remove pela combinação id + variante, igual o resto do service
+  remover(id: number, variante: string): void {
+    this.itens = this.itens.filter(i => !(i.id === id && i.variante === variante));
     this.salvar();
   }
 

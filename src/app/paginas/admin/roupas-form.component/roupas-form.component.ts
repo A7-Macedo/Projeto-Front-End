@@ -8,8 +8,8 @@ import {
 } from '@angular/forms';
 import { RoupasService } from '../../../core/services/roupas.service';
 import { CategoriesService } from '../../../core/services/categories.service';
-import { signalGetFn } from '@angular/core/primitives/signals';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'app-roupas-form',
@@ -27,6 +27,7 @@ export class RoupasFormComponent implements OnInit {
   activatedRoute = inject(ActivatedRoute)
   router = inject(Router)
   private categoriesService = inject(CategoriesService)
+  private toast = inject(ToastService);
 
   imagemSelecionada: File | null = null;
   id: any;
@@ -67,7 +68,7 @@ export class RoupasFormComponent implements OnInit {
   onSubmit(): void {
     if (this.roupasForm.invalid) {
       this.roupasForm.markAllAsTouched();
-      alert('Preencha todos os campos.');
+      this.toast.warning('Preencha todos os campos.');
       return;
     }
 
@@ -86,21 +87,21 @@ export class RoupasFormComponent implements OnInit {
     if (this.id) {
       this.roupasService.atualiza(formData, this.id).subscribe({
         next: () => {
-          alert("Atualizado com sucesso!")
+          this.toast.success("Atualizado com sucesso!")
           this.router.navigate(['/admin/dashboard'])
         },
         error: (err) => {
-          alert(err.error.error)
+          this.toast.error(err.error.error)
         }
       })
     } else {
       this.roupasService.cadastro(formData).subscribe({
         next: () => {
-          alert("Publicado com sucesso!");
+          this.toast.success("Publicado com sucesso!");
           this.router.navigate(['/admin/dashboard'])
         },
         error: (err) => {
-          alert(err.error.error)
+          this.toast.error(err.error.error)
         }
       })
     }

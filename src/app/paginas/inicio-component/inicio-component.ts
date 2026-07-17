@@ -21,3 +21,4 @@ export class InicioComponent {
     this.busca.set(valor);
   }
 }
+

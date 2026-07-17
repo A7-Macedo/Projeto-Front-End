@@ -199,16 +199,3 @@
     }
   }
 
-/* ---------------- Botão secreto ---------------- */
-
-.segredo-caze {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 18px;
-  height: 18px;
-  display: block;
-  opacity: 0;
-  cursor: default;
-  z-index: 10;
-}

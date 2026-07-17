@@ -1,0 +1,76 @@
+.toast-container {
+  position: fixed;
+  top: var(--espcaco-lg);
+  right: var(--espcaco-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espcaco-sm);
+  z-index: 9999;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--espcaco-sm);
+  min-width: 260px;
+  max-width: 360px;
+  padding: var(--espcaco-md) var(--espcaco-lg);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra-lg);
+  cursor: pointer;
+  font-family: var(--fonte-corpo);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cor-2);
+  animation: slideIn var(--transicao);
+  transition: transform var(--transicao), opacity var(--transicao);
+}
+
+.toast:hover {
+  transform: translateY(-2px);
+}
+
+/* Sucesso: usa a cor de ação principal */
+.toast.success {
+  background: var(--cor-5);
+  border-left: 4px solid var(--cor-11);
+}
+
+/* Erro: tom mais escuro e forte da paleta */
+.toast.error {
+  background: var(--cor-9);
+  border-left: 4px solid var(--cor-11);
+}
+
+/* Aviso: tom terroso intermediário */
+.toast.warning {
+  background: var(--cor-6);
+  border-left: 4px solid var(--cor-4);
+}
+
+/* Informação: tom neutro/escuro de apoio */
+.toast.info {
+  background: var(--cor-8);
+  border-left: 4px solid var(--cor-3);
+}
+
+.icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.message {
+  font-family: var(--fonte-corpo);
+  line-height: 1.4;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

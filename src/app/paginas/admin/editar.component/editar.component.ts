@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { RoupasService } from '../../../core/services/roupas.service';
 import { CategoriesService } from '../../../core/services/categories.service';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'app-roupas-editar',
@@ -20,7 +21,8 @@ import { CategoriesService } from '../../../core/services/categories.service';
 export class RoupasEditarComponent implements OnInit {
   roupasService = inject(RoupasService);
   private categoriesService = inject(CategoriesService);
-  private route = inject(ActivatedRoute); 
+  private route = inject(ActivatedRoute);
+  private toast = inject(ToastService);
   categories = signal<any[]>([]);
 
   // controle da busca
@@ -45,7 +47,6 @@ export class RoupasEditarComponent implements OnInit {
   constructor() {
     this.getCategories();
   }
-
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
@@ -113,7 +114,7 @@ export class RoupasEditarComponent implements OnInit {
   onSubmit(): void {
     if (this.roupasForm.invalid) {
       this.roupasForm.markAllAsTouched();
-      alert('Preencha todos os campos.');
+      this.toast.warning('Preencha todos os campos.');
       return;
     }
 
@@ -131,10 +132,10 @@ export class RoupasEditarComponent implements OnInit {
 
     this.roupasService.atualiza(formData, this.id).subscribe({
       next: () => {
-        alert('Atualizado com sucesso!');
+        this.toast.success('Atualizado com sucesso!');
       },
       error: (err) => {
-        alert(err.error?.error ?? 'Erro ao atualizar.');
+        this.toast.error(err.error?.error ?? 'Erro ao atualizar.');
       },
     });
   }

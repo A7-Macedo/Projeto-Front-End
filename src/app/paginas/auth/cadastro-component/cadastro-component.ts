@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { ToastService } from '../../../core/services/toast.service';
 
 @Component({
   selector: 'app-cadastro-component',
@@ -13,6 +14,7 @@ export class CadastroComponent {
 
   private authService = inject(AuthService);
   private router = inject(Router);
+  private toast = inject(ToastService);
 
   cadastroForm = new FormGroup({
     name: new FormControl("", [Validators.required]),
@@ -25,10 +27,10 @@ export class CadastroComponent {
 
     this.authService.cadastro(name!, email!, password!).subscribe({
       next: () => {
-        alert("Cadastro realizado com sucesso! 🎉");
+        this.toast.success("Cadastro realizado com sucesso! 🎉");
       },
       error: (err) => {
-        alert(err.error?.erro ?? 'Erro ao cadastrar');
+        this.toast.error(err.error?.erro ?? 'Erro ao cadastrar');
       }
     });
   }

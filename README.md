@@ -1,59 +1,53 @@
-# Lumiere
+# Lumière
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.16.
+Projeto final de Front-End: um site para **Lumière**, uma loja online de roupas de grife.
 
-## Development server
+🔗 **Acesse o site:** [lumier-two.vercel.app/inicio](https://lumier-two.vercel.app/inicio)
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## Sobre o projeto
+
+A Lumière é uma loja virtual fictícia de moda de luxo. O projeto foi desenvolvido como trabalho final do curso de Front-End, com foco em componentização, rotas, responsividade e uma interface elegante e moderna.
+
+## Funcionalidades
+
+- Página inicial com destaques da loja
+- Navegação entre páginas com rotas do Angular
+- Layout responsivo (desktop, tablet e celular)
+- Interface estilizada com Tailwind CSS
+
+> Ajuste esta lista com o que o seu site realmente tem (catálogo, carrinho, login, filtros, etc.).
+
+## Tecnologias
+
+- [Angular](https://angular.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- HTML5 e CSS3
+- [Vercel](https://vercel.com/) (deploy)
+
+## Estrutura do projeto
+
+```
+Projeto-Front-End/
+├── public/          # Arquivos estáticos (imagens, ícones)
+├── src/             # Código-fonte da aplicação
+│   ├── app/         # Componentes, páginas e rotas
+│   ├── index.html
+│   └── styles.css
+├── angular.json     # Configuração do Angular CLI
+├── tailwind.config.js
+└── package.json
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Autor
 
-## Code scaffolding
+**Arthur Cortasio Macedo**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- GitHub: [@A7-Macedo](https://github.com/A7-Macedo)
+- LinkedIn: _adicione o link do seu perfil_
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Feito com 💛 por Arthur Macedo.

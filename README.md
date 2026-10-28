@@ -46,7 +46,7 @@ Projeto-Front-End/
 **Arthur Cortasio Macedo**
 
 - GitHub: [@A7-Macedo](https://github.com/A7-Macedo)
-- LinkedIn: _adicione o link do seu perfil_
+- LinkedIn: [Arthur Macedo](https://www.linkedin.com/in/arthur-macedo-279797447/)
 
 ---
 
